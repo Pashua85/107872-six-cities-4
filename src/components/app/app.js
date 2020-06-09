@@ -3,8 +3,8 @@ import Main from '../main/main';
 
 const App = (props) => {
   // eslint-disable-next-line react/prop-types
-  const {propertiesAmount} = props;
-  return <Main propertiesAmount={propertiesAmount} />;
+  const {placesAmount} = props;
+  return <Main placesAmount={placesAmount} />;
 };
 
 export default App;
