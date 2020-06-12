@@ -61,6 +61,7 @@ exports[`Main should render correctly with three places 1`] = `
   >
     <h1
       className="visually-hidden"
+      onClick={[Function]}
     >
       Cities
     </h1>
@@ -603,6 +604,7 @@ exports[`Main should render correctly with two places 1`] = `
   >
     <h1
       className="visually-hidden"
+      onClick={[Function]}
     >
       Cities
     </h1>

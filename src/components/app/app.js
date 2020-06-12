@@ -4,7 +4,7 @@ import Main from '../main/main';
 
 const App = (props) => {
   const {places, placeAmount} = props;
-  return <Main places={places} placesAmount={placeAmount} />;
+  return <Main places={places} placesAmount={placeAmount} onTitleClick={() => {}} />;
 };
 
 App.propTypes = {
