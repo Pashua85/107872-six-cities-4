@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Main from '../main/main';
 
 const App = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {placesAmount} = props;
-  return <Main placesAmount={placesAmount} />;
+  const {places, placeAmount} = props;
+  return <Main places={places} placesAmount={placeAmount} />;
+};
+
+App.propTypes = {
+  places: PropTypes.arrayOf(PropTypes.string).isRequired,
+  placeAmount: PropTypes.number.isRequired
 };
 
 export default App;
