@@ -227,14 +227,9 @@ exports[`Main should render correctly with three places 1`] = `
           >
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -245,7 +240,7 @@ exports[`Main should render correctly with three places 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="img/undefined"
                     width="260"
                   />
                 </a>
@@ -262,7 +257,7 @@ exports[`Main should render correctly with three places 1`] = `
                     <b
                       className="place-card__price-value"
                     >
-                      €120
+                      €
                     </b>
                     <span
                       className="place-card__price-text"
@@ -315,27 +310,18 @@ exports[`Main should render correctly with three places 1`] = `
                 >
                   <a
                     href="#"
-                  >
-                    Little house
-                  </a>
+                  />
                 </h2>
                 <p
                   className="place-card__type"
-                >
-                  Apartment
-                </p>
+                />
               </div>
             </article>
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -346,7 +332,7 @@ exports[`Main should render correctly with three places 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="img/undefined"
                     width="260"
                   />
                 </a>
@@ -363,7 +349,7 @@ exports[`Main should render correctly with three places 1`] = `
                     <b
                       className="place-card__price-value"
                     >
-                      €120
+                      €
                     </b>
                     <span
                       className="place-card__price-text"
@@ -416,27 +402,18 @@ exports[`Main should render correctly with three places 1`] = `
                 >
                   <a
                     href="#"
-                  >
-                    Luxirous appartment
-                  </a>
+                  />
                 </h2>
                 <p
                   className="place-card__type"
-                >
-                  Apartment
-                </p>
+                />
               </div>
             </article>
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -447,7 +424,7 @@ exports[`Main should render correctly with three places 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="img/undefined"
                     width="260"
                   />
                 </a>
@@ -464,7 +441,7 @@ exports[`Main should render correctly with three places 1`] = `
                     <b
                       className="place-card__price-value"
                     >
-                      €120
+                      €
                     </b>
                     <span
                       className="place-card__price-text"
@@ -517,15 +494,11 @@ exports[`Main should render correctly with three places 1`] = `
                 >
                   <a
                     href="#"
-                  >
-                    Tiny room
-                  </a>
+                  />
                 </h2>
                 <p
                   className="place-card__type"
-                >
-                  Apartment
-                </p>
+                />
               </div>
             </article>
           </div>
@@ -770,14 +743,9 @@ exports[`Main should render correctly with two places 1`] = `
           >
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -788,7 +756,7 @@ exports[`Main should render correctly with two places 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="img/undefined"
                     width="260"
                   />
                 </a>
@@ -805,7 +773,7 @@ exports[`Main should render correctly with two places 1`] = `
                     <b
                       className="place-card__price-value"
                     >
-                      €120
+                      €
                     </b>
                     <span
                       className="place-card__price-text"
@@ -858,27 +826,18 @@ exports[`Main should render correctly with two places 1`] = `
                 >
                   <a
                     href="#"
-                  >
-                    Some cozy place
-                  </a>
+                  />
                 </h2>
                 <p
                   className="place-card__type"
-                >
-                  Apartment
-                </p>
+                />
               </div>
             </article>
             <article
               className="cities__place-card place-card"
+              onMouseEnter={[Function]}
+              onMouseLeave={[Function]}
             >
-              <div
-                className="place-card__mark"
-              >
-                <span>
-                  Premium
-                </span>
-              </div>
               <div
                 className="cities__image-wrapper place-card__image-wrapper"
               >
@@ -889,7 +848,7 @@ exports[`Main should render correctly with two places 1`] = `
                     alt="Place image"
                     className="place-card__image"
                     height="200"
-                    src="img/apartment-01.jpg"
+                    src="img/undefined"
                     width="260"
                   />
                 </a>
@@ -906,7 +865,7 @@ exports[`Main should render correctly with two places 1`] = `
                     <b
                       className="place-card__price-value"
                     >
-                      €120
+                      €
                     </b>
                     <span
                       className="place-card__price-text"
@@ -959,15 +918,11 @@ exports[`Main should render correctly with two places 1`] = `
                 >
                   <a
                     href="#"
-                  >
-                    Another comfortable room
-                  </a>
+                  />
                 </h2>
                 <p
                   className="place-card__type"
-                >
-                  Apartment
-                </p>
+                />
               </div>
             </article>
           </div>
