@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import App from './app';
+import PlaceCard from './place-card';
 import places from '../../mock/test-offers';
 
-describe(`App`, () => {
-  it(`renderer correctly`, () => {
+describe(`PlaceCard`, () => {
+  it(`should render correctly`, () => {
     const tree = renderer
-      .create(<App places={places} placeAmount={14} />)
+      .create(<PlaceCard place={places[0]} onMouseLeave={() => {}} onMouseEnter={() => {}} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
