@@ -165,6 +165,7 @@ exports[`App renderer correctly 1`] = `
           <b
             className="places__found"
           >
+            14
              places to stay in Amsterdam
           </b>
           <form
