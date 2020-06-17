@@ -1,11 +1,26 @@
 import React from 'react';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Main from '../main/main';
+import OfferDetails from '../offer-details/offer-details';
 
 
 const App = (props) => {
   const {placeAmount, places} = props;
-  return <Main places={places} placeAmount={placeAmount} onTitleClick={() => {}} />;
+
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <Main places={places} placeAmount={placeAmount} onTitleClick={() => {}} />
+        </Route>
+        <Route exact path="/dev-offer">
+          <OfferDetails />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+
+  );
 };
 
 App.propTypes = {
