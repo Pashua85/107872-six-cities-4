@@ -7,7 +7,7 @@ export default [
     price: 120,
     rating: 4,
     isPremium: true,
-    picture: `appartment-01.jpg`,
+    picture: `apartment-01.jpg`,
     id: uuidv4()
   },
   {
@@ -25,7 +25,7 @@ export default [
     price: 132,
     rating: 4,
     isPremium: false,
-    picture: `appartment-02.jpg`,
+    picture: `apartment-02.jpg`,
     id: uuidv4()
   },
   {
@@ -34,7 +34,7 @@ export default [
     price: 180,
     rating: 5,
     isPremium: true,
-    picture: `appartment-03.jpg`,
+    picture: `apartment-03.jpg`,
     id: uuidv4()
   }
 ];

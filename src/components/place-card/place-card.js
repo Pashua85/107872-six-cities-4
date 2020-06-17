@@ -3,13 +3,26 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {propertyName, propertyType, price, isPremium, picture, id} = props.place;
-  const {onCardHover} = props;
+  const {onMouseEnter, onMouseLeave} = props;
 
   return (
-    <article className="cities__place-card place-card" key={id}>
-      <div className="place-card__mark">
-        <span>Premium</span>
-      </div>
+    <article
+      className="cities__place-card place-card"
+      key={id}
+      onMouseEnter={() => {
+        onMouseEnter(props.place);
+      }}
+      onMouseLeave={() => {
+        onMouseLeave();
+      }}
+    >
+      {
+        isPremium ? (
+          <div className="place-card__mark">
+            <span>Premium</span>
+          </div>
+        ) : null
+      }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={`img/${picture}`} width="260" height="200" alt="Place image" />
@@ -44,7 +57,7 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  place: {
+  place: PropTypes.shape({
     propertyName: PropTypes.string.isRequired,
     propertyType: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -52,7 +65,11 @@ PlaceCard.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     picture: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
-  },
-  onCardHover: PropTypes.func.isRequired
+  }),
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired
 };
+
+export default PlaceCard;
+
 

@@ -6,20 +6,43 @@ import PlaceCard from '../place-card/place-card';
 class PlaceCardList extends React.PureComponent {
   constructor(props) {
     super(props);
+    this.handleCardHover = this.handleCardHover.bind(this);
+    this.handleCardUnhover = this.handleCardUnhover.bind(this);
 
     this.state = {
       activeCard: null
     };
   }
 
+  handleCardHover(place) {
+    this.setState({
+      activeCard: place
+    });
+  }
+
+  handleCardUnhover() {
+    this.setState({
+      activeCard: null
+    });
+  }
+
   render() {
     const {places} = this.props;
     const list = places.map((place) => {
       return (
-        <PlaceCard place={place} key={place.id} onCardHover={() => {}}/>
+        <PlaceCard
+          place={place}
+          key={place.id}
+          onMouseEnter={this.handleCardHover}
+          onMouseLeave={this.handleCardUnhover}
+        />
       );
     });
-    return list;
+    return (
+      <div className="cities__places-list places__list tabs__content">
+        {list}
+      </div>
+    );
   }
 }
 
