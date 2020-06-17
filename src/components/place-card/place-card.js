@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {propertyName, propertyType, price, isPremium, picture, id} = props.place;
+  const {onCardHover} = props;
 
   return (
     <article className="cities__place-card place-card" key={id}>
@@ -51,6 +52,7 @@ PlaceCard.propTypes = {
     isPremium: PropTypes.bool.isRequired,
     picture: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
-  }
+  },
+  onCardHover: PropTypes.func.isRequired
 };
 
