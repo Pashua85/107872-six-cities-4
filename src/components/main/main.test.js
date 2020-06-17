@@ -17,5 +17,5 @@ describe(`Main`, () => {
       .create(<Main places={newPlaces} placeAmount={23} onTitleClick={() => {}} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
-  })
+  });
 });
