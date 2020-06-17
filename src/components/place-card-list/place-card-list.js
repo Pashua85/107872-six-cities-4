@@ -28,19 +28,28 @@ class PlaceCardList extends React.PureComponent {
 
   render() {
     const {places} = this.props;
-    const list = places.map((place) => {
-      return (
-        <PlaceCard
-          place={place}
-          key={place.id}
-          onMouseEnter={this.handleCardHover}
-          onMouseLeave={this.handleCardUnhover}
-        />
-      );
-    });
+    // const list = places.map((place) => {
+    //   return (
+    //     <PlaceCard
+    //       place={place}
+    //       key={place.id}
+    //       onMouseEnter={this.handleCardHover}
+    //       onMouseLeave={this.handleCardUnhover}
+    //     />
+    //   );
+    // });
     return (
       <div className="cities__places-list places__list tabs__content">
-        {list}
+        {
+          places.map((place) => (
+            <PlaceCard
+              key={place.id}
+              place={place}
+              onMouseEnter={this.handleCardHover}
+              onMouseLeave={this.handleCardUnhover}
+            />
+          ))
+        }
       </div>
     );
   }

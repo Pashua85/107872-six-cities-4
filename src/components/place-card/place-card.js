@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {propertyName, propertyType, price, isPremium, picture, id} = props.place;
+  const {propertyName, propertyType, price, isPremium, picture} = props.place;
   const {onMouseEnter, onMouseLeave} = props;
 
   return (
     <article
       className="cities__place-card place-card"
-      key={id}
       onMouseEnter={() => {
         onMouseEnter(props.place);
       }}
