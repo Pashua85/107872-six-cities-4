@@ -10,11 +10,12 @@ describe(`Main`, () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  // it(`should render correctly with three places`, () => {
-  //   const places = [`Little house`, `Luxirous appartment`, `Tiny room`];
-  //   const tree = renderer
-  //     .create(<Main places={places} placeAmount={115} onTitleClick={() => {}} />)
-  //     .toJSON();
-  //   expect(tree).toMatchSnapshot();
-  // });
+
+  it(`should render correctly with two places`, () => {
+    const newPlaces = [places[0], places[2]];
+    const tree = renderer
+      .create(<Main places={newPlaces} placeAmount={23} onTitleClick={() => {}} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  })
 });
