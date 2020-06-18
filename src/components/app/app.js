@@ -27,7 +27,7 @@ App.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
         propertyName: PropTypes.string.isRequired,
-        propertyType: PropTypes.string.isRequired,
+        propertyType: PropTypes.oneOf(`apartment`, `room`, `house`, `hotel`),
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
         isPremium: PropTypes.bool.isRequired,

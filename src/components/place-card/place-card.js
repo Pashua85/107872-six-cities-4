@@ -4,6 +4,20 @@ import PropTypes from 'prop-types';
 const PlaceCard = (props) => {
   const {propertyName, propertyType, price, isPremium, picture} = props.place;
   const {onMouseEnter, onMouseLeave} = props;
+  let propertyTypeString;
+  switch (propertyType) {
+    case `room`:
+      propertyTypeString = `Private room`;
+      break;
+    case `house`:
+      propertyTypeString = `House`;
+      break;
+    case `hotel`:
+      propertyTypeString = `Hotel`;
+      break;
+    default:
+      propertyTypeString = `Apartment`;
+  };
 
   return (
     <article
@@ -49,7 +63,7 @@ const PlaceCard = (props) => {
         <h2 className="place-card__name">
           <a href="#">{propertyName}</a>
         </h2>
-        <p className="place-card__type">{propertyType}</p>
+        <p className="place-card__type">{propertyTypeString}</p>
       </div>
     </article>
   );
@@ -58,7 +72,7 @@ const PlaceCard = (props) => {
 PlaceCard.propTypes = {
   place: PropTypes.shape({
     propertyName: PropTypes.string.isRequired,
-    propertyType: PropTypes.string.isRequired,
+    propertyType: PropTypes.oneOf(`apartment`, `room`, `house`, `hotel`),
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,

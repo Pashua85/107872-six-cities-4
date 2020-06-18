@@ -12,7 +12,7 @@ export default [
   },
   {
     propertyName: `Wood and stone place`,
-    propertyType: `private room`,
+    propertyType: `room`,
     price: 80,
     rating: 4,
     isPremium: false,
