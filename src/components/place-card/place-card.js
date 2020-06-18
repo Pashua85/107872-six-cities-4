@@ -1,72 +1,102 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {propertyName, propertyType, price, isPremium, picture} = props.place;
+  const {propertyName, propertyType, price, isPremium, titlePhoto} = props.place;
   const {onMouseEnter, onMouseLeave} = props;
+  let propertyTypeString;
+  switch (propertyType) {
+    case `room`:
+      propertyTypeString = `Private room`;
+      break;
+    case `house`:
+      propertyTypeString = `House`;
+      break;
+    case `hotel`:
+      propertyTypeString = `Hotel`;
+      break;
+    default:
+      propertyTypeString = `Apartment`;
+  }
 
   return (
-    <article
-      className="cities__place-card place-card"
-      onMouseEnter={() => {
-        onMouseEnter(props.place);
-      }}
-      onMouseLeave={() => {
-        onMouseLeave();
-      }}
-    >
-      {
-        isPremium ? (
-          <div className="place-card__mark">
-            <span>Premium</span>
-          </div>
-        ) : null
-      }
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <a href="#">
-          <img className="place-card__image" src={`img/${picture}`} width="260" height="200" alt="Place image" />
-        </a>
-      </div>
-      <div className="place-card__info">
-        <div className="place-card__price-wrapper">
-          <div className="place-card__price">
-            <b className="place-card__price-value">&euro;{price}</b>
-            <span className="place-card__price-text">&#47;&nbsp;night</span>
-          </div>
-          <button className="place-card__bookmark-button button" type="button">
-            <svg className="place-card__bookmark-icon" width="18" height="19">
-              <use href="#icon-bookmark"></use>
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+    <Link to="/dev-offer">
+      <article
+        className="cities__place-card place-card"
+        onMouseEnter={() => {
+          onMouseEnter(props.place);
+        }}
+        onMouseLeave={() => {
+          onMouseLeave();
+        }}
+      >
+        {
+          isPremium ? (
+            <div className="place-card__mark">
+              <span>Premium</span>
+            </div>
+          ) : null
+        }
+        <div className="cities__image-wrapper place-card__image-wrapper">
+          <img className="place-card__image" src={`img/${titlePhoto}`} width="260" height="200" alt="Place image" />
         </div>
-        <div className="place-card__rating rating">
-          <div className="place-card__stars rating__stars">
-            <span style={{width: `80%`}}></span>
-            <span className="visually-hidden">Rating</span>
+        <div className="place-card__info">
+          <div className="place-card__price-wrapper">
+            <div className="place-card__price">
+              <b className="place-card__price-value">&euro;{price}</b>
+              <span className="place-card__price-text">&#47;&nbsp;night</span>
+            </div>
+            <button className="place-card__bookmark-button button" type="button">
+              <svg className="place-card__bookmark-icon" width="18" height="19">
+                <use href="#icon-bookmark"></use>
+              </svg>
+              <span className="visually-hidden">To bookmarks</span>
+            </button>
           </div>
+          <div className="place-card__rating rating">
+            <div className="place-card__stars rating__stars">
+              <span style={{width: `80%`}}></span>
+              <span className="visually-hidden">Rating</span>
+            </div>
+          </div>
+          <h2 className="place-card__name">
+            {propertyName}
+          </h2>
+          <p className="place-card__type">{propertyTypeString}</p>
         </div>
-        <h2 className="place-card__name">
-          <a href="#">{propertyName}</a>
-        </h2>
-        <p className="place-card__type">{propertyType}</p>
-      </div>
-    </article>
+      </article>
+    </Link>
   );
 };
 
 PlaceCard.propTypes = {
   place: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     propertyName: PropTypes.string.isRequired,
-    propertyType: PropTypes.string.isRequired,
+    propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
+    propertyText: PropTypes.arrayOf(PropTypes.string),
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
-    picture: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
+    bedroomsAmount: PropTypes.number.isRequired,
+    guestMax: PropTypes.number.isRequired,
+    propertyItems: PropTypes.arrayOf(PropTypes.string),
+    host: PropTypes.shape({
+      name: PropTypes.string,
+      avatar: PropTypes.string,
+      isSuper: PropTypes.bool
+    }).isRequired,
+    titlePhoto: PropTypes.string.isRequired,
+    photos: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          id: PropTypes.string
+        })
+    )
   }),
   onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired
+  onMouseLeave: PropTypes.func.isRequired,
 };
 
 export default PlaceCard;
