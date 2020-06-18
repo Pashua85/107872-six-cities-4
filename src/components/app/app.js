@@ -15,7 +15,7 @@ const App = (props) => {
           <Main places={places} placeAmount={placeAmount} onTitleClick={() => {}} />
         </Route>
         <Route exact path="/dev-offer">
-          <OfferDetails />
+          <OfferDetails place={places[0]} />
         </Route>
       </Switch>
     </BrowserRouter>
