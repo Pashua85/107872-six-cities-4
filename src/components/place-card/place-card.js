@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {propertyName, propertyType, price, isPremium, picture} = props.place;
+  const {propertyName, propertyType, price, isPremium, titlePhoto} = props.place;
   const {onMouseEnter, onMouseLeave} = props;
   let propertyTypeString;
   switch (propertyType) {
@@ -17,7 +17,7 @@ const PlaceCard = (props) => {
       break;
     default:
       propertyTypeString = `Apartment`;
-  };
+  }
 
   return (
     <article
@@ -38,7 +38,7 @@ const PlaceCard = (props) => {
       }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={`img/${picture}`} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={`img/${titlePhoto}`} width="260" height="200" alt="Place image" />
         </a>
       </div>
       <div className="place-card__info">
@@ -71,13 +71,28 @@ const PlaceCard = (props) => {
 
 PlaceCard.propTypes = {
   place: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     propertyName: PropTypes.string.isRequired,
-    propertyType: PropTypes.oneOf(`apartment`, `room`, `house`, `hotel`),
+    propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
+    propertyText: PropTypes.arrayOf(PropTypes.string),
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
-    picture: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired
+    bedroomsAmount: PropTypes.number.isRequired,
+    guestMax: PropTypes.number.isRequired,
+    propertyItems: PropTypes.arrayOf(PropTypes.string),
+    host: PropTypes.shape({
+      name: PropTypes.string,
+      avatar: PropTypes.string,
+      isSuper: PropTypes.bool
+    }).isRequired,
+    titlePhoto: PropTypes.string.isRequired,
+    photos: PropTypes.arrayOf(
+        PropTypes.shape({
+          title: PropTypes.string,
+          id: PropTypes.string
+        })
+    )
   }),
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired

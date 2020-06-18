@@ -104,13 +104,28 @@ const Main = (props) => {
 Main.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
+        id: PropTypes.string.isRequired,
         propertyName: PropTypes.string.isRequired,
-        propertyType: PropTypes.oneOf(`apartment`, `room`, `house`, `hotel`),
+        propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
+        propertyText: PropTypes.arrayOf(PropTypes.string),
         price: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
         isPremium: PropTypes.bool.isRequired,
-        picture: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
+        bedroomsAmount: PropTypes.number.isRequired,
+        guestMax: PropTypes.number.isRequired,
+        propertyItems: PropTypes.arrayOf(PropTypes.string),
+        host: PropTypes.shape({
+          name: PropTypes.string,
+          avatar: PropTypes.string,
+          isSuper: PropTypes.bool
+        }).isRequired,
+        titlePhoto: PropTypes.string.isRequired,
+        photos: PropTypes.arrayOf(
+            PropTypes.shape({
+              title: PropTypes.string,
+              id: PropTypes.string
+            })
+        )
       })
   ),
   placeAmount: PropTypes.number.isRequired,

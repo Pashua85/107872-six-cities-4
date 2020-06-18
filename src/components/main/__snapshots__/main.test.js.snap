@@ -325,7 +325,7 @@ exports[`Main should render correctly with four places 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  house
+                  House
                 </p>
               </div>
             </article>
@@ -422,7 +422,7 @@ exports[`Main should render correctly with four places 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  private room
+                  Private room
                 </p>
               </div>
             </article>
@@ -519,7 +519,7 @@ exports[`Main should render correctly with four places 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  apartment
+                  Apartment
                 </p>
               </div>
             </article>
@@ -623,7 +623,7 @@ exports[`Main should render correctly with four places 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  apartment
+                  Apartment
                 </p>
               </div>
             </article>
@@ -967,7 +967,7 @@ exports[`Main should render correctly with two places 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  house
+                  House
                 </p>
               </div>
             </article>
@@ -1064,7 +1064,7 @@ exports[`Main should render correctly with two places 1`] = `
                 <p
                   className="place-card__type"
                 >
-                  apartment
+                  Apartment
                 </p>
               </div>
             </article>

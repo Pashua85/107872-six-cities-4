@@ -143,15 +143,6 @@ export default [
     ]
   },
   {
-    propertyName: `Nice, cozy, warm big bed apartment`,
-    propertyType: `apartment`,
-    price: 180,
-    rating: 5,
-    isPremium: true,
-    picture: `apartment-03.jpg`,
-    id: uuidv4()
-  },
-  {
     id: uuidv4(),
     propertyName: `Nice, cozy, warm big bed apartment`,
     propertyType: `apartment`,
