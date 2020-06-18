@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card';
-import { Redirect } from 'react-router-dom';
-
 
 class PlaceCardList extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handleCardHover = this.handleCardHover.bind(this);
     this.handleCardUnhover = this.handleCardUnhover.bind(this);
-    this.handleCardClick = this.handleCardClick.bind(this);
 
     this.state = {
       activeCard: null
@@ -28,10 +25,6 @@ class PlaceCardList extends React.PureComponent {
     });
   }
 
-  handleCardClick() {
-    return (<Redirect to='/dev-offer' />);
-  }
-
   render() {
     const {places} = this.props;
 
@@ -44,7 +37,6 @@ class PlaceCardList extends React.PureComponent {
               place={place}
               onMouseEnter={this.handleCardHover}
               onMouseLeave={this.handleCardUnhover}
-              onCardClick={this.handleCardClick}
             />
           ))
         }
