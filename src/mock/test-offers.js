@@ -43,7 +43,8 @@ export default [
         title: `apartment-01.jpg`,
         id: `06`
       }
-    ]
+    ],
+    coords: [52, 4.9]
   },
   {
     id: `2`,
@@ -89,7 +90,8 @@ export default [
         title: `apartment-01.jpg`,
         id: `06`
       }
-    ]
+    ],
+    coords: [52, 4.8]
   },
   {
     id: `3`,
@@ -135,7 +137,8 @@ export default [
         title: `apartment-01.jpg`,
         id: `06`
       }
-    ]
+    ],
+    coords: [52, 4.7]
   },
   {
     id: `4`,
@@ -181,7 +184,8 @@ export default [
         title: `apartment-01.jpg`,
         id: `06`
       }
-    ]
+    ],
+    coords: [52, 4.5]
   }
 ];
 

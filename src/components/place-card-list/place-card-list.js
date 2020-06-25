@@ -69,7 +69,8 @@ PlaceCardList.propTypes = {
               title: PropTypes.string,
               id: PropTypes.string
             })
-        )
+        ),
+        coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   )
 };
