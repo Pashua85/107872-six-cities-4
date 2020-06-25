@@ -1,30 +1,26 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import {MemoryRouter} from 'react-router-dom';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import Main from './main';
 import places from '../../mock/test-offers';
 
+Enzyme.configure({
+  adapter: new Adapter()
+});
+
 describe(`Main`, () => {
   it(`should render correctly with four places`, () => {
-    const tree = renderer
-      .create(
-          <MemoryRouter>
-            <Main places={places} placeAmount={214} onTitleClick={() => {}} />
-          </MemoryRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(
+        <Main places={places} placeAmount={34} onTitleClick={() => {}}/>
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 
   it(`should render correctly with two places`, () => {
     const newPlaces = [places[0], places[2]];
-    const tree = renderer
-      .create(
-          <MemoryRouter>
-            <Main places={newPlaces} placeAmount={23} onTitleClick={() => {}} />
-          </MemoryRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(
+        <Main places={newPlaces} placeAmount={34} onTitleClick={() => {}}/>
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 });

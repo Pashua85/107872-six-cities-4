@@ -1,13 +1,18 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import App from './app';
 import places from '../../mock/test-offers';
 
+Enzyme.configure({
+  adapter: new Adapter()
+});
+
 describe(`App`, () => {
   it(`renderer correctly`, () => {
-    const tree = renderer
-      .create(<App places={places} placeAmount={14} />)
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+    const wrapper = shallow(
+        <App places={places} placeAmount={14} />
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 });
