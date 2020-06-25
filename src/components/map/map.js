@@ -1,29 +1,50 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Main from '../main/main';
-import OfferDetails from '../offer-details/offer-details';
+import leaflet from 'leaflet';
 
+class Map extends React.PureComponent {
+  constructor(props) {
+    super(props);
 
-const App = (props) => {
-  const {placeAmount, places} = props;
+    this.mapRef = React.createRef();
+  }
 
-  return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Main places={places} placeAmount={placeAmount} onTitleClick={() => {}} />
-        </Route>
-        <Route exact path="/dev-offer">
-          <OfferDetails place={places[0]} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+  componentDidMount() {
+    const city = [52.38333, 4.9];
+    const zoom = 12;
+    const map = leaflet.map(this.mapRef.current, {
+      center: city,
+      zoom,
+      zoomControl: false,
+      marker: true
+    });
+    map.setView(city, zoom);
+    leaflet
+      .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
+        attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
+      })
+      .addTo(map);
 
-  );
-};
+    const icon = leaflet.icon({
+      iconUrl: `img/pin.svg`,
+      iconSize: [30, 30]
+    });
+    this.props.places.forEach((place) => {
+      leaflet
+        .marker(place.coords, {icon})
+        .addTo(map);
+    });
+  }
 
-App.propTypes = {
+  render() {
+    return (
+      <section className="cities__map map" ref={this.mapRef}></section>
+    );
+  }
+
+}
+
+Map.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -50,8 +71,7 @@ App.propTypes = {
         ),
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
-  ),
-  placeAmount: PropTypes.number.isRequired
+  )
 };
 
-export default App;
+export default Map;

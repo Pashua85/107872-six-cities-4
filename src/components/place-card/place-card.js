@@ -93,7 +93,8 @@ PlaceCard.propTypes = {
           title: PropTypes.string,
           id: PropTypes.string
         })
-    )
+    ),
+    coords: PropTypes.arrayOf(PropTypes.number).isRequired
   }),
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
