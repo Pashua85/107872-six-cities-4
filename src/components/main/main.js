@@ -93,7 +93,7 @@ const Main = (props) => {
 
             </section>
             <div className="cities__right-section">
-              <Map />
+              <Map places={places} />
             </div>
           </div>
         </div>
