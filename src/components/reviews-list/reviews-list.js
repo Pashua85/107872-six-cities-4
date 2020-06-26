@@ -25,6 +25,6 @@ ReviewsList.propTypes = {
         text: PropTypes.string
       })
   )
-}
+};
 
 export default ReviewsList;
