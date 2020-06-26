@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card';
+import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 
 class PlaceCardList extends React.PureComponent {
   constructor(props) {
@@ -32,7 +32,7 @@ class PlaceCardList extends React.PureComponent {
       <div className="cities__places-list places__list tabs__content">
         {
           places.map((place) => (
-            <PlaceCard
+            <CitiesPlaceCard
               key={place.id}
               place={place}
               onMouseEnter={this.handleCardHover}

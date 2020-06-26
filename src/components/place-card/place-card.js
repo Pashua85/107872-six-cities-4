@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {propertyName, propertyType, price, isPremium, titlePhoto} = props.place;
-  const {onMouseEnter, onMouseLeave} = props;
+  const {onMouseEnter, onMouseLeave, cardClass, imageClass} = props;
   let propertyTypeString;
   switch (propertyType) {
     case `room`:
@@ -23,7 +23,8 @@ const PlaceCard = (props) => {
   return (
     <Link to="/dev-offer">
       <article
-        className="cities__place-card place-card"
+        // className="cities__place-card place-card"
+        className={`${cardClass} place-card`}
         onMouseEnter={() => {
           onMouseEnter(props.place);
         }}
@@ -32,13 +33,14 @@ const PlaceCard = (props) => {
         }}
       >
         {
-          isPremium ? (
+          cardClass === `cities__place-card` && isPremium ? (
             <div className="place-card__mark">
               <span>Premium</span>
             </div>
           ) : null
         }
-        <div className="cities__image-wrapper place-card__image-wrapper">
+        {/* "cities__image-wrapper " */}
+        <div className={`${imageClass} place-card__image-wrapper`}>
           <img className="place-card__image" src={`img/${titlePhoto}`} width="260" height="200" alt="Place image" />
         </div>
         <div className="place-card__info">
@@ -107,6 +109,8 @@ PlaceCard.propTypes = {
   }),
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
+  cardClass: PropTypes.string,
+  imageClass: PropTypes.string
 };
 
 export default PlaceCard;
