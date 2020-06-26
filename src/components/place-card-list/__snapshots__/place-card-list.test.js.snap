@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlaceCardList should render correctly for cities pages 1`] = `ShallowWrapper {}`;
+
+exports[`PlaceCardList should render correctly for details pages 1`] = `ShallowWrapper {}`;

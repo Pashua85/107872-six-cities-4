@@ -15,4 +15,11 @@ describe(`PlaceCardList`, () => {
     );
     expect(wrapper).toMatchSnapshot();
   });
+
+  it(`should render correctly for details pages`, () => {
+    const wrapper = shallow(
+        <PlaceCardList places={places} className="near-places__list" />
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
 });
