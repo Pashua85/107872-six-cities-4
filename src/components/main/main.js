@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCardList from '../place-card-list/place-card-list';
+import CitiesPlaceCardList from '../cities-place-card-list/cities-place-card-list';
 import CitiesMap from '../cities-map/cities-map';
 
 const Main = (props) => {
@@ -89,7 +89,7 @@ const Main = (props) => {
                 </ul>
               </form>
 
-              <PlaceCardList places={places} />
+              <CitiesPlaceCardList places={places} />
 
             </section>
             <div className="cities__right-section">

@@ -1,55 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CitiesPlaceCard from '../cities-place-card/cities-place-card';
+import PlaceCardList from '../place-card-list/place-card-list';
 
-class PlaceCardList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.handleCardHover = this.handleCardHover.bind(this);
-    this.handleCardUnhover = this.handleCardUnhover.bind(this);
+const CitiesPlaceCardList = (props) => {
+  return (
+    <PlaceCardList className="cities__places-list" {...props} />
+  );
+};
 
-    this.state = {
-      activeCard: null
-    };
-  }
-
-  handleCardHover(place) {
-    this.setState({
-      activeCard: place
-    });
-  }
-
-  handleCardUnhover() {
-    this.setState({
-      activeCard: null
-    });
-  }
-
-  render() {
-    const {places, className} = this.props;
-    if (className === `cities__places-list`) {
-      return (
-        // <div className="cities__places-list places__list tabs__content">
-        <div className={`${className} places__list tabs__content`}>
-          {
-            places.map((place) => (
-              <CitiesPlaceCard
-                key={place.id}
-                place={place}
-                onMouseEnter={this.handleCardHover}
-                onMouseLeave={this.handleCardUnhover}
-              />
-            ))
-          }
-        </div>
-      );
-    } else {
-      return null;
-    }
-  }
-}
-
-PlaceCardList.propTypes = {
+CitiesPlaceCardList.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -85,9 +44,7 @@ PlaceCardList.propTypes = {
         ),
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
-  ),
-  className: PropTypes.string.isRequired
+  )
 };
 
-export default PlaceCardList;
-
+export default CitiesPlaceCardList;
