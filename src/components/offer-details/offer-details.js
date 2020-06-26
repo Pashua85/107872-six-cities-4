@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReviewsList from '../reviews-list/reviews-list';
+import PropertyMap from '../property-map/property-map';
+import places from '../../mock/offers';
 
 const OfferDetails = (props) => {
   const {
@@ -17,6 +19,7 @@ const OfferDetails = (props) => {
     propertyText,
     reviews
   } = props.place;
+  const {nearPlaces} = props;
 
   const reviewsAmount = reviews.length;
   const ratingStyle = {
@@ -211,7 +214,9 @@ const OfferDetails = (props) => {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <div className="container">
+            <PropertyMap places={nearPlaces} />
+          </div>
         </section>
         <div className="container">
           <section className="near-places places">
@@ -354,7 +359,8 @@ OfferDetails.propTypes = {
         })
     ),
     coords: PropTypes.arrayOf(PropTypes.number).isRequired
-  })
+  }),
+  nearPlaces: PropTypes.array.isRequired
 };
 
 export default OfferDetails;

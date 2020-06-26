@@ -7,6 +7,7 @@ import OfferDetails from '../offer-details/offer-details';
 
 const App = (props) => {
   const {placeAmount, places} = props;
+  const nearPlaces = [places[1], places[2], places[3]];
 
   return (
     <BrowserRouter>
@@ -15,7 +16,7 @@ const App = (props) => {
           <Main places={places} placeAmount={placeAmount} onTitleClick={() => {}} />
         </Route>
         <Route exact path="/dev-offer">
-          <OfferDetails place={places[0]} />
+          <OfferDetails place={places[0]} nearPlaces={nearPlaces} />
         </Route>
       </Switch>
     </BrowserRouter>
