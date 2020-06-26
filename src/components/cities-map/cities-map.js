@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Map from '../map/map';
 
-const MapCities = (props) => {
+const CitiesMap = (props) => {
   const {places} = props;
   return (
     <Map className="cities__map" places={places} />
   );
 };
 
-MapCities.propTypes = {
+CitiesMap.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -48,4 +48,4 @@ MapCities.propTypes = {
   )
 };
 
-export default MapCities;
+export default CitiesMap;

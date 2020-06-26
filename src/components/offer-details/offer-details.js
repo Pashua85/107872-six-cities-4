@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReviewsList from '../reviews-list/reviews-list';
 import PropertyMap from '../property-map/property-map';
-import places from '../../mock/offers';
 
 const OfferDetails = (props) => {
   const {
