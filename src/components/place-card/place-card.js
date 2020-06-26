@@ -94,6 +94,15 @@ PlaceCard.propTypes = {
           id: PropTypes.string
         })
     ),
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.string,
+          userName: PropTypes.string,
+          avatar: PropTypes.string,
+          rating: PropTypes.number,
+          text: PropTypes.string
+        })
+    ),
     coords: PropTypes.arrayOf(PropTypes.number).isRequired
   }),
   onMouseEnter: PropTypes.func.isRequired,
