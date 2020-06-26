@@ -10,8 +10,9 @@ Enzyme.configure({
 
 describe(`PropertyMap`, () => {
   it(`should render correctly`, () => {
+    const nearPlaces = [places[2], places[1], places[3]];
     const wrapper = shallow(
-        <PropertyMap place={places[0]} />
+        <PropertyMap currentPlace={places[0]} places={nearPlaces}/>
     );
     expect(wrapper).toMatchSnapshot();
   });
