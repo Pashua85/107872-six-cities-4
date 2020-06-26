@@ -47,6 +47,14 @@ export default [
         id: uuidv4()
       }
     ],
+    reviews: [
+      {
+        userName: `Max`,
+        avatar: `img/avatar-max.jpg`,
+        rating: 4,
+        text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`
+      }
+    ],
     coords: [52.3909553943508, 4.85309666406198]
   },
   {
