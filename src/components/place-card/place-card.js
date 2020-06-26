@@ -23,7 +23,6 @@ const PlaceCard = (props) => {
   return (
     <Link to="/dev-offer">
       <article
-        // className="cities__place-card place-card"
         className={`${cardClass} place-card`}
         onMouseEnter={() => {
           onMouseEnter(props.place);
@@ -39,7 +38,6 @@ const PlaceCard = (props) => {
             </div>
           ) : null
         }
-        {/* "cities__image-wrapper " */}
         <div className={`${imageClass} place-card__image-wrapper`}>
           <img className="place-card__image" src={`img/${titlePhoto}`} width="260" height="200" alt="Place image" />
         </div>
@@ -70,6 +68,11 @@ const PlaceCard = (props) => {
       </article>
     </Link>
   );
+};
+
+PlaceCard.defaultProps = {
+  cardClass: `cities__place-card`,
+  imageClass: `cities__image-wrapper`
 };
 
 PlaceCard.propTypes = {
