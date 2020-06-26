@@ -44,6 +44,15 @@ export default [
         id: `06`
       }
     ],
+    reviews: [
+      {
+        id: `124`,
+        userName: `Tom`,
+        avatar: `avatar-tom.jpg`,
+        rating: 5,
+        text: `Nice place`
+      }
+    ],
     coords: [52, 4.9]
   },
   {
@@ -89,6 +98,15 @@ export default [
       {
         title: `apartment-01.jpg`,
         id: `06`
+      }
+    ],
+    reviews: [
+      {
+        id: `3048`,
+        userName: `Mary`,
+        avatar: `avatar-mary.jpg`,
+        rating: 5,
+        text: `Nice place`
       }
     ],
     coords: [52, 4.8]
@@ -138,6 +156,15 @@ export default [
         id: `06`
       }
     ],
+    reviews: [
+      {
+        id: `678`,
+        userName: `John`,
+        avatar: `avatar-john.jpg`,
+        rating: 5,
+        text: `Nice place`
+      }
+    ],
     coords: [52, 4.7]
   },
   {
@@ -183,6 +210,15 @@ export default [
       {
         title: `apartment-01.jpg`,
         id: `06`
+      }
+    ],
+    reviews: [
+      {
+        id: `234`,
+        userName: `Jack`,
+        avatar: `avatar-jack.jpg`,
+        rating: 4,
+        text: `Nice place`
       }
     ],
     coords: [52, 4.5]

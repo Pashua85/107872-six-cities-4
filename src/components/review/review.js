@@ -35,6 +35,7 @@ const Review = (props) => {
 
 Review.propTypes = {
   review: PropTypes.shape({
+    id: PropTypes.string,
     userName: PropTypes.string,
     avatar: PropTypes.string,
     rating: PropTypes.number,
