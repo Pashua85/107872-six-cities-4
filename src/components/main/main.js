@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceCardList from '../place-card-list/place-card-list';
-import Map from '../map/map';
+import MapCities from '../map-cities/map-cities';
 
 const Main = (props) => {
   const {places, placeAmount, onTitleClick} = props;
@@ -93,7 +93,7 @@ const Main = (props) => {
 
             </section>
             <div className="cities__right-section">
-              <Map places={places} />
+              <MapCities places={places} />
             </div>
           </div>
         </div>
