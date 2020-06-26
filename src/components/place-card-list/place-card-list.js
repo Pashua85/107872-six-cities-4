@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
+import NearPlaceCard from '../near-place-card/near-place-card';
 
 class PlaceCardList extends React.PureComponent {
   constructor(props) {
@@ -29,11 +30,25 @@ class PlaceCardList extends React.PureComponent {
     const {places, className} = this.props;
     if (className === `cities__places-list`) {
       return (
-        // <div className="cities__places-list places__list tabs__content">
         <div className={`${className} places__list tabs__content`}>
           {
             places.map((place) => (
               <CitiesPlaceCard
+                key={place.id}
+                place={place}
+                onMouseEnter={this.handleCardHover}
+                onMouseLeave={this.handleCardUnhover}
+              />
+            ))
+          }
+        </div>
+      );
+    } else if (className === `near-places__list`) {
+      return (
+        <div className={`${className} places__list`}>
+          {
+            places.map((place) => (
+              <NearPlaceCard
                 key={place.id}
                 place={place}
                 onMouseEnter={this.handleCardHover}
