@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCardList from '../place-card-list/place-card-list';
-import Map from '../map/map';
+import CitiesPlaceCardList from '../cities-place-card-list/cities-place-card-list';
+import CitiesMap from '../cities-map/cities-map';
 
 const Main = (props) => {
   const {places, placeAmount, onTitleClick} = props;
@@ -89,11 +89,11 @@ const Main = (props) => {
                 </ul>
               </form>
 
-              <PlaceCardList places={places} />
+              <CitiesPlaceCardList places={places} />
 
             </section>
             <div className="cities__right-section">
-              <Map places={places} />
+              <CitiesMap places={places} />
             </div>
           </div>
         </div>
@@ -125,6 +125,15 @@ Main.propTypes = {
             PropTypes.shape({
               title: PropTypes.string,
               id: PropTypes.string
+            })
+        ),
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string,
+              userName: PropTypes.string,
+              avatar: PropTypes.string,
+              rating: PropTypes.number,
+              text: PropTypes.string
             })
         ),
         coords: PropTypes.arrayOf(PropTypes.number).isRequired

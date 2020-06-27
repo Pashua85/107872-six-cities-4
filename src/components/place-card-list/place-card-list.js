@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PlaceCard from '../place-card/place-card';
+import CitiesPlaceCard from '../cities-place-card/cities-place-card';
+import NearPlaceCard from '../near-place-card/near-place-card';
 
 class PlaceCardList extends React.PureComponent {
   constructor(props) {
@@ -26,22 +27,40 @@ class PlaceCardList extends React.PureComponent {
   }
 
   render() {
-    const {places} = this.props;
-
-    return (
-      <div className="cities__places-list places__list tabs__content">
-        {
-          places.map((place) => (
-            <PlaceCard
-              key={place.id}
-              place={place}
-              onMouseEnter={this.handleCardHover}
-              onMouseLeave={this.handleCardUnhover}
-            />
-          ))
-        }
-      </div>
-    );
+    const {places, className} = this.props;
+    if (className === `cities__places-list`) {
+      return (
+        <div className={`${className} places__list tabs__content`}>
+          {
+            places.map((place) => (
+              <CitiesPlaceCard
+                key={place.id}
+                place={place}
+                onMouseEnter={this.handleCardHover}
+                onMouseLeave={this.handleCardUnhover}
+              />
+            ))
+          }
+        </div>
+      );
+    } else if (className === `near-places__list`) {
+      return (
+        <div className={`${className} places__list`}>
+          {
+            places.map((place) => (
+              <NearPlaceCard
+                key={place.id}
+                place={place}
+                onMouseEnter={this.handleCardHover}
+                onMouseLeave={this.handleCardUnhover}
+              />
+            ))
+          }
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
 }
 
@@ -70,9 +89,19 @@ PlaceCardList.propTypes = {
               id: PropTypes.string
             })
         ),
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              id: PropTypes.string,
+              userName: PropTypes.string,
+              avatar: PropTypes.string,
+              rating: PropTypes.number,
+              text: PropTypes.string
+            })
+        ),
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
-  )
+  ),
+  className: PropTypes.string.isRequired
 };
 
 export default PlaceCardList;

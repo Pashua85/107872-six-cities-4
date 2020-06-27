@@ -1,19 +1,18 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import OfferDetails from './offer-details';
+import PropertyMap from './property-map';
 import places from '../../mock/test-offers';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-describe(`OfferDetails`, () => {
-  const nearPlaces = [places[1], places[2], places[3]];
-
+describe(`PropertyMap`, () => {
   it(`should render correctly`, () => {
+    const nearPlaces = [places[2], places[1], places[3]];
     const wrapper = shallow(
-        <OfferDetails place={places[0]} nearPlaces={nearPlaces} />
+        <PropertyMap currentPlace={places[0]} places={nearPlaces}/>
     );
     expect(wrapper).toMatchSnapshot();
   });

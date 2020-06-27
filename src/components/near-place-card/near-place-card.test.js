@@ -1,19 +1,17 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import OfferDetails from './offer-details';
+import NearPlaceCard from './near-place-card';
 import places from '../../mock/test-offers';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-describe(`OfferDetails`, () => {
-  const nearPlaces = [places[1], places[2], places[3]];
-
+describe(`NearPlaceCard`, () => {
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <OfferDetails place={places[0]} nearPlaces={nearPlaces} />
+        <NearPlaceCard place={places[2]} onMouseEnter={() => {}} onMouseLeave={() => {}} />
     );
     expect(wrapper).toMatchSnapshot();
   });

@@ -13,7 +13,7 @@ describe(`PlaceCardList`, () => {
   test(`When user hovers one of the cards from list, its activeCard value in state should change from null to place object from this card`, () => {
     const wrapper = mount(
         <MemoryRouter>
-          <PlaceCardList places={places} />
+          <PlaceCardList places={places} className="cities__places-list" />
         </MemoryRouter>
     );
     expect(wrapper.find(PlaceCardList).instance().state.activeCard).toBe(null);
@@ -27,7 +27,7 @@ describe(`PlaceCardList`, () => {
   test(`When user stops hover one of the cards from list, its activeCard value in state should return from place object to null`, () => {
     const wrapper = mount(
         <MemoryRouter>
-          <PlaceCardList places={places} />
+          <PlaceCardList places={places} className="cities__places-list" />
         </MemoryRouter>
     );
     wrapper

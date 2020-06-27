@@ -1,30 +1,14 @@
 import React from 'react';
-import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Main from '../main/main';
-import OfferDetails from '../offer-details/offer-details';
+import PlaceCardList from '../place-card-list/place-card-list';
 
-
-const App = (props) => {
-  const {placeAmount, places} = props;
-  const nearPlaces = [places[1], places[2], places[3]];
-
+const NearPlaceCardList = (props) => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Main places={places} placeAmount={placeAmount} onTitleClick={() => {}} />
-        </Route>
-        <Route exact path="/dev-offer">
-          <OfferDetails place={places[0]} nearPlaces={nearPlaces} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
-
+    <PlaceCardList className="near-places__list" {...props} />
   );
 };
 
-App.propTypes = {
+NearPlaceCardList.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.string.isRequired,
@@ -60,8 +44,7 @@ App.propTypes = {
         ),
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
-  ),
-  placeAmount: PropTypes.number.isRequired
+  )
 };
 
-export default App;
+export default NearPlaceCardList;

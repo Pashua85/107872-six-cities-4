@@ -1,18 +1,25 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import {MemoryRouter} from 'react-router-dom';
+import Enzyme, {shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import PlaceCardList from './place-card-list';
 import places from '../../mock/test-offers';
 
+Enzyme.configure({
+  adapter: new Adapter()
+});
+
 describe(`PlaceCardList`, () => {
-  it(`should render correctly`, () => {
-    const tree = renderer
-      .create(
-          <MemoryRouter>
-            <PlaceCardList places={places} />
-          </MemoryRouter>
-      )
-      .toJSON();
-    expect(tree).toMatchSnapshot();
+  it(`should render correctly for cities pages`, () => {
+    const wrapper = shallow(
+        <PlaceCardList places={places} className="cities__places-list" />
+    );
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it(`should render correctly for details pages`, () => {
+    const wrapper = shallow(
+        <PlaceCardList places={places} className="near-places__list" />
+    );
+    expect(wrapper).toMatchSnapshot();
   });
 });
