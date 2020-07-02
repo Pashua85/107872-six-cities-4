@@ -14,7 +14,7 @@ const App = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
-          <Main places={places} placeAmount={places.length} onTitleClick={() => {}} />
+          <Main />
         </Route>
         <Route exact path="/dev-offer">
           <OfferDetails place={places[0]} nearPlaces={nearPlaces} />

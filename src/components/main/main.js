@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import CitiesPlaceCardList from '../cities-place-card-list/cities-place-card-list';
 import CitiesMap from '../cities-map/cities-map';
 
 const Main = (props) => {
-  const {places, placeAmount, onTitleClick} = props;
+  const {places, city} = props;
+  const placeAmount = places.length;
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -31,7 +33,7 @@ const Main = (props) => {
       </header>
 
       <main className="page__main page__main--index">
-        <h1 className="visually-hidden" onClick={onTitleClick}>Cities</h1>
+        <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
             <ul className="locations__list tabs__list">
@@ -72,7 +74,7 @@ const Main = (props) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{placeAmount} places to stay in Amsterdam</b>
+              <b className="places__found">{placeAmount} places to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -139,9 +141,14 @@ Main.propTypes = {
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ),
-  placeAmount: PropTypes.number.isRequired,
-  onTitleClick: PropTypes.func.isRequired
+  city: PropTypes.string.isRequired
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  places: state.places,
+  city: state.city
+});
+
+export default connect(mapStateToProps)(Main);
+export {Main};
 
