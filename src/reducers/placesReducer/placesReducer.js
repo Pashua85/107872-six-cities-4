@@ -1,4 +1,4 @@
-import {GET_PLACES} from '../../actions';
+import {GET_PLACES} from '../../actions/actions';
 import cities from '../../mock/cities';
 
 function placesReducer(state, action) {
