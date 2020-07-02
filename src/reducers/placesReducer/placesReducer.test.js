@@ -1,24 +1,28 @@
 import placesReducer from './placesReducer';
-import cities from '../../mock/cities';
-import testCities from '../../mock/test-cities';
+import cities from '../../mock/test-cities';
+
+const state = {
+  city: `Berlin`,
+  places: cities[0].places,
+  cities
+};
 
 describe(`placesReducer`, () => {
-  test(`When it is called with places for Moscow as state and object { type: "GET_PLACES", city: "Amsterdam" }, it should return places for Amsterdam`, () => {
-    const moscowPlaces = testCities[1].places;
-    const amsterdamPlaces = cities[3].places;
-    const result = placesReducer(moscowPlaces, {
+  test(`When it is called with places for Berlin in state and object { type: "GET_PLACES", city: "Moscow" }, it should return places for Moscow`, () => {
+    const moscowPlaces = cities[1].places;
+    const result = placesReducer(state, {
       type: `GET_PLACES`,
-      city: `Amsterdam`
-    });
-    expect(result).toEqual(amsterdamPlaces);
-  });
-
-  test(`When it is called with places for Moscow as state and object { type: "GET_ITEMS", city: "Amsterdam" }, it should return places for Moscow`, () => {
-    const moscowPlaces = testCities[1].places;
-    const result = placesReducer(moscowPlaces, {
-      type: `GET_ITEMS`,
-      city: `Amsterdam`
+      city: `Moscow`
     });
     expect(result).toEqual(moscowPlaces);
+  });
+
+  test(`When it is called with places for Berlin in state and object { type: "GET_ITEMS", city: "Moscow" }, it should return places for Berlin`, () => {
+    const berlinPlaces = cities[0].places;
+    const result = placesReducer(state, {
+      type: `GET_ITEMS`,
+      city: `Moscow`
+    });
+    expect(result).toEqual(berlinPlaces);
   });
 });

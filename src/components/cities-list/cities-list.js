@@ -4,21 +4,21 @@ import {connect} from 'react-redux';
 import {changeCityAction, getPlacesAction} from '../../action-creators/action-creators';
 
 const CitiesList = (props) => {
-  const {cityNames, city, onClick} = props;
-  const list = cityNames.map((cityName) => {
-    if (cityName === city) {
+  const {cities, city, onClick} = props;
+  const list = cities.map((c) => {
+    if (c.cityName === city) {
       return (
-        <li className="locations__item" key={cityName}>
+        <li className="locations__item" key={c.id}>
           <a className="locations__item-link tabs__item tabs__item--active">
-            <span>{cityName}</span>
+            <span>{c.cityName}</span>
           </a>
         </li>
       );
     } else {
       return (
-        <li className="locations__item" key={cityName}>
-          <a className="locations__item-link tabs__item" href="#" onClick={() => onClick(cityName)}>
-            <span>{cityName}</span>
+        <li className="locations__item" key={c.id}>
+          <a className="locations__item-link tabs__item" href="#" onClick={() => onClick(c.cityName)}>
+            <span>{c.cityName}</span>
           </a>
         </li>
       );
@@ -35,13 +35,13 @@ const CitiesList = (props) => {
 
 CitiesList.propTypes = {
   city: PropTypes.string.isRequired,
-  cityNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  cities: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
   city: state.city,
-  cityNames: state.cityNames
+  cities: state.cities
 });
 
 const mapDispatchToProps = (dispatch) => ({

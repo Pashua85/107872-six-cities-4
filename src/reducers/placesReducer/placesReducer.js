@@ -1,16 +1,15 @@
 import {GET_PLACES} from '../../actions/actions';
-import cities from '../../mock/cities';
 
-function placesReducer(state, action) {
+function placesReducer(wholeState, action) {
   switch (action.type) {
     case GET_PLACES: {
-      const cityIndex = cities.findIndex(
+      const cityIndex = wholeState.cities.findIndex(
           (c) => c.cityName === action.city
       );
-      return cities[cityIndex].places;
+      return wholeState.cities[cityIndex].places;
     }
     default: {
-      return state;
+      return wholeState.places;
     }
   }
 }
