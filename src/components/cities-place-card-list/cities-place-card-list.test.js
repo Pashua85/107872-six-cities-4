@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import CitiesPlaceCardList from './cities-place-card-list';
+import {CitiesPlaceCardList} from './cities-place-card-list';
 import places from '../../mock/test-offers';
 
 Enzyme.configure({
