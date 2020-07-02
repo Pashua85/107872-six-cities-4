@@ -1,9 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+import {Provider} from 'react-redux';
+import {reducer, initialState} from './reducers/reducer';
 import App from './components/app/app';
-import places from './mock/offers';
+
+const store = createStore(reducer, initialState);
 
 ReactDOM.render(
-    <App placeAmount={321} places={places} />,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.querySelector(`#root`)
 );

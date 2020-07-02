@@ -8,9 +8,12 @@ const reducer = combineReducers({
   places: placesReducer
 });
 
+const cityNames = cities.map((c) => c.cityName);
+
 const initialState = {
   city: `Amsterdam`,
-  places: cities[2].places
+  places: cities[2].places,
+  cityNames
 };
 
 export {
