@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import Map from '../map/map';
 
 const CitiesMap = (props) => {
@@ -48,4 +49,9 @@ CitiesMap.propTypes = {
   )
 };
 
-export default CitiesMap;
+const mapStateToProps = (state) => ({
+  places: state.places
+});
+
+export default connect(mapStateToProps)(CitiesMap);
+export {CitiesMap};
