@@ -5,12 +5,12 @@ const changeCityAction = (city) => ({
   city
 });
 
-const getPlaces = (city) => ({
+const getPlacesAction = (city) => ({
   type: GET_PLACES,
   city
 });
 
 export {
   changeCityAction,
-  getPlaces
+  getPlacesAction
 };

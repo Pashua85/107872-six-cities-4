@@ -81,7 +81,9 @@ const Main = (props) => {
                     <p className="cities__status-description">We could not find any property availbale at the moment in Dusseldorf</p>
                   </div>
                 </section>
-                <div className="cities__right-section"></div>
+                <div className="cities__right-section">
+                  <section className="cities__map map"></section>
+                </div>
               </div>
             )
           }

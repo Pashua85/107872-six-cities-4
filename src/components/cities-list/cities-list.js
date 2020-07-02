@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {changeCityAction, getPlacesAction} from '../../action-creators/action-creators';
 
 const CitiesList = (props) => {
-  const {cityNames, city} = props;
+  const {cityNames, city, onClick} = props;
   const list = cityNames.map((cityName) => {
     if (cityName === city) {
       return (
@@ -16,7 +17,7 @@ const CitiesList = (props) => {
     } else {
       return (
         <li className="locations__item" key={cityName}>
-          <a className="locations__item-link tabs__item" href="#">
+          <a className="locations__item-link tabs__item" href="#" onClick={() => onClick(cityName)}>
             <span>{cityName}</span>
           </a>
         </li>
@@ -34,7 +35,8 @@ const CitiesList = (props) => {
 
 CitiesList.propTypes = {
   city: PropTypes.string.isRequired,
-  cityNames: PropTypes.arrayOf(PropTypes.string).isRequired
+  cityNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -42,6 +44,13 @@ const mapStateToProps = (state) => ({
   cityNames: state.cityNames
 });
 
-export default connect(mapStateToProps)(CitiesList);
+const mapDispatchToProps = (dispatch) => ({
+  onClick: (city) => {
+    dispatch(changeCityAction(city));
+    dispatch(getPlacesAction(city));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);
 export {CitiesList};
 
