@@ -1,0 +1,7 @@
+const CHANGE_CITY = `CHANGE_CITY`;
+const GET_PLACES = `GET_PLACES`;
+
+export {
+  CHANGE_CITY,
+  GET_PLACES
+};
