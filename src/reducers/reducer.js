@@ -6,7 +6,7 @@ function reducer(state, action) {
   return {
     city: cityReducer(state.city, action),
     places: placesReducer(state.places, action),
-    cities: state.cities
+    cityNames: state.cityNames
   };
 }
 

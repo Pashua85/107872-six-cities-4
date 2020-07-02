@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import PlaceCardList from '../place-card-list/place-card-list';
 
 const CitiesPlaceCardList = (props) => {
@@ -47,4 +48,9 @@ CitiesPlaceCardList.propTypes = {
   )
 };
 
-export default CitiesPlaceCardList;
+const mapStateToProps = (state) => ({
+  places: state.places
+});
+
+export default connect(mapStateToProps)(CitiesPlaceCardList);
+export {CitiesPlaceCardList};
