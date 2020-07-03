@@ -47,8 +47,8 @@ CitiesPlaceCard.propTypes = {
     ),
     coords: PropTypes.arrayOf(PropTypes.number).isRequired
   }),
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  onCardUnhover: PropTypes.func.isRequired,
 };
 
 export default CitiesPlaceCard;

@@ -9,7 +9,7 @@ describe(`PlaceCard`, () => {
     const tree = renderer
       .create(
           <MemoryRouter>
-            <PlaceCard place={places[0]} onMouseLeave={() => {}} onMouseEnter={() => {}} />
+            <PlaceCard place={places[0]} onCardHover={() => {}} onCardUnhover={() => {}} />
           </MemoryRouter>
       )
       .toJSON();

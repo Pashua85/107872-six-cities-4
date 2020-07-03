@@ -9,20 +9,20 @@ Enzyme.configure({
 });
 
 describe(`PlaceCard`, () => {
-  test(`When user hovers the card with mouse, onMouseEnter should be called with place object from its props as a parameter`, () => {
-    const onMouseEnter = jest.fn();
+  test(`When user hovers the card with mouse, onCardHover should be called with place object from its props as a parameter`, () => {
+    const onCardHover = jest.fn();
     const wrapper = shallow(
         <PlaceCard
           place={places[3]}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={() => {}}
+          onCardHover={onCardHover}
+          onCardUnhover={() => {}}
         />
     );
     wrapper
       .find(`.place-card`)
       .simulate(`mouseEnter`);
-    expect(onMouseEnter).toHaveBeenCalledTimes(1);
-    expect(onMouseEnter).toHaveBeenCalledWith(places[3]);
+    expect(onCardHover).toHaveBeenCalledTimes(1);
+    expect(onCardHover).toHaveBeenCalledWith(places[3]);
   });
 });
 

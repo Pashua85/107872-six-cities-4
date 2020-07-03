@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import PlaceCardList from './place-card-list';
+import {PlaceCardList} from './place-card-list';
 import places from '../../mock/test-offers';
 
 Enzyme.configure({
@@ -11,14 +11,24 @@ Enzyme.configure({
 describe(`PlaceCardList`, () => {
   it(`should render correctly for cities pages`, () => {
     const wrapper = shallow(
-        <PlaceCardList places={places} className="cities__places-list" />
+        <PlaceCardList
+          places={places}
+          className="cities__places-list"
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+        />
     );
     expect(wrapper).toMatchSnapshot();
   });
 
   it(`should render correctly for details pages`, () => {
     const wrapper = shallow(
-        <PlaceCardList places={places} className="near-places__list" />
+        <PlaceCardList
+          places={places}
+          className="near-places__list"
+          onMouseEnter={() => {}}
+          onMouseLeave={() => {}}
+        />
     );
     expect(wrapper).toMatchSnapshot();
   });

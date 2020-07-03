@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {propertyName, propertyType, price, isPremium, titlePhoto} = props.place;
-  const {onMouseEnter, onMouseLeave, cardClass, imageClass} = props;
+  const {onCardHover, onCardUnhover, cardClass, imageClass} = props;
   let propertyTypeString;
   switch (propertyType) {
     case `room`:
@@ -25,10 +25,10 @@ const PlaceCard = (props) => {
       <article
         className={`${cardClass} place-card`}
         onMouseEnter={() => {
-          onMouseEnter(props.place);
+          onCardHover(props.place);
         }}
         onMouseLeave={() => {
-          onMouseLeave();
+          onCardUnhover();
         }}
       >
         {
@@ -110,8 +110,8 @@ PlaceCard.propTypes = {
     ),
     coords: PropTypes.arrayOf(PropTypes.number).isRequired
   }),
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  onCardUnhover: PropTypes.func.isRequired,
   cardClass: PropTypes.string,
   imageClass: PropTypes.string
 };

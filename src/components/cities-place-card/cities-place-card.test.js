@@ -11,7 +11,7 @@ Enzyme.configure({
 describe(`CititesPlaceCard`, () => {
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <CitiesPlaceCard place={places[1]} onMouseEnter={() => {}} onMouseLeave={() => {}} />
+        <CitiesPlaceCard place={places[1]} onCardHover={() => {}} onCardUnhover={() => {}} />
     );
     expect(wrapper).toMatchSnapshot();
   });

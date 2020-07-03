@@ -20,8 +20,8 @@ class PlaceCardList extends React.PureComponent {
               <CitiesPlaceCard
                 key={place.id}
                 place={place}
-                onMouseEnter={onMouseEnter}
-                onMouseLeave={onMouseLeave}
+                onCardHover={onMouseEnter}
+                onCardUnhover={onMouseLeave}
               />
             ))
           }
@@ -35,8 +35,8 @@ class PlaceCardList extends React.PureComponent {
               <NearPlaceCard
                 key={place.id}
                 place={place}
-                onMouseEnter={() => {}}
-                onMouseLeave={() => {}}
+                onCardHover={() => {}}
+                onCardUnhover={() => {}}
               />
             ))
           }
