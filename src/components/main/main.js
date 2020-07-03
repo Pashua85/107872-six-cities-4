@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import CitiesPlaceCardList from '../cities-place-card-list/cities-place-card-list';
 import CitiesMap from '../cities-map/cities-map';
 import CitiesList from '../cities-list/cities-list';
+import PlacesSorting from '../places-sorting/places-sorting';
 
 const Main = (props) => {
   const {places, city} = props;
@@ -46,7 +47,7 @@ const Main = (props) => {
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
                   <b className="places__found">{placesAmount} places to stay in {city}</b>
-                  <form className="places__sorting" action="#" method="get">
+                  {/* <form className="places__sorting" action="#" method="get">
                     <span className="places__sorting-caption">Sort by</span>
                     <span className="places__sorting-type" tabIndex="0">
                       Popular
@@ -60,7 +61,8 @@ const Main = (props) => {
                       <li className="places__option" tabIndex="0">Price: high to low</li>
                       <li className="places__option" tabIndex="0">Top rated first</li>
                     </ul>
-                  </form>
+                  </form> */}
+                  <PlacesSorting />
 
                   <CitiesPlaceCardList />
 

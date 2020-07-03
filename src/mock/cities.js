@@ -29,7 +29,7 @@ export default [
           `An independent House, strategically located between Rembrand Square and National Opera, but where the bustle of the city comes to rest in this alley flowery and colorful.`
         ],
         price: 120,
-        rating: 4.8,
+        rating: 3.9,
         isPremium: true,
         bedroomsAmount: 3,
         guestMax: 4,

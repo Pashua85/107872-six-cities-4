@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {propertyName, propertyType, price, isPremium, titlePhoto} = props.place;
+  const {propertyName, propertyType, price, isPremium, titlePhoto, rating} = props.place;
   const {onCardHover, onCardUnhover, cardClass, imageClass} = props;
   let propertyTypeString;
   switch (propertyType) {
@@ -19,6 +19,10 @@ const PlaceCard = (props) => {
     default:
       propertyTypeString = `Apartment`;
   }
+
+  const ratingStyle = {
+    width: `${Math.floor(rating) * 20}%`
+  };
 
   return (
     <Link to="/dev-offer">
@@ -56,7 +60,7 @@ const PlaceCard = (props) => {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: `80%`}}></span>
+              <span style={ratingStyle}></span>
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
