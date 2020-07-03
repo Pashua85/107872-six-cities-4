@@ -1,4 +1,4 @@
-import {CHANGE_CITY, GET_PLACES} from '../actions/actions';
+import {CHANGE_CITY, GET_PLACES, SET_ACTIVE_PLACE} from '../actions/actions';
 
 const changeCityAction = (city) => ({
   type: CHANGE_CITY,
@@ -10,7 +10,13 @@ const getPlacesAction = (city) => ({
   city
 });
 
+const setActivePlaceAction = (place) => ({
+  type: SET_ACTIVE_PLACE,
+  place
+});
+
 export {
   changeCityAction,
-  getPlacesAction
+  getPlacesAction,
+  setActivePlaceAction
 };

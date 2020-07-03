@@ -5,6 +5,7 @@ import Map from '../map/map';
 
 const CitiesMap = (props) => {
   const {places} = props;
+
   return (
     <Map className="cities__map" places={places} />
   );
