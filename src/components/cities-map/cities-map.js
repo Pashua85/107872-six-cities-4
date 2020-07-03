@@ -4,9 +4,11 @@ import {connect} from 'react-redux';
 import Map from '../map/map';
 
 const CitiesMap = (props) => {
-  const {places} = props;
+  const {places, activePlace} = props;
+  const otherPlaces = places.filter((p) => p !== activePlace);
+
   return (
-    <Map className="cities__map" places={places} />
+    <Map className="cities__map" places={otherPlaces} currentPlace={activePlace} />
   );
 };
 
@@ -46,11 +48,13 @@ CitiesMap.propTypes = {
         ),
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
-  )
+  ),
+  activePlace: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
-  places: state.places
+  places: state.places,
+  activePlace: state.activePlace
 });
 
 export default connect(mapStateToProps)(CitiesMap);

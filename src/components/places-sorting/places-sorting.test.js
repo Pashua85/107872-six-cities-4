@@ -1,18 +1,15 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {CitiesMap} from './cities-map';
-import places from '../../mock/test-offers';
+import {PlacesSorting} from './places-sorting';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-describe(`CitiesMap`, () => {
+describe(`PlacesSorting`, () => {
   it(`should render correctly`, () => {
-    const wrapper = shallow(
-        <CitiesMap places={places} activePlace={places[0]} />
-    );
+    const wrapper = shallow(<PlacesSorting onOptionClick={() => {}} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {propertyName, propertyType, price, isPremium, titlePhoto} = props.place;
-  const {onMouseEnter, onMouseLeave, cardClass, imageClass} = props;
+  const {propertyName, propertyType, price, isPremium, titlePhoto, rating} = props.place;
+  const {onCardHover, onCardUnhover, cardClass, imageClass} = props;
   let propertyTypeString;
   switch (propertyType) {
     case `room`:
@@ -20,15 +20,19 @@ const PlaceCard = (props) => {
       propertyTypeString = `Apartment`;
   }
 
+  const ratingStyle = {
+    width: `${Math.floor(rating) * 20}%`
+  };
+
   return (
     <Link to="/dev-offer">
       <article
         className={`${cardClass} place-card`}
         onMouseEnter={() => {
-          onMouseEnter(props.place);
+          onCardHover(props.place);
         }}
         onMouseLeave={() => {
-          onMouseLeave();
+          onCardUnhover();
         }}
       >
         {
@@ -56,7 +60,7 @@ const PlaceCard = (props) => {
           </div>
           <div className="place-card__rating rating">
             <div className="place-card__stars rating__stars">
-              <span style={{width: `80%`}}></span>
+              <span style={ratingStyle}></span>
               <span className="visually-hidden">Rating</span>
             </div>
           </div>
@@ -110,8 +114,8 @@ PlaceCard.propTypes = {
     ),
     coords: PropTypes.arrayOf(PropTypes.number).isRequired
   }),
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  onCardUnhover: PropTypes.func.isRequired,
   cardClass: PropTypes.string,
   imageClass: PropTypes.string
 };
