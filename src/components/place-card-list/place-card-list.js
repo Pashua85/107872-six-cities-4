@@ -2,32 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
+import {setActivePlaceAction} from '../../action-creators/action-creators';
+import {connect} from 'react-redux';
 
 class PlaceCardList extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.handleCardHover = this.handleCardHover.bind(this);
-    this.handleCardUnhover = this.handleCardUnhover.bind(this);
-
-    this.state = {
-      activeCard: null
-    };
-  }
-
-  handleCardHover(place) {
-    this.setState({
-      activeCard: place
-    });
-  }
-
-  handleCardUnhover() {
-    this.setState({
-      activeCard: null
-    });
+  componentWillUnmount() {
+    this.props.onMouseLeave();
   }
 
   render() {
-    const {places, className} = this.props;
+    const {places, className, onMouseEnter, onMouseLeave} = this.props;
     if (className === `cities__places-list`) {
       return (
         <div className={`${className} places__list tabs__content`}>
@@ -36,8 +20,8 @@ class PlaceCardList extends React.PureComponent {
               <CitiesPlaceCard
                 key={place.id}
                 place={place}
-                onMouseEnter={this.handleCardHover}
-                onMouseLeave={this.handleCardUnhover}
+                onMouseEnter={onMouseEnter}
+                onMouseLeave={onMouseLeave}
               />
             ))
           }
@@ -51,8 +35,8 @@ class PlaceCardList extends React.PureComponent {
               <NearPlaceCard
                 key={place.id}
                 place={place}
-                onMouseEnter={this.handleCardHover}
-                onMouseLeave={this.handleCardUnhover}
+                onMouseEnter={() => {}}
+                onMouseLeave={() => {}}
               />
             ))
           }
@@ -101,8 +85,20 @@ PlaceCardList.propTypes = {
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ),
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired
 };
 
-export default PlaceCardList;
+const mapDispatchToProps = (dispatch) => ({
+  onMouseEnter: (place) => {
+    dispatch(setActivePlaceAction(place));
+  },
+  onMouseLeave: () => {
+    dispatch(setActivePlaceAction(null));
+  }
+});
+
+export default connect(null, mapDispatchToProps)(PlaceCardList);
+export {PlaceCardList};
 
