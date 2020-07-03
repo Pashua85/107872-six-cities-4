@@ -29,9 +29,8 @@ function placesReducer(wholeState, action) {
       } else if (action.option === `Top rated first`) {
 
         const placesCopy = wholeState.places.slice();
-        const result = placesCopy.sort((p1, p2) => p2.rating - p1.rating);
-        console.log(result);
-        return result;
+        return placesCopy.sort((p1, p2) => p2.rating - p1.rating);
+
       } else {
         return wholeState.places;
       }

@@ -49,7 +49,7 @@ CitiesMap.propTypes = {
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ),
-  activePlace: PropTypes.oneOf(null, PropTypes.object)
+  activePlace: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({

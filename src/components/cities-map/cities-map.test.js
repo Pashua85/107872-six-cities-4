@@ -11,7 +11,7 @@ Enzyme.configure({
 describe(`CitiesMap`, () => {
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <CitiesMap place={places[0]} />
+        <CitiesMap places={places} activePlace={places[0]} />
     );
     expect(wrapper).toMatchSnapshot();
   });
