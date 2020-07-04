@@ -44,3 +44,4 @@ PlacesSorting.propTypes = {
 };
 
 export default withSortingOpgions(PlacesSorting);
+export {PlacesSorting};

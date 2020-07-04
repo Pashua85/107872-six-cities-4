@@ -9,7 +9,15 @@ Enzyme.configure({
 
 describe(`PlacesSorting`, () => {
   it(`should render correctly`, () => {
-    const wrapper = shallow(<PlacesSorting onOptionClick={() => {}} />);
+    const wrapper = shallow(
+        <PlacesSorting
+          onOptionClick={() => {}}
+          isOptionsVisible={true}
+          activeOption={`Price: low to high`}
+          options={[`Popular`, `Price: low to high`, `Price: high to low`, `Top rated first`]}
+          toggleVisibility={() => {}}
+        />
+    );
     expect(wrapper).toMatchSnapshot();
   });
 });
