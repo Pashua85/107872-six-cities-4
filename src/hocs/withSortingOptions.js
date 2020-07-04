@@ -37,6 +37,8 @@ const withSortingOptions = (Component) => {
           options={this.state.options}
           isOptionsVisible={this.state.isOptionsVisible}
           activeOption={this.state.activeOption}
+          onOptionClick={this.handleOptionClick}
+          toggleVisibility={this.toggleVisibility}
         />
       );
     }
