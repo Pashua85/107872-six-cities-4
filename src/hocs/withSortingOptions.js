@@ -28,6 +28,7 @@ const withSortingOptions = (Component) => {
         activeOption: option
       });
       this.props.onOptionClick(option);
+      this.toggleVisibility();
     }
 
     render() {
