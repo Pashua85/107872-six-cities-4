@@ -46,15 +46,29 @@ class PlaceCardList extends React.PureComponent {
       return (
         <div className={`${className} places__list`}>
           {
-            places.map((place) => (
-              <NearPlaceCard
-                key={place.id}
-                place={place}
-                onCardHover={() => {}}
-                onCardUnhover={() => {}}
-                styleObject={{}}
-              />
-            ))
+            places.map((place) => {
+              if (place === activePlace) {
+                return (
+                  <NearPlaceCard
+                    key={place.id}
+                    place={place}
+                    onCardHover={() => {}}
+                    onCardUnhover={() => {}}
+                    styleObject={{opacity: `.6`}}
+                  />
+                );
+              } else {
+                return (
+                  <NearPlaceCard
+                    key={place.id}
+                    place={place}
+                    onCardHover={() => {}}
+                    onCardUnhover={() => {}}
+                    styleObject={{}}
+                  />
+                );
+              }
+            })
           }
         </div>
       );

@@ -44,7 +44,7 @@ class Map extends React.PureComponent {
       iconAnchor: [13.5, 39]
     });
     const currentIcon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `img/pin-active.svg`,
       iconSize: [27, 39],
       iconAnchor: [13.5, 39]
     });
@@ -80,7 +80,7 @@ class Map extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.onMarkerHover(null);
+    this.props.onMarkerHover(null);
   }
 
   render() {
