@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import leaflet from 'leaflet';
+import {setActivePlaceAction} from '../../action-creators/action-creators';
 
 class Map extends React.PureComponent {
   constructor(props) {
@@ -8,6 +10,8 @@ class Map extends React.PureComponent {
 
     this.mapRef = React.createRef();
     this.renderMarkers = this.renderMarkers.bind(this);
+    this.handleMarkerHover = this.handleMarkerHover.bind(this);
+    this.handleMarkerUnhover = this.handleMarkerUnhover.bind(this);
   }
 
   componentDidMount() {
@@ -26,7 +30,7 @@ class Map extends React.PureComponent {
       })
       .addTo(this.map);
 
-    this.simplaMarkers = leaflet.layerGroup().addTo(this.map);
+    this.simpleMarkers = leaflet.layerGroup().addTo(this.map);
     this.activeMarker = leaflet.layerGroup().addTo(this.map);
 
     this.renderMarkers();
@@ -44,19 +48,30 @@ class Map extends React.PureComponent {
     });
 
     places.forEach((place) => {
-      leaflet
+      const marker = leaflet
         .marker(place.coords, {icon})
-        .addTo(this.simplaMarkers);
+        .addTo(this.simpleMarkers);
+      marker.addEventListener(`mouseover`, () => this.handleMarkerHover(place));
+      marker.addEventListener(`mouseout`, () => this.handleMarkerUnhover());
     });
     if (currentPlace !== null) {
-      leaflet
+      const marker = leaflet
         .marker(currentPlace.coords, {currentIcon})
         .addTo(this.activeMarker);
+      marker.addEventListener(`mouseout`, () => this.handleMarkerUnhover());
     }
   }
 
+  handleMarkerHover(place) {
+    this.props.onMarkerHover(place);
+  }
+
+  handleMarkerUnhover() {
+    this.props.onMarkerHover(null);
+  }
+
   componentDidUpdate() {
-    this.simplaMarkers.clearLayers();
+    this.simpleMarkers.clearLayers();
     this.activeMarker.clearLayers();
 
     this.renderMarkers();
@@ -114,8 +129,15 @@ Map.propTypes = {
       })
   ),
   className: PropTypes.string,
-  renderMarkers: PropTypes.func,
-  currentPlace: PropTypes.object
+  currentPlace: PropTypes.object,
+  onMarkerHover: PropTypes.func
 };
 
-export default Map;
+const mapDispatchToProps = (dispatch) => ({
+  onMarkerHover: (place) => {
+    dispatch(setActivePlaceAction(place));
+  }
+});
+
+export default connect(null, mapDispatchToProps)(Map);
+export {Map};
