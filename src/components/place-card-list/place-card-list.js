@@ -11,19 +11,34 @@ class PlaceCardList extends React.PureComponent {
   }
 
   render() {
-    const {places, className, onMouseEnter, onMouseLeave} = this.props;
+    const {places, className, onMouseEnter, onMouseLeave, activePlace} = this.props;
     if (className === `cities__places-list`) {
       return (
         <div className={`${className} places__list tabs__content`}>
           {
-            places.map((place) => (
-              <CitiesPlaceCard
-                key={place.id}
-                place={place}
-                onCardHover={onMouseEnter}
-                onCardUnhover={onMouseLeave}
-              />
-            ))
+            places.map((place) => {
+              if (place === activePlace) {
+                return (
+                  <CitiesPlaceCard
+                    key={place.id}
+                    place={place}
+                    onCardHover={onMouseEnter}
+                    onCardUnhover={onMouseLeave}
+                    styleObject={{opacity: `.6`}}
+                  />
+                );
+              } else {
+                return (
+                  <CitiesPlaceCard
+                    key={place.id}
+                    place={place}
+                    onCardHover={onMouseEnter}
+                    onCardUnhover={onMouseLeave}
+                    styleObject={{}}
+                  />
+                );
+              }
+            })
           }
         </div>
       );
@@ -37,6 +52,7 @@ class PlaceCardList extends React.PureComponent {
                 place={place}
                 onCardHover={() => {}}
                 onCardUnhover={() => {}}
+                styleObject={{}}
               />
             ))
           }
@@ -87,8 +103,13 @@ PlaceCardList.propTypes = {
   ),
   className: PropTypes.string.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired
+  onMouseLeave: PropTypes.func.isRequired,
+  activePlace: PropTypes.object
 };
+
+const mapStateToProps = (state) => ({
+  activePlace: state.activePlace
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onMouseEnter: (place) => {
@@ -99,6 +120,6 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(PlaceCardList);
+export default connect(mapStateToProps, mapDispatchToProps)(PlaceCardList);
 export {PlaceCardList};
 
