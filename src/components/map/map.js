@@ -10,8 +10,8 @@ class Map extends React.PureComponent {
 
     this.mapRef = React.createRef();
     this.renderMarkers = this.renderMarkers.bind(this);
-    this.handleMarkerHover = this.handleMarkerHover.bind(this);
-    this.handleMarkerUnhover = this.handleMarkerUnhover.bind(this);
+    this.markerHoverHandler = this.handleMarkerHover.bind(this);
+    this.markerHoverHandler = this.handleMarkerUnhover.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +69,7 @@ class Map extends React.PureComponent {
   }
 
   handleMarkerUnhover() {
-    this.props.onMarkerHover(null);
+    this.props.onMarkerUnhover();
   }
 
   componentDidUpdate() {
@@ -80,6 +80,8 @@ class Map extends React.PureComponent {
   }
 
   componentWillUnmount() {
+    this.simpleMarkers.clearLayers();
+    this.activeMarker.clearLayers();
     this.props.onMarkerHover(null);
   }
 
@@ -136,12 +138,16 @@ Map.propTypes = {
   ),
   className: PropTypes.string,
   currentPlace: PropTypes.object,
-  onMarkerHover: PropTypes.func
+  onMarkerHover: PropTypes.func,
+  onMarkerUnhover: PropTypes.func
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onMarkerHover: (place) => {
     dispatch(setActivePlaceAction(place));
+  },
+  onMarkerUnhover: () => {
+    dispatch(setActivePlaceAction(null));
   }
 });
 
