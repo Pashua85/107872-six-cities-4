@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
   const {propertyName, propertyType, price, isPremium, titlePhoto, rating} = props.place;
-  const {onCardHover, onCardUnhover, cardClass, imageClass} = props;
+  const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject} = props;
   let propertyTypeString;
   switch (propertyType) {
     case `room`:
@@ -34,6 +34,7 @@ const PlaceCard = (props) => {
         onMouseLeave={() => {
           onCardUnhover();
         }}
+        style={styleObject}
       >
         {
           cardClass === `cities__place-card` && isPremium ? (
@@ -117,7 +118,8 @@ PlaceCard.propTypes = {
   onCardHover: PropTypes.func.isRequired,
   onCardUnhover: PropTypes.func.isRequired,
   cardClass: PropTypes.string,
-  imageClass: PropTypes.string
+  imageClass: PropTypes.string,
+  styleObject: PropTypes.object
 };
 
 export default PlaceCard;
