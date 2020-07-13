@@ -12,7 +12,7 @@ export const getCityOffers = createSelector(
     getCurrentCity,
     (offers, city) => {
       const cityOffers = offers.filter((of) => {
-        return of.city.name === city;
+        return of.city.name === city.name;
       });
       return cityOffers.map((of) => createOffer(of));
     }

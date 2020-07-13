@@ -50,7 +50,7 @@ const Main = (props) => {
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{placesAmount} places to stay in {city}</b>
+                  <b className="places__found">{placesAmount} places to stay in {city.name}</b>
                   <PlacesSorting />
                   <CitiesPlaceCardList />
                 </section>
@@ -112,13 +112,10 @@ Main.propTypes = {
   city: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => {
-  console.log(getCityOffers(state));
-  return {
-    places: getCityOffers(state),
-    city: getCurrentCity(state)
-  };
-};
+const mapStateToProps = (state) => ({
+  places: getCityOffers(state),
+  city: getCurrentCity(state)
+});
 
 export default connect(mapStateToProps)(Main);
 export {Main};

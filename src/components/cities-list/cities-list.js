@@ -7,20 +7,21 @@ import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors'
 
 const CitiesList = (props) => {
   const {cities, currentCity, onClick} = props;
+
   const list = cities.map((city) => {
-    if (city === currentCity) {
+    if (city.name === currentCity.name) {
       return (
-        <li className="locations__item" key={city}>
+        <li className="locations__item" key={city.name}>
           <a className="locations__item-link tabs__item tabs__item--active">
-            <span>{city}</span>
+            <span>{city.name}</span>
           </a>
         </li>
       );
     } else {
       return (
-        <li className="locations__item" key={city}>
+        <li className="locations__item" key={city.name}>
           <a className="locations__item-link tabs__item" href="#" onClick={() => onClick(city)}>
-            <span>{city}</span>
+            <span>{city.name}</span>
           </a>
         </li>
       );

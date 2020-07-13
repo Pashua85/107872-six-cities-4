@@ -1,6 +1,15 @@
 import {SET_CURRENT_CITY} from '../../action-types/action-types';
 
-function cityReducer(state = `Amsterdam`, action) {
+const initialState = {
+  name: `Amsterdam`,
+  location: {
+    latitude: 52.37454,
+    longitude: 4.897976,
+    zoom: 13
+  }
+};
+
+function cityReducer(state = initialState, action) {
   switch (action.type) {
     case SET_CURRENT_CITY: {
       return action.city;
