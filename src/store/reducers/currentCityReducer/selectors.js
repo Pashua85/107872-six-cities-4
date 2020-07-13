@@ -1,3 +1,5 @@
+import NameSpace from '../name-space';
+
 export const getCurrentCity = (state) => {
-  return state.currentCity;
+  return state[NameSpace.CURRENT_CITY];
 };

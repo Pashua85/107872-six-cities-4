@@ -1,3 +1,5 @@
+import NameSpace from '../name-space';
+
 export const getActiveOffer = (state) => {
-  return state.activeOffer;
+  return state[NameSpace.ACTIVE_OFFER];
 };

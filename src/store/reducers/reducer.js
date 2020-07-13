@@ -1,29 +1,17 @@
+import {combineReducers} from 'redux';
 import currentCityReducer from './currentCityReducer/currentCityReducer';
 import activeOfferReducer from './activeOfferReducer/activeOfferReducer';
 import sortingOptionReducer from './sortingOptionReducer/sortingOptionReducer';
+import citiesReducer from './citiesReducer/citiesReducer';
 import offersReducer from './offersReducer/offersReducer';
-import offers from '../../mock/offers';
+import NameSpace from './name-space';
 
-function reducer(state, action) {
-  return {
-    offers: offersReducer(state.offers, action),
-    currentCity: currentCityReducer(state.currentCity, action),
-    cities: state.cities,
-    activeOffer: activeOfferReducer(state.activeOffer, action),
-    sortingOption: sortingOptionReducer(state.sortingOption, action)
-  };
-}
+export default combineReducers({
+  [NameSpace.ACTIVE_OFFER]: activeOfferReducer,
+  [NameSpace.CITIES]: citiesReducer,
+  [NameSpace.CURRENT_CITY]: currentCityReducer,
+  [NameSpace.OFFERS]: offersReducer,
+  [NameSpace.SORTING_OPTION]: sortingOptionReducer
+});
 
-const initialState = {
-  offers,
-  currentCity: `Amsterdam`,
-  cities: [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`],
-  activeOffer: null,
-  sortingOption: `Popular`
-};
-
-export {
-  reducer,
-  initialState
-};
 

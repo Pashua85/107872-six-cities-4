@@ -1,0 +1,9 @@
+const NameSpace = {
+  ACTIVE_OFFER: `ACTIVE_OFFER`,
+  CITIES: `CITIES`,
+  CURRENT_CITY: `CURRENT_CITY`,
+  OFFERS: `OFFERS`,
+  SORTING_OPTION: `SORTING_OPTION`
+};
+
+export default NameSpace;

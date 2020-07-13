@@ -1,3 +1,5 @@
+import NameSpace from '../name-space';
+
 export const getSortingOption = (state) => {
-  return state.sortingOption;
+  return state[NameSpace.SORTING_OPTION];
 };

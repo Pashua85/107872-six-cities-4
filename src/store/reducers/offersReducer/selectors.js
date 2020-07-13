@@ -1,4 +1,6 @@
+import NameSpace from '../name-space';
+
 export const getOffers = (state) => {
-  return state.offers;
+  return state[NameSpace.OFFERS];
 };
 

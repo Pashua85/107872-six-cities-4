@@ -1,4 +1,4 @@
-function citiesReducer(state) {
+function citiesReducer(state = [`Paris`, `Cologne`, `Brussels`, `Amsterdam`, `Hamburg`, `Dusseldorf`]) {
   return state;
 }
 

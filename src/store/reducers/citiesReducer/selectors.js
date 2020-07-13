@@ -1,3 +1,5 @@
+import NameSpace from '../name-space';
+
 export const getCities = (state) => {
-  return state.cities;
+  return state[NameSpace.CITIES];
 };

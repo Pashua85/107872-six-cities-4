@@ -1,4 +1,6 @@
-function offersReducer(state) {
+import offers from '../../../mock/offers';
+
+function offersReducer(state = offers) {
   return state;
 }
 
