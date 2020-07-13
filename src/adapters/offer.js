@@ -1,5 +1,3 @@
-import offers from "../mock/offers";
-
 export const createOffer = (data) => {
   return {
     city: data.city,
