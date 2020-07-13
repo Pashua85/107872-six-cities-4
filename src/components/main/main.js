@@ -112,10 +112,13 @@ Main.propTypes = {
   city: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  places: getCityOffers(state),
-  city: getCurrentCity(state)
-});
+const mapStateToProps = (state) => {
+  console.log(getCityOffers(state));
+  return {
+    places: getCityOffers(state),
+    city: getCurrentCity(state)
+  };
+};
 
 export default connect(mapStateToProps)(Main);
 export {Main};

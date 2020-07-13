@@ -11,12 +11,10 @@ export const getCityOffers = createSelector(
     getOffers,
     getCurrentCity,
     (offers, city) => {
-      const offersCopy = offers.slice();
-      offersCopy.filter((of) => {
+      const cityOffers = offers.filter((of) => {
         return of.city.name === city;
       });
-      return offersCopy.map((of) => createOffer(of));
+      return cityOffers.map((of) => createOffer(of));
     }
 );
-
 

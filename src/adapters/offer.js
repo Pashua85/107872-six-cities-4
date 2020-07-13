@@ -2,6 +2,7 @@ import offers from "../mock/offers";
 
 export const createOffer = (data) => {
   return {
+    city: data.city,
     id: data.id,
     propertyName: data.title,
     propertyType: data.type,
