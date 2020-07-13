@@ -10,16 +10,17 @@ const App = () => {
   const nearPlaces = [offers[1], offers[2], offers[3]];
 
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          <Main />
-        </Route>
-        <Route exact path="/dev-offer">
-          <OfferDetails place={currentPlace} nearPlaces={nearPlaces} />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+    // <BrowserRouter>
+    //   <Switch>
+    //     <Route exact path="/">
+    //       <Main />
+    //     </Route>
+    //     <Route exact path="/dev-offer">
+    //       <OfferDetails place={currentPlace} nearPlaces={nearPlaces} />
+    //     </Route>
+    //   </Switch>
+    // </BrowserRouter>
+    <div></div>
   );
 };
 
