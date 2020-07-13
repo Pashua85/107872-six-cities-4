@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
-import {setActivePlaceAction} from '../../action-creators/action-creators';
+import ActionCreator from '../../store/action-creator/action-creator';
+import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {connect} from 'react-redux';
 
 class PlaceCardList extends React.PureComponent {
@@ -11,13 +12,13 @@ class PlaceCardList extends React.PureComponent {
   }
 
   render() {
-    const {places, className, onMouseEnter, onMouseLeave, activePlace} = this.props;
+    const {places, className, onMouseEnter, onMouseLeave, activeOffer} = this.props;
     if (className === `cities__places-list`) {
       return (
         <div className={`${className} places__list tabs__content`}>
           {
             places.map((place) => {
-              if (place === activePlace) {
+              if (place === activeOffer) {
                 return (
                   <CitiesPlaceCard
                     key={place.id}
@@ -47,7 +48,7 @@ class PlaceCardList extends React.PureComponent {
         <div className={`${className} places__list`}>
           {
             places.map((place) => {
-              if (place === activePlace) {
+              if (place === activeOffer) {
                 return (
                   <NearPlaceCard
                     key={place.id}
@@ -81,7 +82,7 @@ class PlaceCardList extends React.PureComponent {
 PlaceCardList.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         propertyName: PropTypes.string.isRequired,
         propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
         propertyText: PropTypes.arrayOf(PropTypes.string),
@@ -97,12 +98,7 @@ PlaceCardList.propTypes = {
           isSuper: PropTypes.bool
         }).isRequired,
         titlePhoto: PropTypes.string.isRequired,
-        photos: PropTypes.arrayOf(
-            PropTypes.shape({
-              title: PropTypes.string,
-              id: PropTypes.string
-            })
-        ),
+        photos: PropTypes.arrayOf(PropTypes.string).isRequired,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               id: PropTypes.string,
@@ -118,19 +114,19 @@ PlaceCardList.propTypes = {
   className: PropTypes.string.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
-  activePlace: PropTypes.object
+  activeOffer: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
-  activePlace: state.activePlace
+  activeOffer: getActiveOffer(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onMouseEnter: (place) => {
-    dispatch(setActivePlaceAction(place));
+    dispatch(ActionCreator.setActiveOffer(place));
   },
   onMouseLeave: () => {
-    dispatch(setActivePlaceAction(null));
+    dispatch(ActionCreator.setActiveOffer(null));
   }
 });
 

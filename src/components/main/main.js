@@ -6,10 +6,13 @@ import CitiesMap from '../cities-map/cities-map';
 import CitiesList from '../cities-list/cities-list';
 import PlacesSorting from '../places-sorting/places-sorting';
 import EmptyMain from '../empty-main/empty-main';
+import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
+import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 
 const Main = (props) => {
   const {places, city} = props;
   const placesAmount = places.length;
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -47,7 +50,7 @@ const Main = (props) => {
               <div className="cities__places-container container">
                 <section className="cities__places places">
                   <h2 className="visually-hidden">Places</h2>
-                  <b className="places__found">{placesAmount} places to stay in {city}</b>
+                  <b className="places__found">{placesAmount} places to stay in {city.name}</b>
                   <PlacesSorting />
                   <CitiesPlaceCardList />
                 </section>
@@ -72,7 +75,7 @@ const Main = (props) => {
 Main.propTypes = {
   places: PropTypes.arrayOf(
       PropTypes.shape({
-        id: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
         propertyName: PropTypes.string.isRequired,
         propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
         propertyText: PropTypes.arrayOf(PropTypes.string),
@@ -88,12 +91,7 @@ Main.propTypes = {
           isSuper: PropTypes.bool
         }).isRequired,
         titlePhoto: PropTypes.string.isRequired,
-        photos: PropTypes.arrayOf(
-            PropTypes.shape({
-              title: PropTypes.string,
-              id: PropTypes.string
-            })
-        ),
+        photos: PropTypes.arrayOf(PropTypes.string).isRequired,
         reviews: PropTypes.arrayOf(
             PropTypes.shape({
               id: PropTypes.string,
@@ -106,12 +104,12 @@ Main.propTypes = {
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ),
-  city: PropTypes.string.isRequired
+  city: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  places: state.places,
-  city: state.city
+  places: getCityOffers(state),
+  city: getCurrentCity(state)
 });
 
 export default connect(mapStateToProps)(Main);
