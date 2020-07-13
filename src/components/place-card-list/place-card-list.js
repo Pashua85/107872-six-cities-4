@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
+import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {connect} from 'react-redux';
 
 class PlaceCardList extends React.PureComponent {
@@ -122,7 +123,7 @@ PlaceCardList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  activeOffer: state.activeOffer
+  activeOffer: getActiveOffer(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -44,7 +44,7 @@ const PlaceCard = (props) => {
           ) : null
         }
         <div className={`${imageClass} place-card__image-wrapper`}>
-          <img className="place-card__image" src={`img/${titlePhoto}`} width="260" height="200" alt="Place image" />
+          <img className="place-card__image" src={titlePhoto} width="260" height="200" alt="Place image" />
         </div>
         <div className="place-card__info">
           <div className="place-card__price-wrapper">
