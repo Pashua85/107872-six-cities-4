@@ -1,7 +1,7 @@
 import React from 'react';
 import PropsTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {sortPlacesAction} from '../action-creators/action-creators';
+import ActionCreator from '../store/action-creator/action-creator';
 
 const withSortingOptions = (Component) => {
   class WithSortingOptions extends React.PureComponent {
@@ -52,7 +52,7 @@ const withSortingOptions = (Component) => {
 
   const mapDispatchToProps = (dispatch) => ({
     onOptionClick: (option) => {
-      dispatch(sortPlacesAction(option));
+      dispatch(ActionCreator.setSortingOption(option));
     }
   });
   WithSortingOptions.displayName = `WithSortingOptions(${getDisplayName(Component)})`;

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import Map from '../map/map';
+import {getOffers} from '../../store/reducers/offersReducer/selectors';
+import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 
 const CitiesMap = (props) => {
   const {places, activePlace} = props;
@@ -53,8 +55,8 @@ CitiesMap.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  places: state.places,
-  activePlace: state.activePlace
+  places: getOffers(state),
+  activePlace: getActiveOffer(state)
 });
 
 export default connect(mapStateToProps)(CitiesMap);

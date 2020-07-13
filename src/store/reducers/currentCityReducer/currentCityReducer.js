@@ -1,8 +1,8 @@
-import {CHANGE_CITY} from '../../actions/actions';
+import {SET_CURRENT_CITY} from '../../action-types/action-types';
 
 function cityReducer(state, action) {
   switch (action.type) {
-    case CHANGE_CITY: {
+    case SET_CURRENT_CITY: {
       return action.city;
     }
     default: {

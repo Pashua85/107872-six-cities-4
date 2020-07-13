@@ -1,24 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {changeCityAction, getPlacesAction} from '../../action-creators/action-creators';
+import ActionCreator from '../../store/action-creator/action-creator';
+import {getCities} from '../../store/reducers/citiesReducer/selectors';
+import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
 
 const CitiesList = (props) => {
-  const {cities, city, onClick} = props;
-  const list = cities.map((c) => {
-    if (c.cityName === city) {
+  const {cities, currentCity, onClick} = props;
+  const list = cities.map((city) => {
+    if (city === currentCity) {
       return (
-        <li className="locations__item" key={c.id}>
+        <li className="locations__item" key={city}>
           <a className="locations__item-link tabs__item tabs__item--active">
-            <span>{c.cityName}</span>
+            <span>{city}</span>
           </a>
         </li>
       );
     } else {
       return (
-        <li className="locations__item" key={c.id}>
-          <a className="locations__item-link tabs__item" href="#" onClick={() => onClick(c.cityName)}>
-            <span>{c.cityName}</span>
+        <li className="locations__item" key={city}>
+          <a className="locations__item-link tabs__item" href="#" onClick={() => onClick(city)}>
+            <span>{city}</span>
           </a>
         </li>
       );
@@ -34,20 +36,19 @@ const CitiesList = (props) => {
 };
 
 CitiesList.propTypes = {
-  city: PropTypes.string.isRequired,
+  currentCity: PropTypes.string.isRequired,
   cities: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  city: state.city,
-  cities: state.cities
+  currentCity: getCurrentCity(state),
+  cities: getCities(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onClick: (city) => {
-    dispatch(changeCityAction(city));
-    dispatch(getPlacesAction(city));
+    dispatch(ActionCreator.setCurrentCity(city));
   }
 });
 

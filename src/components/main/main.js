@@ -6,6 +6,8 @@ import CitiesMap from '../cities-map/cities-map';
 import CitiesList from '../cities-list/cities-list';
 import PlacesSorting from '../places-sorting/places-sorting';
 import EmptyMain from '../empty-main/empty-main';
+import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
+import {getOffers} from '../../store/reducers/offersReducer/selectors';
 
 const Main = (props) => {
   const {places, city} = props;
@@ -110,8 +112,8 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  places: state.places,
-  city: state.city
+  places: getOffers(state),
+  city: getCurrentCity(state)
 });
 
 export default connect(mapStateToProps)(Main);

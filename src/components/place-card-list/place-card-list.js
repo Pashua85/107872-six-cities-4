@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
-import {setActivePlaceAction} from '../../action-creators/action-creators';
+import ActionCreator from '../../store/action-creator/action-creator';
 import {connect} from 'react-redux';
 
 class PlaceCardList extends React.PureComponent {
@@ -11,13 +11,13 @@ class PlaceCardList extends React.PureComponent {
   }
 
   render() {
-    const {places, className, onMouseEnter, onMouseLeave, activePlace} = this.props;
+    const {places, className, onMouseEnter, onMouseLeave, activeOffer} = this.props;
     if (className === `cities__places-list`) {
       return (
         <div className={`${className} places__list tabs__content`}>
           {
             places.map((place) => {
-              if (place === activePlace) {
+              if (place === activeOffer) {
                 return (
                   <CitiesPlaceCard
                     key={place.id}
@@ -47,7 +47,7 @@ class PlaceCardList extends React.PureComponent {
         <div className={`${className} places__list`}>
           {
             places.map((place) => {
-              if (place === activePlace) {
+              if (place === activeOffer) {
                 return (
                   <NearPlaceCard
                     key={place.id}
@@ -118,19 +118,19 @@ PlaceCardList.propTypes = {
   className: PropTypes.string.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
-  activePlace: PropTypes.object
+  activeOffer: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
-  activePlace: state.activePlace
+  activeOffer: state.activeOffer
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onMouseEnter: (place) => {
-    dispatch(setActivePlaceAction(place));
+    dispatch(ActionCreator.setActiveOffer(place));
   },
   onMouseLeave: () => {
-    dispatch(setActivePlaceAction(null));
+    dispatch(ActionCreator.setActiveOffer(null));
   }
 });
 

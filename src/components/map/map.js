@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import leaflet from 'leaflet';
-import {setActivePlaceAction} from '../../action-creators/action-creators';
+import ActionCreator from '../../store/action-creator/action-creator';
 
 class Map extends React.PureComponent {
   constructor(props) {
@@ -144,10 +144,10 @@ Map.propTypes = {
 
 const mapDispatchToProps = (dispatch) => ({
   onMarkerHover: (place) => {
-    dispatch(setActivePlaceAction(place));
+    dispatch(ActionCreator.setActiveOffer(place));
   },
   onMarkerUnhover: () => {
-    dispatch(setActivePlaceAction(null));
+    dispatch(ActionCreator.setActiveOffer(null));
   }
 });
 
