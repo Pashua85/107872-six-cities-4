@@ -82,7 +82,7 @@ PlaceCard.defaultProps = {
 
 PlaceCard.propTypes = {
   place: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     propertyName: PropTypes.string.isRequired,
     propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
     propertyText: PropTypes.arrayOf(PropTypes.string),
@@ -98,12 +98,7 @@ PlaceCard.propTypes = {
       isSuper: PropTypes.bool
     }).isRequired,
     titlePhoto: PropTypes.string.isRequired,
-    photos: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-          id: PropTypes.string
-        })
-    ),
+    photos: PropTypes.arrayOf(PropTypes.string).isRequired,
     reviews: PropTypes.arrayOf(
         PropTypes.shape({
           id: PropTypes.string,

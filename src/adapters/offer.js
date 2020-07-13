@@ -8,6 +8,7 @@ export const createOffer = (data) => {
     propertyType: data.type,
     propertyText: data.desription,
     price: data.price,
+    rating: data.rating,
     isPremium: data.is_premium,
     bedroomsAmount: data.bedrooms,
     guestMax: data.max_adults,

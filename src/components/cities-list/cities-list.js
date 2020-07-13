@@ -37,7 +37,7 @@ const CitiesList = (props) => {
 };
 
 CitiesList.propTypes = {
-  currentCity: PropTypes.string.isRequired,
+  currentCity: PropTypes.object.isRequired,
   cities: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired
 };
