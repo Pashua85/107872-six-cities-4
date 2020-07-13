@@ -15,15 +15,18 @@ class Map extends React.PureComponent {
   }
 
   componentDidMount() {
-    const city = [52.38333, 4.9];
-    const zoom = 12;
+    // const city = [52.38333, 4.9];
+
+    const {city} = this.props;
+    const cityCoords = [city.location.latitude, city.location.longitude];
+    const zoom = city.location.zoom;
     this.map = leaflet.map(this.mapRef.current, {
-      center: city,
+      center: cityCoords,
       zoom,
       zoomControl: false,
       marker: true
     });
-    this.map.setView(city, zoom);
+    this.map.setView(cityCoords, zoom);
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
@@ -72,9 +75,14 @@ class Map extends React.PureComponent {
     this.props.onMarkerUnhover();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     this.simpleMarkers.clearLayers();
     this.activeMarker.clearLayers();
+
+    if (this.props.city.name !== prevProps.city.name) {
+      const {city} = this.props;
+      this.map.setView(new leaflet.LatLng(city.location.latitude, city.location.longitude));
+    }
 
     this.renderMarkers();
   }
@@ -139,7 +147,8 @@ Map.propTypes = {
   className: PropTypes.string,
   currentPlace: PropTypes.object,
   onMarkerHover: PropTypes.func,
-  onMarkerUnhover: PropTypes.func
+  onMarkerUnhover: PropTypes.func,
+  city: PropTypes.object
 };
 
 const mapDispatchToProps = (dispatch) => ({

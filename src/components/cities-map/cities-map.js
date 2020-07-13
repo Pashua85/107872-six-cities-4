@@ -4,13 +4,14 @@ import {connect} from 'react-redux';
 import Map from '../map/map';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
+import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
 
 const CitiesMap = (props) => {
-  const {places, activePlace} = props;
+  const {places, activePlace, currentCity} = props;
   const otherPlaces = places.filter((p) => p !== activePlace);
 
   return (
-    <Map className="cities__map" places={otherPlaces} currentPlace={activePlace} />
+    <Map className="cities__map" places={otherPlaces} currentPlace={activePlace} city={currentCity} />
   );
 };
 
@@ -51,12 +52,14 @@ CitiesMap.propTypes = {
         coords: PropTypes.arrayOf(PropTypes.number).isRequired
       })
   ),
-  activePlace: PropTypes.object
+  activePlace: PropTypes.object,
+  currentCity: PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
   places: getCityOffers(state),
-  activePlace: getActiveOffer(state)
+  activePlace: getActiveOffer(state),
+  currentCity: getCurrentCity(state)
 });
 
 export default connect(mapStateToProps)(CitiesMap);
