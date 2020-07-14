@@ -70,9 +70,9 @@ const OfferDetails = (props) => {
           <div className="property__gallery-container container">
             <div className="property__gallery">
               {
-                photos.map((photo) => (
-                  <div className="property__image-wrapper" key={photo.id}>
-                    <img className="property__image" src={`img/${photo.title}`} alt={photo.title} />
+                photos.map((photo, i) => (
+                  <div className="property__image-wrapper" key={i}>
+                    <img className="property__image" src={`${photo}`} alt={photo} />
                   </div>
                 ))
               }
@@ -153,13 +153,10 @@ const OfferDetails = (props) => {
                   </span>
                 </div>
                 <div className="property__description">
-                  {
-                    propertyText.map((text) => (
-                      <p className="property__text" key={text}>
-                        {text}
-                      </p>
-                    ))
-                  }
+                  <p className="property__text">
+                    {propertyText}
+                  </p>
+
                 </div>
               </div>
               <section className="property__reviews reviews">
@@ -215,7 +212,7 @@ const OfferDetails = (props) => {
             </div>
           </div>
           <div className="container">
-            <PropertyMap places={nearPlaces} currentPlace={place} />
+            <PropertyMap places={nearPlaces} currentPlace={place} city={place.city} />
           </div>
         </section>
         <div className="container">
@@ -230,40 +227,7 @@ const OfferDetails = (props) => {
 };
 
 OfferDetails.propTypes = {
-  place: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    propertyName: PropTypes.string.isRequired,
-    propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
-    propertyText: PropTypes.arrayOf(PropTypes.string),
-    price: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    isPremium: PropTypes.bool.isRequired,
-    bedroomsAmount: PropTypes.number.isRequired,
-    guestMax: PropTypes.number.isRequired,
-    propertyItems: PropTypes.arrayOf(PropTypes.string),
-    host: PropTypes.shape({
-      name: PropTypes.string,
-      avatar: PropTypes.string,
-      isSuper: PropTypes.bool
-    }).isRequired,
-    titlePhoto: PropTypes.string.isRequired,
-    photos: PropTypes.arrayOf(
-        PropTypes.shape({
-          title: PropTypes.string,
-          id: PropTypes.string
-        })
-    ),
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          id: PropTypes.string,
-          userName: PropTypes.string,
-          avatar: PropTypes.string,
-          rating: PropTypes.number,
-          text: PropTypes.string
-        })
-    ),
-    coords: PropTypes.arrayOf(PropTypes.number).isRequired
-  }),
+  place: PropTypes.object.isRequired,
   nearPlaces: PropTypes.array.isRequired
 };
 
