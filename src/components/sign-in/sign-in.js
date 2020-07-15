@@ -61,4 +61,6 @@ SignIn.propTypes = {
 };
 
 export default withAuthData(SignIn);
+export {SignIn};
+
 

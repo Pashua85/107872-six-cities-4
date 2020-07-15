@@ -52,7 +52,7 @@ const Header = (props) => {
 
 Header.propTypes = {
   authStatus: PropTypes.string.isRequired,
-  user: PropTypes.oneOfType([null, PropTypes.object])
+  user: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object])
 };
 
 const mapStateToProps = (state) => ({
