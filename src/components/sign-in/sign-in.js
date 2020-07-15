@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withAuthData from '../../hocs/withAuthData';
 
 const SignIn = (props) => {
-  const {email, password, onEmailChange, onPasswordChange} = props;
+  const {email, password, onEmailChange, onPasswordChange, onSignInClick} = props;
 
   return (
     <div className="page page--gray page--login">
@@ -43,7 +43,19 @@ const SignIn = (props) => {
                 <label className="visually-hidden">Password</label>
                 <input className="login__input form__input" type="password" name="password" placeholder="Password" required="" value={password} onChange={onPasswordChange} />
               </div>
-              <button className="login__submit form__submit button" type="submit">Sign in</button>
+              <button
+                className="login__submit form__submit button"
+                type="submit"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onSignInClick({
+                    email,
+                    password
+                  });
+                }}
+              >
+                Sign in
+              </button>
             </form>
           </section>
           <section className="locations locations--login locations--current">
@@ -63,7 +75,8 @@ SignIn.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   onEmailChange: PropTypes.func.isRequired,
-  onPasswordChange: PropTypes.func.isRequired
+  onPasswordChange: PropTypes.func.isRequired,
+  onSignInClick: PropTypes.func.isRequired
 };
 
 export default withAuthData(SignIn);

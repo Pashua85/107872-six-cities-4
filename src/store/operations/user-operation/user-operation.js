@@ -10,6 +10,19 @@ const UserOperation = {
       .catch((err) => {
         throw err;
       });
+  },
+  login: (authData) => (dispatch, getState, api) => {
+    return api.post(`/login`, {
+      email: authData.email,
+      password: authData.password
+    })
+      .then((response) => {
+        dispatch(ActionCreator.requireAuthorization(AUTH_STATUS.AUTH));
+        console.log(response);
+      })
+      .catch((err) => {
+        throw err;
+      });
   }
 };
 
