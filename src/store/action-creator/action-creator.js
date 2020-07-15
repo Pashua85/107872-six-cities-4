@@ -3,7 +3,8 @@ import {
   SET_ACTIVE_OFFER,
   SET_SORTING_OPTION,
   LOAD_OFFERS,
-  REQUIRE_AUTHORIZATION
+  REQUIRE_AUTHORIZATION,
+  SET_USER
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -26,6 +27,10 @@ const ActionCreator = {
   requireAuthorization: (status) => ({
     type: REQUIRE_AUTHORIZATION,
     payload: status
+  }),
+  setUser: (user) => ({
+    type: SET_USER,
+    user
   })
 };
 

@@ -4,7 +4,8 @@ const NameSpace = {
   CURRENT_CITY: `CURRENT_CITY`,
   OFFERS: `OFFERS`,
   SORTING_OPTION: `SORTING_OPTION`,
-  AUTH_STATUS: `AUTH_STATUS`
+  AUTH_STATUS: `AUTH_STATUS`,
+  USER: `USER`
 };
 
 export default NameSpace;

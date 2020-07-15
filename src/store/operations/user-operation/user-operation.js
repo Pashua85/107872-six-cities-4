@@ -18,7 +18,7 @@ const UserOperation = {
     })
       .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AUTH_STATUS.AUTH));
-        console.log(response);
+        dispatch(ActionCreator.setUser(response.data));
       })
       .catch((err) => {
         throw err;
