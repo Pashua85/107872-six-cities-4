@@ -17,8 +17,8 @@ const UserOperation = {
       password: authData.password
     })
       .then((response) => {
-        dispatch(ActionCreator.requireAuthorization(AUTH_STATUS.AUTH));
         dispatch(ActionCreator.setUser(response.data));
+        dispatch(ActionCreator.requireAuthorization(AUTH_STATUS.AUTH));
       })
       .catch((err) => {
         throw err;
