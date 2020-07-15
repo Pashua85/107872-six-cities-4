@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import ActionCreator from '../store/action-creator/action-creator';
+import {Redirect} from 'react-router-dom';
 import UserOperation from '../store/operations/user-operation/user-operation';
+import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
+import {AUTH_STATUS} from '../store/reducers/authStatusReducer/authStatusReducer';
 
 const withAuthData = (Component) => {
   class WithAuthData extends React.PureComponent {
@@ -32,6 +34,10 @@ const withAuthData = (Component) => {
     }
 
     render() {
+      const {authStatus} = this.props;
+      if (authStatus === AUTH_STATUS.AUTH) {
+        return <Redirect to="/" />;
+      }
       return (
         <Component
           {...this.props}
@@ -46,8 +52,13 @@ const withAuthData = (Component) => {
   }
 
   WithAuthData.propTypes = {
-    onSignInClick: PropTypes.func.isRequired
+    onSignInClick: PropTypes.func.isRequired,
+    authStatus: PropTypes.string.isRequired
   };
+
+  const mapStateToProps = (state) => ({
+    authStatus: getAuthStatus(state)
+  });
 
   const mapDispatchToProps = (dispatch) => ({
     onSignInClick: (authData) => {
@@ -56,7 +67,7 @@ const withAuthData = (Component) => {
   });
 
   WithAuthData.displayName = `WithAuthData(${getDisplayName(Component)})`;
-  return connect(null, mapDispatchToProps)(WithAuthData);
+  return connect(mapStateToProps, mapDispatchToProps)(WithAuthData);
 };
 
 function getDisplayName(WrappedComponent) {
