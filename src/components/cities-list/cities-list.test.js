@@ -12,7 +12,7 @@ Enzyme.configure({
 describe(`CitesList`, () => {
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <CitiesList city={`Berlin`} cities={cities} onClick={() => {}} />
+        <CitiesList currentCity={cities[0]} cities={cities} onClick={() => {}} />
     );
     expect(wrapper).toMatchSnapshot();
   });

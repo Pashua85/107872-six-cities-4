@@ -32,7 +32,7 @@ const Header = (props) => {
                   )
                 }
                 {
-                  authStatus === AUTH_STATUS.AUTH &&
+                  authStatus === AUTH_STATUS.AUTH && user !== null &&
                   (
                     <a className="header__nav-link header__nav-link--profile" href="#">
                       <div className="header__avatar-wrapper user__avatar-wrapper">

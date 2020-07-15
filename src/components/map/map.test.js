@@ -4,7 +4,8 @@ import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import Map from './map';
-import places from '../../mock/test-offers';
+import offers from '../../mock/test-offers';
+import cities from '../../mock/test-cities';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -17,7 +18,14 @@ describe(`Map`, () => {
 
     const wrapper = mount(
         <Provider store={store}>
-          <Map places={places} />
+          <Map
+            places={offers}
+            className={`ities__map`}
+            currentPlace={null}
+            onMarkerHover={() => {}}
+            onMarkerUnhover={() => {}}
+            city={cities[1]}
+          />
         </Provider>
     );
     expect(wrapper).toMatchSnapshot();

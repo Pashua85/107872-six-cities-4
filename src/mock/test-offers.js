@@ -1,6 +1,14 @@
 export default [
   {
-    id: `1`,
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    id: 1,
     propertyName: `Little house`,
     propertyType: `house`,
     propertyText: [
@@ -18,32 +26,7 @@ export default [
       isSuper: true
     },
     titlePhoto: `apartment-01.jpg`,
-    photos: [
-      {
-        title: `room.jpg`,
-        id: `01`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `02`
-      },
-      {
-        title: `apartment-02.jpg`,
-        id: `03`
-      },
-      {
-        title: `apartment-03.jpg`,
-        id: `04`
-      },
-      {
-        title: `studio-01.jpg`,
-        id: `05`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `06`
-      }
-    ],
+    photos: [`room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     reviews: [
       {
         id: `124`,
@@ -56,7 +39,15 @@ export default [
     coords: [52, 4.9]
   },
   {
-    id: `2`,
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    id: 2,
     propertyName: `Some comfortable room`,
     propertyType: `room`,
     propertyText: [
@@ -74,32 +65,7 @@ export default [
       isSuper: true
     },
     titlePhoto: `room.jpg`,
-    photos: [
-      {
-        title: `room.jpg`,
-        id: `01`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `02`
-      },
-      {
-        title: `apartment-02.jpg`,
-        id: `03`
-      },
-      {
-        title: `apartment-03.jpg`,
-        id: `04`
-      },
-      {
-        title: `studio-01.jpg`,
-        id: `05`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `06`
-      }
-    ],
+    photos: [`room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     reviews: [
       {
         id: `3048`,
@@ -112,7 +78,15 @@ export default [
     coords: [52, 4.8]
   },
   {
-    id: `3`,
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    id: 3,
     propertyName: `Some cozy place`,
     propertyType: `apartment`,
     propertyText: [
@@ -130,32 +104,7 @@ export default [
       isSuper: true
     },
     titlePhoto: `apartment-02.jpg`,
-    photos: [
-      {
-        title: `room.jpg`,
-        id: `01`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `02`
-      },
-      {
-        title: `apartment-02.jpg`,
-        id: `03`
-      },
-      {
-        title: `apartment-03.jpg`,
-        id: `04`
-      },
-      {
-        title: `studio-01.jpg`,
-        id: `05`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `06`
-      }
-    ],
+    photos: [`room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     reviews: [
       {
         id: `678`,
@@ -168,7 +117,15 @@ export default [
     coords: [52, 4.7]
   },
   {
-    id: `4`,
+    city: {
+      name: `Amsterdam`,
+      location: {
+        latitude: 52.37454,
+        longitude: 4.897976,
+        zoom: 13
+      }
+    },
+    id: 4,
     propertyName: `Luxirous appartment`,
     propertyType: `apartment`,
     propertyText: [
@@ -186,32 +143,7 @@ export default [
       isSuper: true
     },
     titlePhoto: `apartment-03.jpg`,
-    photos: [
-      {
-        title: `room.jpg`,
-        id: `01`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `02`
-      },
-      {
-        title: `apartment-02.jpg`,
-        id: `03`
-      },
-      {
-        title: `apartment-03.jpg`,
-        id: `04`
-      },
-      {
-        title: `studio-01.jpg`,
-        id: `05`
-      },
-      {
-        title: `apartment-01.jpg`,
-        id: `06`
-      }
-    ],
+    photos: [`room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     reviews: [
       {
         id: `234`,

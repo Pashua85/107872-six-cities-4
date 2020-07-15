@@ -4,7 +4,8 @@ import {AUTH_STATUS} from '../../reducers/authStatusReducer/authStatusReducer';
 const UserOperation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api.get(`/login`)
-      .then(() => {
+      .then((response) => {
+        dispatch(ActionCreator.setUser(response.data));
         dispatch(ActionCreator.requireAuthorization(AUTH_STATUS.AUTH));
       })
       .catch((err) => {
