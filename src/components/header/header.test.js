@@ -1,17 +1,19 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import App from './app';
+import {Header} from './header';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-describe(`App`, () => {
-  it(`renderer correctly`, () => {
+describe(`Header`, () => {
+  it(`should render correctly for guest`, () => {
     const wrapper = shallow(
-        <App />
+        <Header authStatus={`NO_AUTH`} user={{email: `email`}} />
     );
     expect(wrapper).toMatchSnapshot();
   });
 });
+
+

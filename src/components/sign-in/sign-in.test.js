@@ -1,18 +1,22 @@
 import React from 'react';
+import {SignIn} from './sign-in';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {CitiesList} from './cities-list';
-import cities from '../../mock/test-cities';
-
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-describe(`CitesList`, () => {
+describe(`SignIn`, () => {
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <CitiesList currentCity={cities[0]} cities={cities} onClick={() => {}} />
+        <SignIn
+          email={`some@email.ru`}
+          password={`1233`}
+          onEmailChange={() => {}}
+          onPasswordChange={() => {}}
+          onSignInClick={() => {}}
+        />
     );
     expect(wrapper).toMatchSnapshot();
   });

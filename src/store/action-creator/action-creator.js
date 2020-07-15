@@ -2,7 +2,9 @@ import {
   SET_CURRENT_CITY,
   SET_ACTIVE_OFFER,
   SET_SORTING_OPTION,
-  LOAD_OFFERS
+  LOAD_OFFERS,
+  REQUIRE_AUTHORIZATION,
+  SET_USER
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -21,6 +23,14 @@ const ActionCreator = {
   setSortingOption: (option) => ({
     type: SET_SORTING_OPTION,
     option
+  }),
+  requireAuthorization: (status) => ({
+    type: REQUIRE_AUTHORIZATION,
+    payload: status
+  }),
+  setUser: (user) => ({
+    type: SET_USER,
+    user
   })
 };
 

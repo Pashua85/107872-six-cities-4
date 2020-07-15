@@ -4,6 +4,8 @@ import activeOfferReducer from './activeOfferReducer/activeOfferReducer';
 import sortingOptionReducer from './sortingOptionReducer/sortingOptionReducer';
 import citiesReducer from './citiesReducer/citiesReducer';
 import offersReducer from './offersReducer/offersReducer';
+import authStatusReducer from './authStatusReducer/authStatusReducer';
+import userReducer from './userReducer/userReducer';
 import NameSpace from './name-space';
 
 export default combineReducers({
@@ -11,7 +13,9 @@ export default combineReducers({
   [NameSpace.CITIES]: citiesReducer,
   [NameSpace.CURRENT_CITY]: currentCityReducer,
   [NameSpace.OFFERS]: offersReducer,
-  [NameSpace.SORTING_OPTION]: sortingOptionReducer
+  [NameSpace.SORTING_OPTION]: sortingOptionReducer,
+  [NameSpace.AUTH_STATUS]: authStatusReducer,
+  [NameSpace.USER]: userReducer
 });
 
 

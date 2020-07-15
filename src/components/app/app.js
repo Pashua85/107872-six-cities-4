@@ -3,6 +3,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Main from '../main/main';
 import OfferDetails from '../offer-details/offer-details';
 import offers from '../../mock/offers';
+import SignIn from '../sign-in/sign-in';
 
 
 const App = () => {
@@ -17,6 +18,9 @@ const App = () => {
         </Route>
         <Route exact path="/dev-offer">
           <OfferDetails place={currentPlace} nearPlaces={nearPlaces} />
+        </Route>
+        <Route exact path="/dev-login">
+          <SignIn />
         </Route>
       </Switch>
     </BrowserRouter>
