@@ -7,6 +7,7 @@ import NearPlaceCardList from '../near-place-card-list/near-place-card-list';
 import Header from '../header/header';
 import {getOfferByParamsId} from '../../store/reducers/offersReducer/selectors';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
+import offers from '../../mock/offers';
 
 const OfferDetails = (props) => {
   const {
@@ -196,7 +197,7 @@ const OfferDetails = (props) => {
             </div>
           </div>
           <div className="container">
-            <PropertyMap places={nearPlaces} currentPlace={place} city={place.city} />
+            <PropertyMap currentPlace={place} city={place.city} />
           </div>
         </section>
         <div className="container">

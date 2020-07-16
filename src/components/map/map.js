@@ -15,7 +15,6 @@ class Map extends React.PureComponent {
   }
 
   componentDidMount() {
-    // const city = [52.38333, 4.9];
 
     const {city} = this.props;
     const cityCoords = [city.location.latitude, city.location.longitude];
@@ -85,6 +84,8 @@ class Map extends React.PureComponent {
     }
 
     this.renderMarkers();
+
+    console.log(this.simpleMarkers);
   }
 
   componentWillUnmount() {
