@@ -6,6 +6,7 @@ import PropertyMap from '../property-map/property-map';
 import NearPlaceCardList from '../near-place-card-list/near-place-card-list';
 import Header from '../header/header';
 import {getOfferByParamsId} from '../../store/reducers/offersReducer/selectors';
+import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 
 const OfferDetails = (props) => {
   const {
@@ -123,11 +124,11 @@ const OfferDetails = (props) => {
                     host.isSuper ?
                       (
                         <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                          <img className="property__avatar user__avatar" src={`img/${host.avatar}`} width="74" height="74" alt="Host avatar" />
+                          <img className="property__avatar user__avatar" src={`/${host.avatar}`} width="74" height="74" alt="Host avatar" />
                         </div>
                       ) : (
                         <div className="property__avatar-wrapper user__avatar-wrapper">
-                          <img className="property__avatar user__avatar" src={`img/${host.avatar}`} width="74" height="74" alt="Host avatar" />
+                          <img className="property__avatar user__avatar" src={`/${host.avatar}`} width="74" height="74" alt="Host avatar" />
                         </div>
                       )
                   }
@@ -214,11 +215,9 @@ OfferDetails.propTypes = {
   nearPlaces: PropTypes.array.isRequired
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    place: getOfferByParamsId(state, ownProps.match.params.id),
-    nearPlaces: []
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  place: getOfferByParamsId(state, ownProps.match.params.id),
+  nearPlaces: getOffersNearby(state)
+});
 
 export default connect(mapStateToProps)(OfferDetails);

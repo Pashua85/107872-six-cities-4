@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
+import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {connect} from 'react-redux';
 
@@ -12,7 +13,7 @@ class PlaceCardList extends React.PureComponent {
   }
 
   render() {
-    const {places, className, onMouseEnter, onMouseLeave, activeOffer} = this.props;
+    const {places, className, onMouseEnter, onMouseLeave, activeOffer, onCardClick} = this.props;
     if (className === `cities__places-list`) {
       return (
         <div className={`${className} places__list tabs__content`}>
@@ -26,6 +27,7 @@ class PlaceCardList extends React.PureComponent {
                     onCardHover={onMouseEnter}
                     onCardUnhover={onMouseLeave}
                     styleObject={{opacity: `.6`}}
+                    onCardClick={onCardClick}
                   />
                 );
               } else {
@@ -36,6 +38,7 @@ class PlaceCardList extends React.PureComponent {
                     onCardHover={onMouseEnter}
                     onCardUnhover={onMouseLeave}
                     styleObject={{}}
+                    onCardClick={onCardClick}
                   />
                 );
               }
@@ -56,6 +59,7 @@ class PlaceCardList extends React.PureComponent {
                     onCardHover={() => {}}
                     onCardUnhover={() => {}}
                     styleObject={{opacity: `.6`}}
+                    onCardClick={onCardClick}
                   />
                 );
               } else {
@@ -66,6 +70,7 @@ class PlaceCardList extends React.PureComponent {
                     onCardHover={() => {}}
                     onCardUnhover={() => {}}
                     styleObject={{}}
+                    onCardClick={onCardClick}
                   />
                 );
               }
@@ -115,7 +120,8 @@ PlaceCardList.propTypes = {
   className: PropTypes.string.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
-  activeOffer: PropTypes.object
+  activeOffer: PropTypes.object,
+  onCardClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -128,6 +134,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onMouseLeave: () => {
     dispatch(ActionCreator.setActiveOffer(null));
+  },
+  onCardClick: (id) => {
+    dispatch(OffersOperation.loadOffersNearby(id));
   }
 });
 
