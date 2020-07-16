@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import ReviewsList from '../reviews-list/reviews-list';
 import PropertyMap from '../property-map/property-map';
 import NearPlaceCardList from '../near-place-card-list/near-place-card-list';
 import Header from '../header/header';
+import {getOfferByParamsId} from '../../store/reducers/offersReducer/selectors';
 
 const OfferDetails = (props) => {
   const {
@@ -18,11 +20,11 @@ const OfferDetails = (props) => {
     propertyItems,
     host,
     propertyText,
-    reviews
+    // reviews
   } = props.place;
   const {nearPlaces, place} = props;
 
-  const reviewsAmount = reviews.length;
+  // const reviewsAmount = reviews.length;
   const ratingStyle = {
     width: `${Math.floor(rating) * 20}%`
   };
@@ -141,8 +143,8 @@ const OfferDetails = (props) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsAmount}</span></h2>
-                <ReviewsList reviews={reviews} />
+                {/* <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsAmount}</span></h2>
+                <ReviewsList reviews={reviews} /> */}
                 <form className="reviews__form form" action="#" method="post">
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
                   <div className="reviews__rating-form form__rating">
@@ -212,4 +214,11 @@ OfferDetails.propTypes = {
   nearPlaces: PropTypes.array.isRequired
 };
 
-export default OfferDetails;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    place: getOfferByParamsId(state, ownProps.match.params.id),
+    nearPlaces: []
+  };
+};
+
+export default connect(mapStateToProps)(OfferDetails);

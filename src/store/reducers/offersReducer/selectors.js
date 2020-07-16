@@ -18,3 +18,12 @@ export const getCityOffers = createSelector(
     }
 );
 
+export const getOfferByParamsId = (state, id) => {
+  const offers = getOffers(state);
+  const offer = offers.find((of) => {
+    return of.id === parseInt(id, 10);
+  });
+  return createOffer(offer);
+};
+
+
