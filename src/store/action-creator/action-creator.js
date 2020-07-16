@@ -5,7 +5,8 @@ import {
   LOAD_OFFERS,
   REQUIRE_AUTHORIZATION,
   SET_USER,
-  LOAD_OFFERS_NEARBY
+  LOAD_OFFERS_NEARBY,
+  LOAD_COMMENTS
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -36,6 +37,10 @@ const ActionCreator = {
   loadOffersNearby: (offers) => ({
     type: LOAD_OFFERS_NEARBY,
     offers
+  }),
+  loadComments: (comments) => ({
+    type: LOAD_COMMENTS,
+    comments
   })
 };
 

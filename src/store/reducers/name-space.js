@@ -6,7 +6,8 @@ const NameSpace = {
   OFFERS_NEARBY: `OFFERS_NEARBY`,
   SORTING_OPTION: `SORTING_OPTION`,
   AUTH_STATUS: `AUTH_STATUS`,
-  USER: `USER`
+  USER: `USER`,
+  COMMENTS: `COMMENTS`
 };
 
 export default NameSpace;

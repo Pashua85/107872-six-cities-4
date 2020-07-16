@@ -7,6 +7,7 @@ import NearPlaceCardList from '../near-place-card-list/near-place-card-list';
 import Header from '../header/header';
 import {getOfferByParamsId} from '../../store/reducers/offersReducer/selectors';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
+import {getComments} from '../../store/reducers/commentsReducer/selectors';
 import offers from '../../mock/offers';
 
 const OfferDetails = (props) => {
@@ -22,11 +23,10 @@ const OfferDetails = (props) => {
     propertyItems,
     host,
     propertyText,
-    // reviews
   } = props.place;
-  const {nearPlaces, place} = props;
+  const {nearPlaces, place, reviews} = props;
 
-  // const reviewsAmount = reviews.length;
+  const reviewsAmount = reviews.length;
   const ratingStyle = {
     width: `${Math.floor(rating) * 20}%`
   };
@@ -145,8 +145,8 @@ const OfferDetails = (props) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                {/* <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsAmount}</span></h2>
-                <ReviewsList reviews={reviews} /> */}
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsAmount}</span></h2>
+                <ReviewsList reviews={reviews} />
                 <form className="reviews__form form" action="#" method="post">
                   <label className="reviews__label form__label" htmlFor="review">Your review</label>
                   <div className="reviews__rating-form form__rating">
@@ -197,7 +197,7 @@ const OfferDetails = (props) => {
             </div>
           </div>
           <div className="container">
-            <PropertyMap currentPlace={place} city={place.city} />
+            <PropertyMap currentPlace={place} city={place.city} places={nearPlaces} />
           </div>
         </section>
         <div className="container">
@@ -213,12 +213,14 @@ const OfferDetails = (props) => {
 
 OfferDetails.propTypes = {
   place: PropTypes.object.isRequired,
-  nearPlaces: PropTypes.array.isRequired
+  nearPlaces: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => ({
   place: getOfferByParamsId(state, ownProps.match.params.id),
-  nearPlaces: getOffersNearby(state)
+  nearPlaces: getOffersNearby(state),
+  reviews: getComments(state)
 });
 
 export default connect(mapStateToProps)(OfferDetails);

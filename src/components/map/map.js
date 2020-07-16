@@ -84,8 +84,6 @@ class Map extends React.PureComponent {
     }
 
     this.renderMarkers();
-
-    console.log(this.simpleMarkers);
   }
 
   componentWillUnmount() {
