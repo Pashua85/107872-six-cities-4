@@ -32,14 +32,15 @@ class Map extends React.PureComponent {
       })
       .addTo(this.map);
 
-    this.simpleMarkers = leaflet.layerGroup().addTo(this.map);
     this.activeMarker = leaflet.layerGroup().addTo(this.map);
+    this.simpleMarkers = leaflet.layerGroup().addTo(this.map);
 
     this.renderMarkers();
   }
 
   renderMarkers() {
     const {places, currentPlace} = this.props;
+
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
       iconSize: [27, 39],
@@ -75,8 +76,8 @@ class Map extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    this.simpleMarkers.clearLayers();
     this.activeMarker.clearLayers();
+    this.simpleMarkers.clearLayers();
 
     if (this.props.city.name !== prevProps.city.name) {
       const {city} = this.props;
