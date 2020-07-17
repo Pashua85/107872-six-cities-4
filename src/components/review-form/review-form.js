@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import withCommentText from '../../hocs/withCommentText';
 
 const ReviewForm = (props) => {
-  const {commentText, disabled, onCommentTextChange, onRatingChange} = props;
+  const {commentText, disabled, onCommentTextChange, onRatingChange, onFormSubmit} = props;
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form className="reviews__form form" onSubmit={onFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" onChange={onRatingChange} />
@@ -66,7 +66,8 @@ ReviewForm.propTypes = {
   commentText: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
   onCommentTextChange: PropTypes.func.isRequired,
-  onRatingChange: PropTypes.func.isRequired
+  onRatingChange: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired
 };
 
 export default withCommentText(ReviewForm);

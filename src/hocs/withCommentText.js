@@ -8,6 +8,7 @@ const withCommentText = (Component) => {
       this.checkIsDisabled = this.checkIsDisabled.bind(this);
       this.handleCommentTextChange = this.handleCommentTextChange.bind(this);
       this.handleRatingChange = this.handleRatingChange.bind(this);
+      this.handleFormSubmit = this.handleFormSubmit.bind(this);
 
       this.state = {
         commentText: ``,
@@ -43,6 +44,11 @@ const withCommentText = (Component) => {
       }
     }
 
+    handleFormSubmit(e) {
+      e.preventDefault();
+      console.log(`form was submit`);
+    }
+
     render() {
       const {commentText, disabled} = this.state;
       return (
@@ -52,6 +58,7 @@ const withCommentText = (Component) => {
           disabled={disabled}
           onCommentTextChange={this.handleCommentTextChange}
           onRatingChange={this.handleRatingChange}
+          onFormSubmit={this.handleFormSubmit}
         />
       );
     }

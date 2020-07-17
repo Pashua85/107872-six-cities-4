@@ -42,12 +42,12 @@ class Map extends React.PureComponent {
     const {places, currentPlace} = this.props;
 
     const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `/img/pin.svg`,
       iconSize: [27, 39],
       iconAnchor: [13.5, 39]
     });
     const currentIcon = leaflet.icon({
-      iconUrl: `img/pin-active.svg`,
+      iconUrl: `/img/pin-active.svg`,
       iconSize: [27, 39],
       iconAnchor: [13.5, 39]
     });
