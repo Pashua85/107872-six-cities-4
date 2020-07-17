@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {withRouter} from 'react-router';
 import withCommentText from '../../hocs/withCommentText';
 
 const ReviewForm = (props) => {
   const {commentText, disabled, onCommentTextChange, onRatingChange, onFormSubmit} = props;
+
   return (
     <form className="reviews__form form" onSubmit={onFormSubmit}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>

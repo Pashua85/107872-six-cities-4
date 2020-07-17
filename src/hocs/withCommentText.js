@@ -1,4 +1,6 @@
 import React from 'react';
+import {withRouter} from 'react-router';
+
 import PropTypes from 'prop-types';
 
 const withCommentText = (Component) => {
@@ -18,7 +20,7 @@ const withCommentText = (Component) => {
     }
 
     checkIsDisabled() {
-      if (this.state.commentText.length >= 50 && this.state.commentText.length <= 300) {
+      if (this.state.commentText.length >= 50 && this.state.commentText.length <= 300 && this.state.rating > 0) {
         this.setState({
           disabled: false
         });
@@ -32,14 +34,17 @@ const withCommentText = (Component) => {
     handleCommentTextChange(e) {
       this.setState({
         commentText: e.target.value
+      }, () => {
+        this.checkIsDisabled();
       });
-      this.checkIsDisabled();
     }
 
     handleRatingChange(e) {
       if (e.target.checked) {
         this.setState({
           rating: parseInt(e.target.value, 10)
+        }, () => {
+          this.checkIsDisabled();
         });
       }
     }
@@ -47,6 +52,7 @@ const withCommentText = (Component) => {
     handleFormSubmit(e) {
       e.preventDefault();
       console.log(`form was submit`);
+      console.log(this.props.match.params.id);
     }
 
     render() {
@@ -63,7 +69,7 @@ const withCommentText = (Component) => {
       );
     }
   }
-  return WithCommentText;
+  return withRouter(WithCommentText);
 };
 
 export default withCommentText;
