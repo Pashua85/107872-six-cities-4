@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Review = (props) => {
-  const {userName, avatar, rating, text} = props.review;
+  const {user, rating, comment, date} = props.review;
+  const dateString = new Date(date).toLocaleString(`en`, {
+    month: `long`,
+    year: `numeric`
+  });
   const ratingStyle = {
     width: `${Math.floor(rating) * 20}%`
   };
@@ -11,10 +15,10 @@ const Review = (props) => {
     <li className="reviews__item">
       <div className="reviews__user user">
         <div className="reviews__avatar-wrapper user__avatar-wrapper">
-          <img className="reviews__avatar user__avatar" src={avatar} width="54" height="54" alt="Reviews avatar" />
+          <img className="reviews__avatar user__avatar" src={user.avatar_url} width="54" height="54" alt="Reviews avatar" />
         </div>
         <span className="reviews__user-name">
-          {userName}
+          {user.name}
         </span>
       </div>
       <div className="reviews__info">
@@ -25,9 +29,9 @@ const Review = (props) => {
           </div>
         </div>
         <p className="reviews__text">
-          {text}
+          {comment}
         </p>
-        <time className="reviews__time" dateTime="2019-04-24">April 2019</time>
+        <time className="reviews__time" dateTime="2019-04-24">{dateString}</time>
       </div>
     </li>
   );
@@ -35,11 +39,11 @@ const Review = (props) => {
 
 Review.propTypes = {
   review: PropTypes.shape({
-    id: PropTypes.string,
-    userName: PropTypes.string,
-    avatar: PropTypes.string,
-    rating: PropTypes.number,
-    text: PropTypes.string
+    comment: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    user: PropTypes.object.isRequired
   }).isRequired
 };
 

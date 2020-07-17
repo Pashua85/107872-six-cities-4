@@ -4,7 +4,9 @@ import {
   SET_SORTING_OPTION,
   LOAD_OFFERS,
   REQUIRE_AUTHORIZATION,
-  SET_USER
+  SET_USER,
+  LOAD_OFFERS_NEARBY,
+  LOAD_COMMENTS
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -31,6 +33,14 @@ const ActionCreator = {
   setUser: (user) => ({
     type: SET_USER,
     user
+  }),
+  loadOffersNearby: (offers) => ({
+    type: LOAD_OFFERS_NEARBY,
+    offers
+  }),
+  loadComments: (comments) => ({
+    type: LOAD_COMMENTS,
+    comments
   })
 };
 

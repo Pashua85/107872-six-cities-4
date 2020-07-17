@@ -6,6 +6,12 @@ const OffersOperation = {
       .then((response) => {
         dispatch(ActionCreator.loadOffers(response.data));
       });
+  },
+  loadOffersNearby: (id) =>(dispatch, getState, api) => {
+    return api.get(`/hotels/${id}/nearby`)
+      .then((response) => {
+        dispatch(ActionCreator.loadOffersNearby(response.data));
+      });
   }
 };
 

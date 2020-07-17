@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const PlaceCard = (props) => {
-  const {propertyName, propertyType, price, isPremium, titlePhoto, rating} = props.place;
-  const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject} = props;
+  const {propertyName, propertyType, price, isPremium, titlePhoto, rating, id} = props.place;
+  const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject, onCardClick} = props;
   let propertyTypeString;
   switch (propertyType) {
     case `room`:
@@ -25,7 +25,7 @@ const PlaceCard = (props) => {
   };
 
   return (
-    <Link to="/dev-offer">
+    <Link to={`/dev-offer/${id}`}>
       <article
         className={`${cardClass} place-card`}
         onMouseEnter={() => {
@@ -35,6 +35,9 @@ const PlaceCard = (props) => {
           onCardUnhover();
         }}
         style={styleObject}
+        onClick={() => {
+          onCardClick(id.toString());
+        }}
       >
         {
           cardClass === `cities__place-card` && isPremium ? (
@@ -115,7 +118,8 @@ PlaceCard.propTypes = {
   onCardUnhover: PropTypes.func.isRequired,
   cardClass: PropTypes.string,
   imageClass: PropTypes.string,
-  styleObject: PropTypes.object
+  styleObject: PropTypes.object,
+  onCardClick: PropTypes.func.isRequired
 };
 
 export default PlaceCard;

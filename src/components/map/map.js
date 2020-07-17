@@ -15,7 +15,6 @@ class Map extends React.PureComponent {
   }
 
   componentDidMount() {
-    // const city = [52.38333, 4.9];
 
     const {city} = this.props;
     const cityCoords = [city.location.latitude, city.location.longitude];
@@ -33,21 +32,22 @@ class Map extends React.PureComponent {
       })
       .addTo(this.map);
 
-    this.simpleMarkers = leaflet.layerGroup().addTo(this.map);
     this.activeMarker = leaflet.layerGroup().addTo(this.map);
+    this.simpleMarkers = leaflet.layerGroup().addTo(this.map);
 
     this.renderMarkers();
   }
 
   renderMarkers() {
     const {places, currentPlace} = this.props;
+
     const icon = leaflet.icon({
-      iconUrl: `img/pin.svg`,
+      iconUrl: `/img/pin.svg`,
       iconSize: [27, 39],
       iconAnchor: [13.5, 39]
     });
     const currentIcon = leaflet.icon({
-      iconUrl: `img/pin-active.svg`,
+      iconUrl: `/img/pin-active.svg`,
       iconSize: [27, 39],
       iconAnchor: [13.5, 39]
     });
@@ -76,8 +76,8 @@ class Map extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    this.simpleMarkers.clearLayers();
     this.activeMarker.clearLayers();
+    this.simpleMarkers.clearLayers();
 
     if (this.props.city.name !== prevProps.city.name) {
       const {city} = this.props;

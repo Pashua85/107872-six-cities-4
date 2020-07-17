@@ -4,6 +4,7 @@ import Map from '../map/map';
 
 const PropertyMap = (props) => {
   const {places, currentPlace, city} = props;
+
   return (
     <Map className="property__map" places={places} currentPlace={currentPlace} city={city} />
   );

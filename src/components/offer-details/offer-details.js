@@ -1,9 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import ReviewsList from '../reviews-list/reviews-list';
 import PropertyMap from '../property-map/property-map';
 import NearPlaceCardList from '../near-place-card-list/near-place-card-list';
 import Header from '../header/header';
+import ReviewForm from '../review-form/review-form';
+import {getOfferByParamsId} from '../../store/reducers/offersReducer/selectors';
+import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
+import {getComments} from '../../store/reducers/commentsReducer/selectors';
+import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
+import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
 
 const OfferDetails = (props) => {
   const {
@@ -18,9 +25,8 @@ const OfferDetails = (props) => {
     propertyItems,
     host,
     propertyText,
-    reviews
   } = props.place;
-  const {nearPlaces, place} = props;
+  const {nearPlaces, place, reviews, authStatus} = props;
 
   const reviewsAmount = reviews.length;
   const ratingStyle = {
@@ -121,11 +127,11 @@ const OfferDetails = (props) => {
                     host.isSuper ?
                       (
                         <div className="property__avatar-wrapper property__avatar-wrapper--pro user__avatar-wrapper">
-                          <img className="property__avatar user__avatar" src={`img/${host.avatar}`} width="74" height="74" alt="Host avatar" />
+                          <img className="property__avatar user__avatar" src={`/${host.avatar}`} width="74" height="74" alt="Host avatar" />
                         </div>
                       ) : (
                         <div className="property__avatar-wrapper user__avatar-wrapper">
-                          <img className="property__avatar user__avatar" src={`img/${host.avatar}`} width="74" height="74" alt="Host avatar" />
+                          <img className="property__avatar user__avatar" src={`/${host.avatar}`} width="74" height="74" alt="Host avatar" />
                         </div>
                       )
                   }
@@ -142,58 +148,19 @@ const OfferDetails = (props) => {
               </div>
               <section className="property__reviews reviews">
                 <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviewsAmount}</span></h2>
-                <ReviewsList reviews={reviews} />
-                <form className="reviews__form form" action="#" method="post">
-                  <label className="reviews__label form__label" htmlFor="review">Your review</label>
-                  <div className="reviews__rating-form form__rating">
-                    <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars" type="radio" />
-                    <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use href="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars" type="radio" />
-                    <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use href="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars" type="radio" />
-                    <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use href="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars" type="radio" />
-                    <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use href="#icon-star"></use>
-                      </svg>
-                    </label>
-
-                    <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star" type="radio" />
-                    <label htmlFor="1-star" className="reviews__rating-label form__rating-label" title="terribly">
-                      <svg className="form__star-image" width="37" height="33">
-                        <use href="#icon-star"></use>
-                      </svg>
-                    </label>
-                  </div>
-                  <textarea className="reviews__textarea form__textarea" id="review" name="review" placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
-                  <div className="reviews__button-wrapper">
-                    <p className="reviews__help">
-                      To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
-                    </p>
-                    <button className="reviews__submit form__submit button" type="submit" disabled="">Submit</button>
-                  </div>
-                </form>
+                {
+                  reviews.length > 0 &&
+                  <ReviewsList reviews={reviews} />
+                }
+                {
+                  authStatus === AUTH_STATUS.AUTH &&
+                  <ReviewForm />
+                }
               </section>
             </div>
           </div>
           <div className="container">
-            <PropertyMap places={nearPlaces} currentPlace={place} city={place.city} />
+            <PropertyMap currentPlace={place} city={place.city} places={nearPlaces} />
           </div>
         </section>
         <div className="container">
@@ -209,7 +176,16 @@ const OfferDetails = (props) => {
 
 OfferDetails.propTypes = {
   place: PropTypes.object.isRequired,
-  nearPlaces: PropTypes.array.isRequired
+  nearPlaces: PropTypes.array.isRequired,
+  reviews: PropTypes.array.isRequired,
+  authStatus: PropTypes.string.isRequired
 };
 
-export default OfferDetails;
+const mapStateToProps = (state, ownProps) => ({
+  place: getOfferByParamsId(state, ownProps.match.params.id),
+  nearPlaces: getOffersNearby(state),
+  reviews: getComments(state),
+  authStatus: getAuthStatus(state)
+});
+
+export default connect(mapStateToProps)(OfferDetails);
