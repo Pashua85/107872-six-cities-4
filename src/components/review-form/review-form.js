@@ -58,5 +58,6 @@ ReviewForm.propTypes = {
 };
 
 export default withCommentText(ReviewForm);
+export {ReviewForm};
 
 
