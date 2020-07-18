@@ -1,6 +1,10 @@
 import React from 'react';
 import {withRouter} from 'react-router';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {getSendingComment} from '../store/reducers/sending-comment-reducer/selectors';
+import {getCommentError} from '../store/reducers/comment-error-reducer/selectors';
+import ActionCreator from '../store/action-creator/action-creator';
 
 const withCommentText = (Component) => {
   class WithCommentText extends React.PureComponent {
@@ -109,10 +113,7 @@ const withCommentText = (Component) => {
       this.setState({
         disabled: true
       });
-      setTimeout(() => {
-        this.setState({disabled: false});
-        this.clearForm();
-      }, 5000);
+      this.props.onFormSubmit();
     }
 
     render() {
@@ -130,8 +131,31 @@ const withCommentText = (Component) => {
       );
     }
   }
-  return withRouter(WithCommentText);
+
+  WithCommentText.propTypes = {
+    sendingComment: PropTypes.bool.isRequired,
+    commentError: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object]).isRequired,
+    onFormSubmit: PropTypes.func.isRequired
+  };
+
+  const mapStateToProps = (state) => ({
+    sendingComment: getSendingComment(state),
+    commentError: getCommentError(state)
+  });
+
+  const mapDispatchToProps = (dispatch) => ({
+    onFormSubmit: () => {
+      dispatch(ActionCreator.setSendingComment(true));
+    }
+  });
+
+  WithCommentText.displayName = `WithCommentText(${getDisplayName(Component)})`;
+  return connect(mapStateToProps, mapDispatchToProps)(withRouter(WithCommentText));
 };
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || `Component`;
+}
 
 export default withCommentText;
 
