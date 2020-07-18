@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import {getSendingComment} from '../store/reducers/sending-comment-reducer/selectors';
 import {getCommentError} from '../store/reducers/comment-error-reducer/selectors';
 import ActionCreator from '../store/action-creator/action-creator';
+import CommentsOperation from '../store/operations/comments-operation/comments-operation';
 
 const withCommentText = (Component) => {
   class WithCommentText extends React.PureComponent {
@@ -20,6 +21,7 @@ const withCommentText = (Component) => {
         commentText: ``,
         rating: 0,
         disabled: true,
+        errorMessage: ``,
         radioButtons: [
           {
             value: `5`,
@@ -48,6 +50,31 @@ const withCommentText = (Component) => {
           }
         ]
       };
+    }
+
+    componentDidUpdate(prevProps) {
+      if (this.props.sendingComment !== prevProps.sendingComment && this.props.sendingComment === false) {
+        if (this.props.commentError === null) {
+          this.clearForm();
+        } else {
+          let errorMessage;
+          switch (this.props.commentError.status) {
+            case 401: {
+              errorMessage = `Оставлять комментарии могут только авторизированные пользователи`;
+              break;
+            }
+            case 404: {
+              errorMessage = `Сервер не отвечает, попробуйте позже`;
+              break;
+            }
+            default: {
+              errorMessage = `Что-то пошло не так, попробуйте ещё раз`;
+            }
+          }
+
+          this.setState({errorMessage});
+        }
+      }
     }
 
     checkIsDisabled() {
@@ -104,7 +131,8 @@ const withCommentText = (Component) => {
       }));
       this.setState({
         radioButtons: newRadioButtons,
-        commentText: ``
+        commentText: ``,
+        disabled: false
       });
     }
 
@@ -113,11 +141,15 @@ const withCommentText = (Component) => {
       this.setState({
         disabled: true
       });
-      this.props.onFormSubmit();
+      this.props.onFormSubmit(this.props.match.params.id, {
+        comment: this.state.commentText,
+        rating: this.state.rating
+      });
     }
 
     render() {
       const {commentText, disabled} = this.state;
+
       return (
         <Component
           {...this.props}
@@ -127,6 +159,7 @@ const withCommentText = (Component) => {
           onRatingChange={this.handleRatingChange}
           onFormSubmit={this.handleFormSubmit}
           radioButtons={this.state.radioButtons}
+          errorMessage={this.state.errorMessage}
         />
       );
     }
@@ -134,18 +167,22 @@ const withCommentText = (Component) => {
 
   WithCommentText.propTypes = {
     sendingComment: PropTypes.bool.isRequired,
-    commentError: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object]).isRequired,
-    onFormSubmit: PropTypes.func.isRequired
+    commentError: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object]),
+    onFormSubmit: PropTypes.func.isRequired,
+    match: PropTypes.object
   };
 
-  const mapStateToProps = (state) => ({
-    sendingComment: getSendingComment(state),
-    commentError: getCommentError(state)
-  });
+  const mapStateToProps = (state) => {
+    return {
+      sendingComment: getSendingComment(state),
+      commentError: getCommentError(state),
+    };
+  };
 
   const mapDispatchToProps = (dispatch) => ({
-    onFormSubmit: () => {
+    onFormSubmit: (id, commentData) => {
       dispatch(ActionCreator.setSendingComment(true));
+      dispatch(CommentsOperation.sendComment(id, commentData));
     }
   });
 

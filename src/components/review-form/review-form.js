@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withCommentText from '../../hocs/withCommentText';
 
 const ReviewForm = (props) => {
-  const {commentText, disabled, onCommentTextChange, onRatingChange, onFormSubmit, radioButtons} = props;
+  const {commentText, disabled, onCommentTextChange, onRatingChange, onFormSubmit, radioButtons, errorMessage} = props;
 
   return (
     <form className="reviews__form form" onSubmit={onFormSubmit}>
@@ -31,6 +31,12 @@ const ReviewForm = (props) => {
         onChange={onCommentTextChange}
       >
       </textarea>
+      {
+        errorMessage.length > 0 &&
+        <p className="reviews__help" style={{color: `firebrick`}}>
+          {errorMessage}
+        </p>
+      }
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
@@ -47,7 +53,8 @@ ReviewForm.propTypes = {
   onCommentTextChange: PropTypes.func.isRequired,
   onRatingChange: PropTypes.func.isRequired,
   onFormSubmit: PropTypes.func.isRequired,
-  radioButtons: PropTypes.array.isRequired
+  radioButtons: PropTypes.array.isRequired,
+  errorMessage: PropTypes.string.isRequired
 };
 
 export default withCommentText(ReviewForm);
