@@ -6,7 +6,9 @@ import {
   REQUIRE_AUTHORIZATION,
   SET_USER,
   LOAD_OFFERS_NEARBY,
-  LOAD_COMMENTS
+  LOAD_COMMENTS,
+  SET_SENDING_COMMENT,
+  SET_COMMENT_ERROR
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -41,6 +43,14 @@ const ActionCreator = {
   loadComments: (comments) => ({
     type: LOAD_COMMENTS,
     comments
+  }),
+  setSendingComment: (isSending) => ({
+    type: SET_SENDING_COMMENT,
+    isSending
+  }),
+  setCommentError: (error) => ({
+    type: SET_COMMENT_ERROR,
+    error
   })
 };
 

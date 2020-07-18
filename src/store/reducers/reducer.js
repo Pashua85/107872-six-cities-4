@@ -7,6 +7,8 @@ import offersReducer from './offersReducer/offersReducer';
 import authStatusReducer from './authStatusReducer/authStatusReducer';
 import userReducer from './userReducer/userReducer';
 import offersNearbyReducer from './offers-nearby-reducer/offers-nearby-reducer';
+import sendingCommentReducer from './sending-comment-reducer/sending-comment-reducer';
+import commentErrorReducer from './comment-error-reducer/comment-error-reducer';
 import NameSpace from './name-space';
 import commentsReducer from './commentsReducer/commentsReducer';
 
@@ -19,7 +21,9 @@ export default combineReducers({
   [NameSpace.AUTH_STATUS]: authStatusReducer,
   [NameSpace.USER]: userReducer,
   [NameSpace.OFFERS_NEARBY]: offersNearbyReducer,
-  [NameSpace.COMMENTS]: commentsReducer
+  [NameSpace.COMMENTS]: commentsReducer,
+  [NameSpace.SENDING_COMMENT]: sendingCommentReducer,
+  [NameSpace.COMMENT_ERROR]: commentErrorReducer
 });
 
 
