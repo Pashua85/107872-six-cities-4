@@ -2,11 +2,12 @@
 
 exports[`PlaceCard should render correctly 1`] = `
 <a
-  href="/dev-offer"
+  href="/dev-offer/1"
   onClick={[Function]}
 >
   <article
     className="cities__place-card place-card"
+    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >

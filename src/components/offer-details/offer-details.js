@@ -154,7 +154,7 @@ const OfferDetails = (props) => {
                 }
                 {
                   authStatus === AUTH_STATUS.AUTH &&
-                  <ReviewForm />
+                <ReviewForm />
                 }
               </section>
             </div>
@@ -189,3 +189,5 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 export default connect(mapStateToProps)(OfferDetails);
+export {OfferDetails};
+

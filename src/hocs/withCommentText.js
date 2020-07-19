@@ -1,7 +1,11 @@
 import React from 'react';
 import {withRouter} from 'react-router';
-
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {getSendingComment} from '../store/reducers/sending-comment-reducer/selectors';
+import {getCommentError} from '../store/reducers/comment-error-reducer/selectors';
+import ActionCreator from '../store/action-creator/action-creator';
+import CommentsOperation from '../store/operations/comments-operation/comments-operation';
 
 const withCommentText = (Component) => {
   class WithCommentText extends React.PureComponent {
@@ -11,12 +15,66 @@ const withCommentText = (Component) => {
       this.handleCommentTextChange = this.handleCommentTextChange.bind(this);
       this.handleRatingChange = this.handleRatingChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
+      this.clearForm = this.clearForm.bind(this);
 
       this.state = {
         commentText: ``,
         rating: 0,
-        disabled: true
+        disabled: true,
+        errorMessage: ``,
+        radioButtons: [
+          {
+            value: `5`,
+            id: `5-stars`,
+            checked: false,
+          },
+          {
+            value: `4`,
+            id: `4-stars`,
+            checked: false,
+          },
+          {
+            value: `3`,
+            id: `3-stars`,
+            checked: false,
+          },
+          {
+            value: `2`,
+            id: `2-stars`,
+            checked: false
+          },
+          {
+            value: `1`,
+            id: `1-star`,
+            checked: false
+          }
+        ]
       };
+    }
+
+    componentDidUpdate(prevProps) {
+      if (this.props.sendingComment !== prevProps.sendingComment && this.props.sendingComment === false) {
+        if (this.props.commentError === null) {
+          this.clearForm();
+        } else {
+          let errorMessage;
+          switch (this.props.commentError.status) {
+            case 401: {
+              errorMessage = `Оставлять комментарии могут только авторизированные пользователи`;
+              break;
+            }
+            case 404: {
+              errorMessage = `Сервер не отвечает, попробуйте позже`;
+              break;
+            }
+            default: {
+              errorMessage = `Что-то пошло не так, попробуйте ещё раз`;
+            }
+          }
+
+          this.setState({errorMessage});
+        }
+      }
     }
 
     checkIsDisabled() {
@@ -41,22 +99,57 @@ const withCommentText = (Component) => {
 
     handleRatingChange(e) {
       if (e.target.checked) {
+        const newRadioButtons = this.state.radioButtons.map((rb) => {
+          if (rb.value === e.target.value) {
+            return {
+              value: rb.value,
+              id: rb.id,
+              checked: true,
+            };
+          } else {
+            return {
+              value: rb.value,
+              id: rb.id,
+              checked: false
+            };
+          }
+        });
         this.setState({
-          rating: parseInt(e.target.value, 10)
+          rating: parseInt(e.target.value, 10),
+          radioButtons: newRadioButtons
         }, () => {
           this.checkIsDisabled();
         });
       }
     }
 
+    clearForm() {
+      const newRadioButtons = this.state.radioButtons.map((rb) => ({
+        value: rb.value,
+        id: rb.id,
+        checked: false
+      }));
+      this.setState({
+        radioButtons: newRadioButtons,
+        commentText: ``,
+        disabled: false
+      });
+    }
+
     handleFormSubmit(e) {
       e.preventDefault();
-      console.log(`form was submit`);
-      console.log(this.props.match.params.id);
+      this.setState({
+        disabled: true
+      });
+      this.props.onFormSubmit(this.props.match.params.id, {
+        comment: this.state.commentText,
+        rating: this.state.rating
+      });
     }
 
     render() {
       const {commentText, disabled} = this.state;
+
       return (
         <Component
           {...this.props}
@@ -65,12 +158,41 @@ const withCommentText = (Component) => {
           onCommentTextChange={this.handleCommentTextChange}
           onRatingChange={this.handleRatingChange}
           onFormSubmit={this.handleFormSubmit}
+          radioButtons={this.state.radioButtons}
+          errorMessage={this.state.errorMessage}
         />
       );
     }
   }
-  return withRouter(WithCommentText);
+
+  WithCommentText.propTypes = {
+    sendingComment: PropTypes.bool.isRequired,
+    commentError: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object]),
+    onFormSubmit: PropTypes.func.isRequired,
+    match: PropTypes.object
+  };
+
+  const mapStateToProps = (state) => {
+    return {
+      sendingComment: getSendingComment(state),
+      commentError: getCommentError(state),
+    };
+  };
+
+  const mapDispatchToProps = (dispatch) => ({
+    onFormSubmit: (id, commentData) => {
+      dispatch(ActionCreator.setSendingComment(true));
+      dispatch(CommentsOperation.sendComment(id, commentData));
+    }
+  });
+
+  WithCommentText.displayName = `WithCommentText(${getDisplayName(Component)})`;
+  return connect(mapStateToProps, mapDispatchToProps)(withRouter(WithCommentText));
 };
+
+function getDisplayName(WrappedComponent) {
+  return WrappedComponent.displayName || WrappedComponent.name || `Component`;
+}
 
 export default withCommentText;
 
