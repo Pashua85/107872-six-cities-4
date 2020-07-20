@@ -36,7 +36,8 @@ export default [
         text: `Nice place`
       }
     ],
-    coords: [52, 4.9]
+    coords: [52, 4.9],
+    isFavorite: true
   },
   {
     city: {
@@ -75,7 +76,8 @@ export default [
         text: `Nice place`
       }
     ],
-    coords: [52, 4.8]
+    coords: [52, 4.8],
+    isFavorite: false
   },
   {
     city: {
@@ -114,7 +116,8 @@ export default [
         text: `Nice place`
       }
     ],
-    coords: [52, 4.7]
+    coords: [52, 4.7],
+    isFavorite: false
   },
   {
     city: {
@@ -153,7 +156,8 @@ export default [
         text: `Nice place`
       }
     ],
-    coords: [52, 4.5]
+    coords: [52, 4.5],
+    isFavorite: false
   }
 ];
 
