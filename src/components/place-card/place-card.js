@@ -63,7 +63,8 @@ const PlaceCard = (props) => {
               type="button"
               onClick={(e) => {
                 e.preventDefault();
-                onFavoriteClick();
+                e.stopPropagation();
+                onFavoriteClick(id.toString());
               }}
             >
               <svg className="place-card__bookmark-icon" width="18" height="19">

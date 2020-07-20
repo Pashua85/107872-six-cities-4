@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 import Map from '../map/map';
 
 const PropertyMap = (props) => {
@@ -16,4 +18,10 @@ PropertyMap.propTypes = {
   city: PropTypes.object.isRequired
 };
 
-export default PropertyMap;
+const mapStateToProps = (state) => ({
+  places: getOffersNearby(state)
+});
+
+export default connect(mapStateToProps)(PropertyMap);
+export {PropertyMap};
+

@@ -8,7 +8,8 @@ import {
   LOAD_OFFERS_NEARBY,
   LOAD_COMMENTS,
   SET_SENDING_COMMENT,
-  SET_COMMENT_ERROR
+  SET_COMMENT_ERROR,
+  REPLACE_OFFER
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -51,6 +52,10 @@ const ActionCreator = {
   setCommentError: (error) => ({
     type: SET_COMMENT_ERROR,
     error
+  }),
+  replaceOffer: (offer) => ({
+    type: REPLACE_OFFER,
+    offer
   })
 };
 

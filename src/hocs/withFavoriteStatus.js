@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
+import OffersOperation from '../store/operations/offers-operation/offers-operation';
+
 
 const withFavoriteStatus = (Component) => {
   class WithFavoriteStatus extends React.PureComponent {
@@ -15,18 +17,22 @@ const withFavoriteStatus = (Component) => {
       };
     }
 
-    static getDerivedStateToProps(props, state) {
-      if (props.place.isFavorite !== state.isFavorite) {
-        return {
-          isFavorite: props.place.isFavorite
-        };
+    componentDidUpdate(prevPros) {
+      if (this.props.place.isFavorite !== prevPros.place.isFavorite) {
+        this.setState((prevState) => ({
+          isFavorite: !prevState.isFavorite
+        }));
       }
-      return null;
     }
 
-    handleFavoriteClick() {
+    handleFavoriteClick(id) {
       if (this.props.authStatus === `AUTH`) {
-        console.log(`Auth click`);
+        if (this.state.isFavorite) {
+          this.props.onDeleteFromFavorite(id);
+        }
+        if (!this.state.isFavorite) {
+          this.props.onAddToFavorite(id);
+        }
       } else {
         this.props.history.push(`/login`);
       }
@@ -46,15 +52,26 @@ const withFavoriteStatus = (Component) => {
   WithFavoriteStatus.propTypes = {
     place: PropTypes.object.isRequired,
     authStatus: PropTypes.string.isRequired,
-    history: PropTypes.object.isRequired
+    history: PropTypes.object.isRequired,
+    onAddToFavorite: PropTypes.func.isRequired,
+    onDeleteFromFavorite: PropTypes.func.isRequired
   };
 
   const mapStateToProps = (state) => ({
     authStatus: getAuthStatus(state)
   });
 
+  const mapDispatchToProps = (dispatch) => ({
+    onAddToFavorite: (id) => {
+      dispatch(OffersOperation.addToFavorite(id));
+    },
+    onDeleteFromFavorite: (id) => {
+      dispatch(OffersOperation.deleteFromFavorite(id));
+    }
+  });
+
   WithFavoriteStatus.displayName = `WithFavoriteStatus(${getDisplayName(Component)})`;
-  return connect(mapStateToProps)(withRouter(WithFavoriteStatus));
+  return connect(mapStateToProps, mapDispatchToProps)(withRouter(WithFavoriteStatus));
 };
 
 function getDisplayName(WrappedComponent) {
