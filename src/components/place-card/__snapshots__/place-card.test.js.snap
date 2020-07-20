@@ -2,7 +2,7 @@
 
 exports[`PlaceCard should render correctly 1`] = `
 <a
-  href="/dev-offer/1"
+  href="/offer/1"
   onClick={[Function]}
 >
   <article

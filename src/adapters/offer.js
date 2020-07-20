@@ -18,6 +18,7 @@ export const createOffer = (data) => {
     },
     titlePhoto: data.preview_image,
     photos: data.images,
-    coords: [data.location.latitude, data.location.longitude]
+    coords: [data.location.latitude, data.location.longitude],
+    isFavorite: data.is_favorite
   };
 };

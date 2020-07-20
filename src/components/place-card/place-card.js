@@ -1,10 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import withFavoriteStatus from '../../hocs/withFavoriteStatus';
 
 const PlaceCard = (props) => {
-  const {propertyName, propertyType, price, isPremium, titlePhoto, rating, id} = props.place;
-  const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject, onCardClick} = props;
+  const {propertyName, propertyType, price, isPremium, titlePhoto, rating, id, isFavorite} = props.place;
+  const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject, onCardClick, onFavoriteClick} = props;
   let propertyTypeString;
   switch (propertyType) {
     case `room`:
@@ -23,6 +24,8 @@ const PlaceCard = (props) => {
   const ratingStyle = {
     width: `${Math.floor(rating) * 20}%`
   };
+
+  const buttonClass = isFavorite ? `place-card__bookmark-button place-card__bookmark-button--active button` : `place-card__bookmark-button button`;
 
   return (
     <Link to={`/offer/${id}`}>
@@ -55,7 +58,14 @@ const PlaceCard = (props) => {
               <b className="place-card__price-value">&euro;{price}</b>
               <span className="place-card__price-text">&#47;&nbsp;night</span>
             </div>
-            <button className="place-card__bookmark-button button" type="button">
+            <button
+              className={buttonClass}
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                onFavoriteClick();
+              }}
+            >
               <svg className="place-card__bookmark-icon" width="18" height="19">
                 <use href="#icon-bookmark"></use>
               </svg>
@@ -119,9 +129,10 @@ PlaceCard.propTypes = {
   cardClass: PropTypes.string,
   imageClass: PropTypes.string,
   styleObject: PropTypes.object,
-  onCardClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired,
+  onFavoriteClick: PropTypes.func.isRequired
 };
 
-export default PlaceCard;
+export default withFavoriteStatus(PlaceCard);
 
 

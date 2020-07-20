@@ -16,6 +16,7 @@ describe(`PlaceCardList`, () => {
           className="cities__places-list"
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
+          onPageLeave={() => {}}
         />
     );
     expect(wrapper).toMatchSnapshot();
@@ -28,6 +29,7 @@ describe(`PlaceCardList`, () => {
           className="near-places__list"
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
+          onPageLeave={() => {}}
         />
     );
     expect(wrapper).toMatchSnapshot();
