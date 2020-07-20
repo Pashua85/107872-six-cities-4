@@ -25,7 +25,7 @@ const PlaceCard = (props) => {
   };
 
   return (
-    <Link to={`/dev-offer/${id}`}>
+    <Link to={`/offer/${id}`}>
       <article
         className={`${cardClass} place-card`}
         onMouseEnter={() => {
