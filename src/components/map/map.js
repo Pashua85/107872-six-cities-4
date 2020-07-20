@@ -41,27 +41,23 @@ class Map extends React.PureComponent {
   renderMarkers() {
     const {places, currentPlace} = this.props;
 
-    const icon = leaflet.icon({
-      iconUrl: `/img/pin.svg`,
-      iconSize: [27, 39],
-      iconAnchor: [13.5, 39]
-    });
-    const currentIcon = leaflet.icon({
-      iconUrl: `/img/pin-active.svg`,
-      iconSize: [27, 39],
-      iconAnchor: [13.5, 39]
+    const MarkerIcon = leaflet.Icon.extend({
+      options: {
+        iconSize: [27, 39],
+        iconAnchor: [13.5, 39]
+      }
     });
 
     places.forEach((place) => {
       const marker = leaflet
-        .marker(place.coords, {icon})
+        .marker(place.coords, {icon: new MarkerIcon({iconUrl: `/img/pin.svg`})})
         .addTo(this.simpleMarkers);
       marker.addEventListener(`mouseover`, () => this.handleMarkerHover(place));
       marker.addEventListener(`mouseout`, () => this.handleMarkerUnhover());
     });
     if (currentPlace !== null) {
       const marker = leaflet
-        .marker(currentPlace.coords, {currentIcon})
+        .marker(currentPlace.coords, {icon: new MarkerIcon({iconUrl: `/img/pin-active.svg`})})
         .addTo(this.activeMarker);
       marker.addEventListener(`mouseout`, () => this.handleMarkerUnhover());
     }
