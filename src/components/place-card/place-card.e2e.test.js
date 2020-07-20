@@ -1,7 +1,7 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import PlaceCard from './place-card';
+import {PlaceCard} from './place-card';
 import places from '../../mock/test-offers';
 
 Enzyme.configure({
@@ -16,6 +16,8 @@ describe(`PlaceCard`, () => {
           place={places[3]}
           onCardHover={onCardHover}
           onCardUnhover={() => {}}
+          onCardClick={() => {}}
+          onFavoriteClick={() => {}}
         />
     );
     wrapper

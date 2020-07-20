@@ -135,5 +135,6 @@ PlaceCard.propTypes = {
 };
 
 export default withFavoriteStatus(PlaceCard);
+export {PlaceCard};
 
 

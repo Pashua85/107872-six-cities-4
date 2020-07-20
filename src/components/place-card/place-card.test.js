@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import {MemoryRouter} from 'react-router-dom';
-import PlaceCard from './place-card';
+import {PlaceCard} from './place-card';
 import places from '../../mock/test-offers';
 
 describe(`PlaceCard`, () => {
@@ -9,7 +9,13 @@ describe(`PlaceCard`, () => {
     const tree = renderer
       .create(
           <MemoryRouter>
-            <PlaceCard place={places[0]} onCardHover={() => {}} onCardUnhover={() => {}} />
+            <PlaceCard
+              place={places[0]}
+              onCardHover={() => {}}
+              onCardUnhover={() => {}}
+              onCardClick={() => {}}
+              onFavoriteClick={() => {}}
+            />
           </MemoryRouter>
       )
       .toJSON();
