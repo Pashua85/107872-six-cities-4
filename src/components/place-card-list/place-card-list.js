@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 
 class PlaceCardList extends React.PureComponent {
   componentWillUnmount() {
-    this.props.onMouseLeave();
+    this.props.onPageLeave();
   }
 
   render() {
@@ -122,7 +122,8 @@ PlaceCardList.propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onMouseLeave: PropTypes.func.isRequired,
   activeOffer: PropTypes.object,
-  onCardClick: PropTypes.func.isRequired
+  onCardClick: PropTypes.func.isRequired,
+  onPageLeave: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -134,6 +135,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.setActiveOffer(place));
   },
   onMouseLeave: () => {
+    dispatch(ActionCreator.setActiveOffer(null));
+  },
+  onPageLeave: () => {
     dispatch(ActionCreator.setActiveOffer(null));
   },
   onCardClick: (id) => {

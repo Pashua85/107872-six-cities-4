@@ -26,7 +26,7 @@ const OfferDetails = (props) => {
     host,
     propertyText,
   } = props.place;
-  const {nearPlaces, place, reviews, authStatus} = props;
+  const {place, reviews, authStatus} = props;
 
   const reviewsAmount = reviews.length;
   const ratingStyle = {
@@ -160,13 +160,13 @@ const OfferDetails = (props) => {
             </div>
           </div>
           <div className="container">
-            <PropertyMap currentPlace={place} city={place.city} places={nearPlaces} />
+            <PropertyMap currentPlace={place} city={place.city} />
           </div>
         </section>
         <div className="container">
           <section className="near-places places">
             <h2 className="near-places__title">Other places in the neighbourhood</h2>
-            <NearPlaceCardList places={nearPlaces} />
+            <NearPlaceCardList />
           </section>
         </div>
       </main>

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import PlaceCardList from '../place-card-list/place-card-list';
-import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
+import {getSortedCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
 
 const CitiesPlaceCardList = (props) => {
@@ -47,7 +47,7 @@ CitiesPlaceCardList.propTypes = {
 
 const mapStateToProps = (state) => ({
   city: getCurrentCity(state),
-  places: getCityOffers(state)
+  places: getSortedCityOffers(state)
 });
 
 export default connect(mapStateToProps)(CitiesPlaceCardList);

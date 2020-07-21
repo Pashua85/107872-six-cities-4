@@ -2,7 +2,7 @@
 
 exports[`PlaceCard should render correctly 1`] = `
 <a
-  href="/dev-offer/1"
+  href="/offer/1"
   onClick={[Function]}
 >
   <article
@@ -51,7 +51,8 @@ exports[`PlaceCard should render correctly 1`] = `
           </span>
         </div>
         <button
-          className="place-card__bookmark-button button"
+          className="place-card__bookmark-button place-card__bookmark-button--active button"
+          onClick={[Function]}
           type="button"
         >
           <svg

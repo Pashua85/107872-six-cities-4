@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 import UserOperation from '../store/operations/user-operation/user-operation';
 import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
 import {AUTH_STATUS} from '../store/reducers/authStatusReducer/authStatusReducer';
@@ -34,9 +33,9 @@ const withAuthData = (Component) => {
     }
 
     render() {
-      const {authStatus} = this.props;
+      const {authStatus, history} = this.props;
       if (authStatus === AUTH_STATUS.AUTH) {
-        return <Redirect to="/" />;
+        history.push(`/`);
       }
       return (
         <Component
@@ -53,7 +52,8 @@ const withAuthData = (Component) => {
 
   WithAuthData.propTypes = {
     onSignInClick: PropTypes.func.isRequired,
-    authStatus: PropTypes.string.isRequired
+    authStatus: PropTypes.string.isRequired,
+    history: PropTypes.object.isRequired
   };
 
   const mapStateToProps = (state) => ({
