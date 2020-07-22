@@ -37,7 +37,8 @@ export default [
         text: `A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.`
       }
     ],
-    coords: [52.3909553943508, 4.85309666406198]
+    coords: [52.3909553943508, 4.85309666406198],
+    isFavorite: true
   },
   {
     city: {
@@ -97,7 +98,8 @@ export default [
     titlePhoto: `img/apartment-02.jpg`,
     photos: [`img/room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     reviews: [],
-    coords: [52.3909553943508, 4.929309666406198]
+    coords: [52.3909553943508, 4.929309666406198],
+    isFavorite: false
   },
   {
     city: {
@@ -127,6 +129,7 @@ export default [
     titlePhoto: `img/apartment-03.jpg`,
     photos: [`img/room.jpg`, `apartment-01.jpg`, `apartment-02.jpg`, `apartment-03.jpg`, `studio-01.jpg`, `apartment-01.jpg`],
     reviews: [],
-    coords: [52.3809553943508, 4.939309666406198]
+    coords: [52.3809553943508, 4.939309666406198],
+    isFavorite: false
   }
 ];

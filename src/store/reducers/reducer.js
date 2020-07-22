@@ -11,6 +11,7 @@ import sendingCommentReducer from './sending-comment-reducer/sending-comment-red
 import commentErrorReducer from './comment-error-reducer/comment-error-reducer';
 import NameSpace from './name-space';
 import commentsReducer from './commentsReducer/commentsReducer';
+import favoriteOffersReducer from './favorite-offers-reducer/favorite-offers-reducer';
 
 export default combineReducers({
   [NameSpace.ACTIVE_OFFER]: activeOfferReducer,
@@ -23,7 +24,8 @@ export default combineReducers({
   [NameSpace.OFFERS_NEARBY]: offersNearbyReducer,
   [NameSpace.COMMENTS]: commentsReducer,
   [NameSpace.SENDING_COMMENT]: sendingCommentReducer,
-  [NameSpace.COMMENT_ERROR]: commentErrorReducer
+  [NameSpace.COMMENT_ERROR]: commentErrorReducer,
+  [NameSpace.FAVORITE_OFFERS]: favoriteOffersReducer
 });
 
 

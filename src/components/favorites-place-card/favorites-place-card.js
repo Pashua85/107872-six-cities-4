@@ -17,7 +17,7 @@ FavoritesPlaceCard.propTypes = {
     id: PropTypes.number.isRequired,
     propertyName: PropTypes.string.isRequired,
     propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
-    propertyText: PropTypes.arrayOf(PropTypes.string),
+    propertyText: PropTypes.string,
     price: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     isPremium: PropTypes.bool.isRequired,
