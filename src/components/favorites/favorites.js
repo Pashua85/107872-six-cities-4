@@ -55,7 +55,7 @@ class Favorites extends React.PureComponent {
                       <div className="favorites__locations locations locations--current">
                         <div className="locations__item">
                           <a className="locations__item-link" href="#">
-                            <span>Amsterdam</span>
+                            <span>{c.city}</span>
                           </a>
                         </div>
                       </div>
