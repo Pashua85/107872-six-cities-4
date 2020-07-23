@@ -8,8 +8,17 @@ import {getCitiesWithFavoriteOffers} from '../../store/reducers/favorite-offers-
 
 
 class Favorites extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
+  }
+
   componentDidMount() {
     this.props.onComponentMount();
+  }
+
+  handleFavoriteClick(id) {
+    this.props.onDeleteFromFavorite(id);
   }
 
   render() {
@@ -99,6 +108,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onComponentMount: () => {
     dispatch(OffersOperation.loadFavoriteOffers());
+  },
+  onDeleteFromFavorite: (id) => {
+    dispatch(OffersOperation.deleteFromFavorite(id));
   }
 });
 

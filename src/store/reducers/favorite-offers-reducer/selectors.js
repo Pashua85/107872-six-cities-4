@@ -12,7 +12,6 @@ export const getCitiesWithFavoriteOffers = (state) => {
   }
 
   const offersWithUniqueCity = state[NameSpace.FAVORITE_OFFERS].filter((offer) => checkOffer(offer));
-  console.log(offersWithUniqueCity);
   const sortedCitiesList = offersWithUniqueCity.map((of) => of.city.name).sort();
   const citiesWiFavoritesOffers = sortedCitiesList.map((city) => {
     const cityOffers = state[NameSpace.FAVORITE_OFFERS].filter((of) => of.city.name === city);
