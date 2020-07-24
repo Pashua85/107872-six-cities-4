@@ -34,11 +34,11 @@ const Header = (props) => {
                 {
                   authStatus === AUTH_STATUS.AUTH && user !== null &&
                   (
-                    <a className="header__nav-link header__nav-link--profile" href="#">
+                    <Link className="header__nav-link header__nav-link--profile" to="/favorites">
                       <div className="header__avatar-wrapper user__avatar-wrapper">
                       </div>
                       <span className="header__user-name user__name">{user.email}</span>
-                    </a>
+                    </Link>
                   )
                 }
               </li>

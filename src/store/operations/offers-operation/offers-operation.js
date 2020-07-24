@@ -24,6 +24,12 @@ const OffersOperation = {
       .then((response) => {
         dispatch(ActionCreator.replaceOffer(response.data));
       });
+  },
+  loadFavoriteOffers: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        dispatch(ActionCreator.loadFavoriteOffers(response.data));
+      });
   }
 };
 

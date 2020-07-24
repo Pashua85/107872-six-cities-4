@@ -9,7 +9,8 @@ import {
   LOAD_COMMENTS,
   SET_SENDING_COMMENT,
   SET_COMMENT_ERROR,
-  REPLACE_OFFER
+  REPLACE_OFFER,
+  LOAD_FAVORITE_OFFERS
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -56,6 +57,10 @@ const ActionCreator = {
   replaceOffer: (offer) => ({
     type: REPLACE_OFFER,
     offer
+  }),
+  loadFavoriteOffers: (offers) => ({
+    type: LOAD_FAVORITE_OFFERS,
+    offers
   })
 };
 
