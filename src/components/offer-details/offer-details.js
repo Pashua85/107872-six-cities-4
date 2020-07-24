@@ -14,7 +14,6 @@ import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
 import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import CommentsOperation from '../../store/operations/comments-operation/comments-operation';
-import offers from '../../mock/offers';
 
 class OfferDetails extends React.PureComponent {
   componentDidMount() {

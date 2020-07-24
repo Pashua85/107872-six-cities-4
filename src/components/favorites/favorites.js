@@ -2,6 +2,7 @@ import React from 'react';
 import PropsTypes from 'prop-types';
 import Header from '../header/header';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import FavoritesPlaceCard from '../favorites-place-card/favorites-place-card';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import {getCitiesWithFavoriteOffers} from '../../store/reducers/favorite-offers-reducer/selectors';
@@ -91,9 +92,9 @@ class Favorites extends React.PureComponent {
           </div>
         </main>
         <footer className="footer container">
-          <a className="footer__logo-link" href="main.html">
+          <Link className="footer__logo-link" to="/">
             <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
-          </a>
+          </Link>
         </footer>
       </div>
     );
