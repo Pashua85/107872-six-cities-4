@@ -21,6 +21,9 @@ export const getCityOffers = createSelector(
 
 export const getOfferByParamsId = (state, id) => {
   const offers = getOffers(state);
+  if (offers.length === 0) {
+    return null;
+  }
   const offer = offers.find((of) => {
     return of.id === parseInt(id, 10);
   });

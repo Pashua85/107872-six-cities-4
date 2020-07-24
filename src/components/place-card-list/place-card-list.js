@@ -141,8 +141,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.setActiveOffer(null));
   },
   onCardClick: (id) => {
-    dispatch(OffersOperation.loadOffersNearby(id));
-    dispatch(CommentsOperation.loadComments(id));
+    // dispatch(OffersOperation.loadOffersNearby(id));
+    // dispatch(CommentsOperation.loadComments(id));
   }
 });
 

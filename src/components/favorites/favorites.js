@@ -1,11 +1,10 @@
 import React from 'react';
+import PropsTypes from 'prop-types';
 import Header from '../header/header';
 import {connect} from 'react-redux';
 import FavoritesPlaceCard from '../favorites-place-card/favorites-place-card';
-import offers from '../../mock/offers';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import {getCitiesWithFavoriteOffers} from '../../store/reducers/favorite-offers-reducer/selectors';
-
 
 class Favorites extends React.PureComponent {
   constructor(props) {
@@ -86,7 +85,7 @@ class Favorites extends React.PureComponent {
                     </li>
                   ))
                 }
-      
+
               </ul>
             </section>
           </div>
@@ -100,6 +99,12 @@ class Favorites extends React.PureComponent {
     );
   }
 }
+
+Favorites.propTypes = {
+  citiesWithFavoriteOffers: PropsTypes.array.isRequired,
+  onComponentMount: PropsTypes.func.isRequired,
+  onDeleteFromFavorite: PropsTypes.func.isRequired
+};
 
 const mapStateToProps = (state) => ({
   citiesWithFavoriteOffers: getCitiesWithFavoriteOffers(state)
