@@ -14,7 +14,14 @@ describe(`OfferDetails`, () => {
 
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <OfferDetails place={places[0]} nearPlaces={nearPlaces} authStatus={`AUTH`} reviews={reviews} />
+        <OfferDetails
+          place={places[0]}
+          nearPlaces={nearPlaces}
+          authStatus={`AUTH`}
+          reviews={reviews}
+          match={{params: {id: 1}}}
+          onComponentMount={() => {}}
+        />
     );
     expect(wrapper).toMatchSnapshot();
   });

@@ -5,7 +5,7 @@ import withFavoriteStatus from '../../hocs/withFavoriteStatus';
 
 const PlaceCard = (props) => {
   const {propertyName, propertyType, price, isPremium, titlePhoto, rating, id, isFavorite} = props.place;
-  const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject, onCardClick, onFavoriteClick, history} = props;
+  const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject, onFavoriteClick, history} = props;
   let propertyTypeString;
   switch (propertyType) {
     case `room`:
@@ -41,7 +41,6 @@ const PlaceCard = (props) => {
       }}
       style={styleObject}
       onClick={() => {
-        onCardClick(id.toString());
         history.push(`/offer/${id}`);
       }}
     >
@@ -132,7 +131,6 @@ PlaceCard.propTypes = {
   cardClass: PropTypes.string,
   imageClass: PropTypes.string,
   styleObject: PropTypes.object,
-  onCardClick: PropTypes.func.isRequired,
   onFavoriteClick: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired
 };

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
-import OffersOperation from '../../store/operations/offers-operation/offers-operation';
-import CommentsOperation from '../../store/operations/comments-operation/comments-operation';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {connect} from 'react-redux';
 
@@ -140,10 +138,6 @@ const mapDispatchToProps = (dispatch) => ({
   onPageLeave: () => {
     dispatch(ActionCreator.setActiveOffer(null));
   },
-  onCardClick: (id) => {
-    // dispatch(OffersOperation.loadOffersNearby(id));
-    // dispatch(CommentsOperation.loadComments(id));
-  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceCardList);

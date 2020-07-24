@@ -153,7 +153,6 @@ class OfferDetails extends React.PureComponent {
                     <p className="property__text">
                       {propertyText}
                     </p>
-  
                   </div>
                 </div>
                 <section className="property__reviews reviews">
