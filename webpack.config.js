@@ -7,6 +7,9 @@ module.exports = {
     publicPath: `/`,
     path: path.join(__dirname, `public`)
   },
+  resolve: {
+    extensions: [`.ts`, `.tsx`, `.js`, `.jsx`]
+  },
   devServer: {
     contentBase: path.join(__dirname, `public`),
     historyApiFallback: true,
@@ -16,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: {
           loader: `babel-loader`
