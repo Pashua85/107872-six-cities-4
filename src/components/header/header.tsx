@@ -16,7 +16,7 @@ interface HeaderProps {
   }
 }
 
-const Header = ({authStatus, user}: HeaderProps) => {
+const Header: React.FC<HeaderProps> = ({authStatus, user}) => {
 
   return (
     <header className="header">
