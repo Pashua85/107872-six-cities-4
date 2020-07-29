@@ -1,9 +1,19 @@
 import React from 'react';
-import {withRouter} from 'react-router';
-import PropTypes from 'prop-types';
+import {RouteComponentProps, withRouter} from 'react-router';
 import withFavoriteStatus from '../../hocs/withFavoriteStatus';
+import {IPlace} from '../../types/place';
 
-const PlaceCard = (props) => {
+type PlaceCardProps = RouteComponentProps<any> & {
+  place: IPlace,
+  onCardHover: (place: IPlace) => void,
+  onCardUnhover: () => void,
+  cardClass: string,
+  imageClass: string,
+  styleObject: object,
+  onFavoriteClick: (id: string) => void,
+}
+
+const PlaceCard: React.FC<PlaceCardProps> = (props) => {
   const {propertyName, propertyType, price, isPremium, titlePhoto, rating, id, isFavorite} = props.place;
   const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject, onFavoriteClick, history} = props;
   let propertyTypeString;
@@ -88,51 +98,6 @@ const PlaceCard = (props) => {
       </div>
     </article>
   );
-};
-
-PlaceCard.defaultProps = {
-  cardClass: `cities__place-card`,
-  imageClass: `cities__image-wrapper`
-};
-
-PlaceCard.propTypes = {
-  // place: PropTypes.shape({
-  //   id: PropTypes.number.isRequired,
-  //   propertyName: PropTypes.string.isRequired,
-  //   propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
-  //   propertyText: PropTypes.arrayOf(PropTypes.string),
-  //   price: PropTypes.number.isRequired,
-  //   rating: PropTypes.number.isRequired,
-  //   isPremium: PropTypes.bool.isRequired,
-  //   bedroomsAmount: PropTypes.number.isRequired,
-  //   guestMax: PropTypes.number.isRequired,
-  //   propertyItems: PropTypes.arrayOf(PropTypes.string),
-  //   host: PropTypes.shape({
-  //     name: PropTypes.string,
-  //     avatar: PropTypes.string,
-  //     isSuper: PropTypes.bool
-  //   }).isRequired,
-  //   titlePhoto: PropTypes.string.isRequired,
-  //   photos: PropTypes.arrayOf(PropTypes.string).isRequired,
-  //   reviews: PropTypes.arrayOf(
-  //       PropTypes.shape({
-  //         id: PropTypes.string,
-  //         userName: PropTypes.string,
-  //         avatar: PropTypes.string,
-  //         rating: PropTypes.number,
-  //         text: PropTypes.string
-  //       })
-  //   ),
-  //   coords: PropTypes.arrayOf(PropTypes.number).isRequired
-  // }),
-  place: PropTypes.object.isRequired,
-  onCardHover: PropTypes.func.isRequired,
-  onCardUnhover: PropTypes.func.isRequired,
-  cardClass: PropTypes.string,
-  imageClass: PropTypes.string,
-  styleObject: PropTypes.object,
-  onFavoriteClick: PropTypes.func.isRequired,
-  history: PropTypes.object.isRequired
 };
 
 export default withFavoriteStatus(withRouter(PlaceCard));
