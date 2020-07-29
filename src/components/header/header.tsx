@@ -1,13 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
 import {getUser} from '../../store/reducers/userReducer/selectors';
 import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
 
-const Header = (props) => {
-  const {authStatus, user} = props;
+interface HeaderProps {
+  authStatus: string,
+  user: null | {
+    id: number,
+    email: string,
+    name: string,
+    avatar_url: string,
+    is_pro: boolean
+  }
+}
+
+const Header = ({authStatus, user}: HeaderProps) => {
 
   return (
     <header className="header">
@@ -48,11 +57,6 @@ const Header = (props) => {
       </div>
     </header>
   );
-};
-
-Header.propTypes = {
-  authStatus: PropTypes.string.isRequired,
-  user: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object])
 };
 
 const mapStateToProps = (state) => ({
