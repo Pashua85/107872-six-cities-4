@@ -1,7 +1,7 @@
 import React from 'react';
 import withSortingOpgions from '../../hocs/withSortingOptions';
 
-interface PlacesSortingProp {
+interface PlacesSortingProps {
   onOptionClick: (op: string) => void,
   isOptionsVisible: boolean,
   activeOption: string,
@@ -9,7 +9,7 @@ interface PlacesSortingProp {
   toggleVisibility: () => void
 }
 
-const PlacesSorting: React.FC<PlacesSortingProp> = (props) => {
+const PlacesSorting: React.FC<PlacesSortingProps> = (props) => {
   const {isOptionsVisible, activeOption, options, onOptionClick, toggleVisibility} = props;
   const listClassName = isOptionsVisible ? `places__options places__options--custom places__options--opened` : `places__options places__options--custom`;
 

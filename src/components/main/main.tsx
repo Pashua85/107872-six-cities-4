@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import CitiesPlaceCardList from '../cities-place-card-list/cities-place-card-list';
 import CitiesMap from '../cities-map/cities-map';
@@ -9,8 +8,15 @@ import EmptyMain from '../empty-main/empty-main';
 import Header from '../header/header';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
+import {IPlace} from '../../types/place';
+import {ICity} from '../../types/city';
 
-const Main = (props) => {
+interface MainProps {
+  places: IPlace[],
+  city: ICity
+}
+
+const Main: React.FC<MainProps> = (props) => {
   const {places, city} = props;
   const placesAmount = places.length;
 
@@ -51,41 +57,6 @@ const Main = (props) => {
       </main>
     </div>
   );
-};
-
-Main.propTypes = {
-  places: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        propertyName: PropTypes.string.isRequired,
-        propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
-        propertyText: PropTypes.arrayOf(PropTypes.string),
-        price: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        isPremium: PropTypes.bool.isRequired,
-        bedroomsAmount: PropTypes.number.isRequired,
-        guestMax: PropTypes.number.isRequired,
-        propertyItems: PropTypes.arrayOf(PropTypes.string),
-        host: PropTypes.shape({
-          name: PropTypes.string,
-          avatar: PropTypes.string,
-          isSuper: PropTypes.bool
-        }).isRequired,
-        titlePhoto: PropTypes.string.isRequired,
-        photos: PropTypes.arrayOf(PropTypes.string).isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              id: PropTypes.string,
-              userName: PropTypes.string,
-              avatar: PropTypes.string,
-              rating: PropTypes.number,
-              text: PropTypes.string
-            })
-        ),
-        coords: PropTypes.arrayOf(PropTypes.number).isRequired
-      })
-  ),
-  city: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
