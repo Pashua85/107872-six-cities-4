@@ -5,8 +5,8 @@ import {IPlace} from '../../types/place';
 
 type PlaceCardProps = RouteComponentProps<any> & {
   place: IPlace,
-  onCardHover?: (place: IPlace) => void,
-  onCardUnhover?: () => void,
+  onCardHover: (place?: IPlace) => void,
+  onCardUnhover: () => void,
   cardClass: string,
   imageClass: string,
   styleObject: object,

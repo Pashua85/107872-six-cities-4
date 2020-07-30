@@ -1,17 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 import PlaceCardList from '../place-card-list/place-card-list';
+import {IPlace} from '../../types/place';
 
-const NearPlaceCardList = (props) => {
+interface NearPlaceCardListProps {
+  places: IPlace[]
+}
+
+const NearPlaceCardList: React.FC<NearPlaceCardListProps> = (props) => {
   return (
     <PlaceCardList className="near-places__list" {...props} />
   );
-};
-
-NearPlaceCardList.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.object)
 };
 
 const mapStateToProps = (state) => ({
