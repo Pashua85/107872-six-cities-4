@@ -45,7 +45,6 @@ class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
                     onCardHover={onMouseEnter}
                     onCardUnhover={onMouseLeave}
                     styleObject={{}}
-                    onCardClick={onCardClick}
                   />
                 );
               }
@@ -66,7 +65,6 @@ class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
                     onCardHover={() => {}}
                     onCardUnhover={() => {}}
                     styleObject={{opacity: `.6`}}
-                    onCardClick={onCardClick}
                   />
                 );
               } else {
@@ -77,7 +75,6 @@ class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
                     onCardHover={() => {}}
                     onCardUnhover={() => {}}
                     styleObject={{}}
-                    onCardClick={onCardClick}
                   />
                 );
               }

@@ -8,8 +8,7 @@ interface NearPlaceCardProps {
   place: IPlace,
   onCardHover: () => void,
   onCardUnhover: () => void,
-  styleObject: object,
-  onCardClick: (id: string) => void
+  styleObject: object
 }
 
 const NearPlaceCard: React.FC<NearPlaceCardProps> = (props) => {

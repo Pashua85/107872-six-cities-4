@@ -6,20 +6,27 @@ import {Link} from 'react-router-dom';
 import FavoritesPlaceCard from '../favorites-place-card/favorites-place-card';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import {getCitiesWithFavoriteOffers} from '../../store/reducers/favorite-offers-reducer/selectors';
+import {ICityWithFavoriteOffers} from '../../types/city-with-favorite-offers';
 
-class Favorites extends React.PureComponent {
-  constructor(props) {
+interface FavoritesProps {
+  citiesWithFavoriteOffers: ICityWithFavoriteOffers[],
+  onComponentMount: () => void
+}
+
+
+class Favorites extends React.PureComponent<FavoritesProps> {
+  constructor(props: FavoritesProps) {
     super(props);
-    this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
+    // this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
   }
 
   componentDidMount() {
     this.props.onComponentMount();
   }
 
-  handleFavoriteClick(id) {
-    this.props.onDeleteFromFavorite(id);
-  }
+  // handleFavoriteClick(id) {
+  //   this.props.onDeleteFromFavorite(id);
+  // }
 
   render() {
     const {citiesWithFavoriteOffers} = this.props;
@@ -101,12 +108,6 @@ class Favorites extends React.PureComponent {
   }
 }
 
-Favorites.propTypes = {
-  citiesWithFavoriteOffers: PropsTypes.array.isRequired,
-  onComponentMount: PropsTypes.func.isRequired,
-  onDeleteFromFavorite: PropsTypes.func.isRequired
-};
-
 const mapStateToProps = (state) => ({
   citiesWithFavoriteOffers: getCitiesWithFavoriteOffers(state)
 });
@@ -115,9 +116,9 @@ const mapDispatchToProps = (dispatch) => ({
   onComponentMount: () => {
     dispatch(OffersOperation.loadFavoriteOffers());
   },
-  onDeleteFromFavorite: (id) => {
-    dispatch(OffersOperation.deleteFromFavorite(id));
-  }
+  // onDeleteFromFavorite: (id) => {
+  //   dispatch(OffersOperation.deleteFromFavorite(id));
+  // }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);

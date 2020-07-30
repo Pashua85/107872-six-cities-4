@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {getSortedCityOffers} from '../../store/reducers/offersReducer/selectors';

@@ -20,6 +20,12 @@ class OfferDetails extends React.PureComponent {
     this.props.onComponentMount(this.props.match.params.id);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id) {
+      this.props.onComponentMount(this.props.match.params.id);
+    }
+  }
+
   render() {
     if (this.props.place === null) {
       return (<div></div>);
