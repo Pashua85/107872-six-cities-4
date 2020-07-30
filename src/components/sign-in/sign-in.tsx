@@ -1,9 +1,17 @@
-import React from 'react';
+import React, {SyntheticEvent} from 'react';
 import PropTypes from 'prop-types';
 import withAuthData from '../../hocs/withAuthData';
 import Header from '../header/header';
 
-const SignIn = (props) => {
+interface SignInProps {
+  email: string,
+  password: string,
+  onEmailChange: (e: SyntheticEvent) => void,
+  onPasswordChange: (e: SyntheticEvent) => void,
+  onSignInClick: (autData: {email: string, password: string}) => void
+}
+
+const SignIn: React.FC<SignInProps> = (props) => {
   const {email, password, onEmailChange, onPasswordChange, onSignInClick} = props;
 
   return (
@@ -18,11 +26,11 @@ const SignIn = (props) => {
             <form className="login__form form" action="#" method="post">
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
-                <input className="login__input form__input" type="email" name="email" placeholder="Email" required="" value={email} onChange={onEmailChange} />
+                <input className="login__input form__input" type="email" name="email" placeholder="Email" required value={email} onChange={onEmailChange} />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">Password</label>
-                <input className="login__input form__input" type="password" name="password" placeholder="Password" required="" value={password} onChange={onPasswordChange} />
+                <input className="login__input form__input" type="password" name="password" placeholder="Password" required value={password} onChange={onPasswordChange} />
               </div>
               <button
                 className="login__submit form__submit button"

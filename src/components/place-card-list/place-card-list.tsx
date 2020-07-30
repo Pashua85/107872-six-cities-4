@@ -11,7 +11,6 @@ interface PlaceCardListProps {
   className: string,
   onMouseEnter: (place: IPlace) => void,
   onMouseLeave: () => void,
-  onCardClick: (id: string) => void,
   activeOffer: null | IPlace,
   onPageLeave: () => void
 }
@@ -22,7 +21,7 @@ class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
   }
 
   render() {
-    const {places, className, onMouseEnter, onMouseLeave, activeOffer, onCardClick} = this.props;
+    const {places, className, onMouseEnter, onMouseLeave, activeOffer} = this.props;
     if (className === `cities__places-list`) {
       return (
         <div className={`${className} places__list tabs__content`}>
@@ -36,7 +35,6 @@ class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
                     onCardHover={onMouseEnter}
                     onCardUnhover={onMouseLeave}
                     styleObject={{opacity: `.6`}}
-                    onCardClick={onCardClick}
                   />
                 );
               } else {
