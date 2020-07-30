@@ -1,12 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {connect} from 'react-redux';
+import {IPlace} from '../../types/place';
 
-class PlaceCardList extends React.PureComponent {
+interface PlaceCardListProps {
+  places: IPlace[],
+  className: string,
+  onMouseEnter: (place: IPlace) => void,
+  onMouseLeave: () => void,
+  onCardClick: (id: string) => void,
+  activeOffer: null | IPlace,
+  onPageLeave: () => void
+}
+
+class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
   componentWillUnmount() {
     this.props.onPageLeave();
   }
@@ -82,47 +92,6 @@ class PlaceCardList extends React.PureComponent {
     }
   }
 }
-
-PlaceCardList.propTypes = {
-  // places: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       id: PropTypes.number.isRequired,
-  //       propertyName: PropTypes.string.isRequired,
-  //       propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
-  //       propertyText: PropTypes.arrayOf(PropTypes.string),
-  //       price: PropTypes.number.isRequired,
-  //       rating: PropTypes.number.isRequired,
-  //       isPremium: PropTypes.bool.isRequired,
-  //       bedroomsAmount: PropTypes.number.isRequired,
-  //       guestMax: PropTypes.number.isRequired,
-  //       propertyItems: PropTypes.arrayOf(PropTypes.string),
-  //       host: PropTypes.shape({
-  //         name: PropTypes.string,
-  //         avatar: PropTypes.string,
-  //         isSuper: PropTypes.bool
-  //       }).isRequired,
-  //       titlePhoto: PropTypes.string.isRequired,
-  //       photos: PropTypes.arrayOf(PropTypes.string).isRequired,
-  //       reviews: PropTypes.arrayOf(
-  //           PropTypes.shape({
-  //             id: PropTypes.string,
-  //             userName: PropTypes.string,
-  //             avatar: PropTypes.string,
-  //             rating: PropTypes.number,
-  //             text: PropTypes.string
-  //           })
-  //       ),
-  //       coords: PropTypes.arrayOf(PropTypes.number).isRequired
-  //     })
-  // ),
-  places: PropTypes.arrayOf(PropTypes.object),
-  className: PropTypes.string.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired,
-  activeOffer: PropTypes.object,
-  onCardClick: PropTypes.func.isRequired,
-  onPageLeave: PropTypes.func.isRequired
-};
 
 const mapStateToProps = (state) => ({
   activeOffer: getActiveOffer(state)

@@ -1,24 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card';
 import {IPlace} from '../../types/place';
 
-interface CitiesPlaceCardProps {
+interface NearPlaceCardProps {
   key: number,
   place: IPlace,
-  onCardHover: (place: IPlace) => void,
+  onCardHover: () => void,
   onCardUnhover: () => void,
   styleObject: object,
   onCardClick: (id: string) => void
 }
 
-const CitiesPlaceCard: React.FC<CitiesPlaceCardProps> = (props) => {
+const NearPlaceCard: React.FC<NearPlaceCardProps> = (props) => {
   return (
     <PlaceCard
-      cardClass="cities__place-card"
-      imageClass="cities__image-wrapper"
+      cardClass="near-places__card"
+      imageClass="near-places__image-wrapper"
       {...props}
     />
   );
 };
 
-export default CitiesPlaceCard;
+
+export default NearPlaceCard;
