@@ -6,7 +6,6 @@
     "jest": true
   },
   "extends": [
-    "eslint:recommended",
     "htmlacademy/es6",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended"
