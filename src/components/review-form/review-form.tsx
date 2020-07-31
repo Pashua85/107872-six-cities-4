@@ -1,8 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {SyntheticEvent} from 'react';
 import withCommentText from '../../hocs/withCommentText';
 
-const ReviewForm = (props) => {
+interface IRadioButton {
+  value: string,
+  id: string,
+  checked: boolean
+}
+
+interface ReviewFormProps {
+  commentText: string,
+  disabled: boolean,
+  onCommentTextChange: (e: SyntheticEvent) => void,
+  onRatingChange: (e: SyntheticEvent) => void,
+  onFormSubmit: (e: SyntheticEvent) => void,
+  radioButtons: IRadioButton[],
+  errorMessage: string
+}
+
+const ReviewForm: React.FC<ReviewFormProps> = (props) => {
   const {commentText, disabled, onCommentTextChange, onRatingChange, onFormSubmit, radioButtons, errorMessage} = props;
 
   return (
@@ -45,16 +60,6 @@ const ReviewForm = (props) => {
       </div>
     </form>
   );
-};
-
-ReviewForm.propTypes = {
-  commentText: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
-  onCommentTextChange: PropTypes.func.isRequired,
-  onRatingChange: PropTypes.func.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
-  radioButtons: PropTypes.array.isRequired,
-  errorMessage: PropTypes.string.isRequired
 };
 
 export default withCommentText(ReviewForm);
