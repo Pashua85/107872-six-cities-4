@@ -1,12 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {IReview} from '../../types/review';
 
-const Review = (props) => {
+interface ReviewProps {
+  review: IReview
+}
+
+const Review: React.FC<ReviewProps> = (props) => {
   const {user, rating, comment, date} = props.review;
   const dateString = new Date(date).toLocaleString(`en`, {
     month: `long`,
     year: `numeric`
   });
+
   const ratingStyle = {
     width: `${Math.floor(rating) * 20}%`
   };
@@ -35,16 +40,6 @@ const Review = (props) => {
       </div>
     </li>
   );
-};
-
-Review.propTypes = {
-  review: PropTypes.shape({
-    comment: PropTypes.string.isRequired,
-    date: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    user: PropTypes.object.isRequired
-  }).isRequired
 };
 
 export default Review;
