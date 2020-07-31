@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import ReviewsList from '../reviews-list/reviews-list';
@@ -14,8 +13,23 @@ import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
 import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import CommentsOperation from '../../store/operations/comments-operation/comments-operation';
+import {IPlace} from '../../types/place';
+import {IReview} from '../../types/review';
 
-class OfferDetails extends React.PureComponent {
+interface OfferDetailsProps {
+  place: null | IPlace,
+  nearPlaces: IPlace[],
+  reviews: IReview[],
+  authStatus: string,
+  onComponentMount: (id: string) => void,
+  match: {
+    params: {
+      id: string
+    }
+  }
+}
+
+class OfferDetails extends React.PureComponent<OfferDetailsProps> {
   componentDidMount() {
     this.props.onComponentMount(this.props.match.params.id);
   }
@@ -189,16 +203,6 @@ class OfferDetails extends React.PureComponent {
     );
   }
 }
-
-
-OfferDetails.propTypes = {
-  place: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object.isRequired]),
-  nearPlaces: PropTypes.array.isRequired,
-  reviews: PropTypes.array.isRequired,
-  authStatus: PropTypes.string.isRequired,
-  onComponentMount: PropTypes.func.isRequired,
-  match: PropTypes.object
-};
 
 const mapStateToProps = (state, ownProps) => ({
   place: getOfferByParamsId(state, ownProps.match.params.id),

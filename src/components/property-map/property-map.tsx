@@ -1,21 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 import Map from '../map/map';
+import {IPlace} from '../../types/place';
+import {ICity} from '../../types/city';
 
-const PropertyMap = (props) => {
+interface PropertyMapProps {
+  places: IPlace[],
+  currentPlace: IPlace,
+  city: ICity
+}
+
+const PropertyMap: React.FC<PropertyMapProps> = (props) => {
   const {places, currentPlace, city} = props;
 
   return (
     <Map className="property__map" places={places} currentPlace={currentPlace} city={city} />
   );
-};
-
-PropertyMap.propTypes = {
-  places: PropTypes.arrayOf(PropTypes.object),
-  currentPlace: PropTypes.object.isRequired,
-  city: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropsTypes from 'prop-types';
 import Header from '../header/header';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -15,18 +14,10 @@ interface FavoritesProps {
 
 
 class Favorites extends React.PureComponent<FavoritesProps> {
-  constructor(props: FavoritesProps) {
-    super(props);
-    // this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
-  }
 
   componentDidMount() {
     this.props.onComponentMount();
   }
-
-  // handleFavoriteClick(id) {
-  //   this.props.onDeleteFromFavorite(id);
-  // }
 
   render() {
     const {citiesWithFavoriteOffers} = this.props;
@@ -115,10 +106,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onComponentMount: () => {
     dispatch(OffersOperation.loadFavoriteOffers());
-  },
-  // onDeleteFromFavorite: (id) => {
-  //   dispatch(OffersOperation.deleteFromFavorite(id));
-  // }
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
