@@ -15,13 +15,21 @@ interface ReviewFormProps {
   onFormSubmit: (e: SyntheticEvent) => void,
   radioButtons: IRadioButton[],
   errorMessage: string
+  match: {
+    params: {
+      id: string
+    }
+  }
 }
 
 const ReviewForm: React.FC<ReviewFormProps> = (props) => {
   const {commentText, disabled, onCommentTextChange, onRatingChange, onFormSubmit, radioButtons, errorMessage} = props;
 
   return (
-    <form className="reviews__form form" onSubmit={onFormSubmit}>
+    <form
+      className="reviews__form form"
+      onSubmit={onFormSubmit}
+    >
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {

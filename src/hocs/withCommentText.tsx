@@ -1,5 +1,5 @@
-import React from 'react';
-import {withRouter} from 'react-router';
+import React, {FunctionComponent, ComponentType, SyntheticEvent} from 'react';
+import {RouteComponentProps, withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {getSendingComment} from '../store/reducers/sending-comment-reducer/selectors';
@@ -7,9 +7,36 @@ import {getCommentError} from '../store/reducers/comment-error-reducer/selectors
 import ActionCreator from '../store/action-creator/action-creator';
 import CommentsOperation from '../store/operations/comments-operation/comments-operation';
 
-const withCommentText = (Component) => {
-  class WithCommentText extends React.PureComponent {
-    constructor(props) {
+type WithCommentTextProps = RouteComponentProps<any> & {
+  sendingComment: boolean,
+  commentError: null | {
+    status: number
+  },
+  onFormSubmitHOC: (id: string, { comment: string, rating: number}) => void,
+  match: {
+    params: {
+      id: string
+    }
+  },
+}
+
+interface IRadioButton {
+  value: string,
+  id: string,
+  checked: boolean
+}
+
+interface WithCommentTextState {
+  commentText: string,
+  rating: number,
+  disabled: boolean,
+  errorMessage: string,
+  radioButtons: IRadioButton[]
+}
+
+const withCommentText = (Component: React.ComponentType) => {
+  class WithCommentText extends React.PureComponent<WithCommentTextProps, WithCommentTextState> {
+    constructor(props: WithCommentTextProps) {
       super(props);
       this.checkIsDisabled = this.checkIsDisabled.bind(this);
       this.handleCommentTextChange = this.handleCommentTextChange.bind(this);
@@ -52,7 +79,7 @@ const withCommentText = (Component) => {
       };
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: WithCommentTextProps) {
       if (this.props.sendingComment !== prevProps.sendingComment && this.props.sendingComment === false) {
         if (this.props.commentError === null) {
           this.clearForm();
@@ -136,12 +163,12 @@ const withCommentText = (Component) => {
       });
     }
 
-    handleFormSubmit(e) {
+    handleFormSubmit(e: SyntheticEvent) {
       e.preventDefault();
       this.setState({
         disabled: true
       });
-      this.props.onFormSubmit(this.props.match.params.id, {
+      this.props.onFormSubmitHOC(this.props.match.params.id, {
         comment: this.state.commentText,
         rating: this.state.rating
       });
@@ -152,7 +179,6 @@ const withCommentText = (Component) => {
 
       return (
         <Component
-          {...this.props}
           commentText={commentText}
           disabled={disabled}
           onCommentTextChange={this.handleCommentTextChange}
@@ -160,17 +186,11 @@ const withCommentText = (Component) => {
           onFormSubmit={this.handleFormSubmit}
           radioButtons={this.state.radioButtons}
           errorMessage={this.state.errorMessage}
+          {...this.props as any}
         />
       );
     }
   }
-
-  WithCommentText.propTypes = {
-    sendingComment: PropTypes.bool.isRequired,
-    commentError: PropTypes.oneOfType([PropTypes.oneOf([null]), PropTypes.object]),
-    onFormSubmit: PropTypes.func.isRequired,
-    match: PropTypes.object
-  };
 
   const mapStateToProps = (state) => {
     return {
@@ -180,19 +200,15 @@ const withCommentText = (Component) => {
   };
 
   const mapDispatchToProps = (dispatch) => ({
-    onFormSubmit: (id, commentData) => {
+    onFormSubmitHOC: (id: string, commentData: { comment: string, rating: number}) => {
       dispatch(ActionCreator.setSendingComment(true));
       dispatch(CommentsOperation.sendComment(id, commentData));
     }
   });
 
-  WithCommentText.displayName = `WithCommentText(${getDisplayName(Component)})`;
   return connect(mapStateToProps, mapDispatchToProps)(withRouter(WithCommentText));
 };
 
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || `Component`;
-}
 
 export default withCommentText;
 
