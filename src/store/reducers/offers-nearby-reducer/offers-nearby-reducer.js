@@ -1,4 +1,4 @@
-import {LOAD_OFFERS_NEARBY, REPLACE_OFFER} from '../../action-types/action-types';
+import {LOAD_OFFERS_NEARBY, REPLACE_OFFER, DELETE_OFFERS_NEARBY} from '../../action-types/action-types';
 
 const offersNearbyReducer = (state = [], action) => {
   switch (action.type) {
@@ -13,6 +13,9 @@ const offersNearbyReducer = (state = [], action) => {
           return of;
         }
       });
+    }
+    case DELETE_OFFERS_NEARBY: {
+      return [];
     }
   }
   return state;

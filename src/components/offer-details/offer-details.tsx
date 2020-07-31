@@ -15,6 +15,7 @@ import OffersOperation from '../../store/operations/offers-operation/offers-oper
 import CommentsOperation from '../../store/operations/comments-operation/comments-operation';
 import {IPlace} from '../../types/place';
 import {IReview} from '../../types/review';
+import ActionCreator from '../../store/action-creator/action-creator';
 
 interface OfferDetailsProps {
   place: null | IPlace,
@@ -22,6 +23,8 @@ interface OfferDetailsProps {
   reviews: IReview[],
   authStatus: string,
   onComponentMount: (id: string) => void,
+  onComponentUpdate: (id: string) => void,
+  onComponentUnmount: () => void,
   match: {
     params: {
       id: string
@@ -36,8 +39,12 @@ class OfferDetails extends React.PureComponent<OfferDetailsProps> {
 
   componentDidUpdate(prevProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.props.onComponentMount(this.props.match.params.id);
+      this.props.onComponentUpdate(this.props.match.params.id);
     }
+  }
+
+  componentWillUnmount() {
+    this.props.onComponentUnmount();
   }
 
   render() {
@@ -212,9 +219,17 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onComponentMount: (id) => {
+  onComponentMount: (id: string) => {
     dispatch(OffersOperation.loadOffersNearby(id));
     dispatch(CommentsOperation.loadComments(id));
+  },
+  onComponentUpdate: (id: string) => {
+    dispatch(OffersOperation.loadOffersNearby(id));
+    dispatch(CommentsOperation.loadComments(id));
+  },
+  onComponentUnmount: () => {
+    dispatch(ActionCreator.deleteOffersNearby());
+    dispatch(ActionCreator.deleteComments());
   }
 });
 

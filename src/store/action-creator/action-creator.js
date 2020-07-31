@@ -10,7 +10,9 @@ import {
   SET_SENDING_COMMENT,
   SET_COMMENT_ERROR,
   REPLACE_OFFER,
-  LOAD_FAVORITE_OFFERS
+  LOAD_FAVORITE_OFFERS,
+  DELETE_OFFERS_NEARBY,
+  DELETE_COMMENTS
 } from '../action-types/action-types';
 
 const ActionCreator = {
@@ -61,6 +63,12 @@ const ActionCreator = {
   loadFavoriteOffers: (offers) => ({
     type: LOAD_FAVORITE_OFFERS,
     offers
+  }),
+  deleteOffersNearby: () => ({
+    type: DELETE_OFFERS_NEARBY
+  }),
+  deleteComments: () => ({
+    type: DELETE_COMMENTS
   })
 };
 
