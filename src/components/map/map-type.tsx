@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Dispatch} from 'react';
 import PropTypes, { object } from 'prop-types';
 import {connect} from 'react-redux';
 import leaflet, {Map, LayerGroup} from 'leaflet';
@@ -117,8 +117,8 @@ class MapComponent extends React.PureComponent<MapProps> {
 }
 
 
-const mapDispatchToProps = (dispatch) => ({
-  onMarkerHover: (place) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  onMarkerHover: (place: IPlace) => {
     dispatch(ActionCreator.setActiveOffer(place));
   },
   onMarkerUnhover: () => {
@@ -126,5 +126,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(Map);
-export {Map};
+export default connect(null, mapDispatchToProps)(MapComponent);
+export {MapComponent};

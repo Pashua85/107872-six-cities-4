@@ -5,12 +5,15 @@ import {IOffer} from './offer';
 import {IUser} from './user';
 import {IReview} from './review';
 
+
+export type ActiveOption = `Popular` | `Price: low to high` | `Price: high to low` | `Top rated first`;
+
 export interface IStore {
   ACTIVE_OFFER: null | IPlace,
   CITIES: ICity[],
   CURRENT_CITY: ICity,
   OFFERS: IOffer[],
-  SORTING_OPTION: `Popular` | `Price: low to high` | `Price: high to low` | `Top rated first`,
+  SORTING_OPTION: ActiveOption,
   AUTH_STATUS: `AUTH` | `NO_AUTH`,
   USER: null | IUser,
   OFFERS_NEARBY: IOffer[],

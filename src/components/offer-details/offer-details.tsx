@@ -33,7 +33,7 @@ class OfferDetails extends React.PureComponent<OfferDetailsProps> {
     this.props.onComponentMount(this.props.match.params.id);
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: OfferDetailsProps) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.props.onComponentUpdate(this.props.match.params.id);
     }

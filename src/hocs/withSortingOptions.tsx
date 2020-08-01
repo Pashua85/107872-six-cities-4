@@ -1,15 +1,17 @@
-import React, { Dispatch } from 'react';
+import React, {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import ActionCreator from '../store/action-creator/action-creator';
+import {ActiveOption} from '../types/store';
+
 
 interface WithSortingOptionsProps {
-  onOptionClickHOC: (option: string) => void
+  onOptionClickHOC: (option: ActiveOption) => void
 }
 
 interface WithSortingOptionsState {
   isOptionsVisible: boolean,
-  options: string[],
-  activeOption: `Popular` | `Price: low to high` | `Price: high to low` | `Top rated first`
+  options: ActiveOption[],
+  activeOption: ActiveOption
 }
 
 const withSortingOptions = (Component: React.ComponentType) => {
@@ -32,7 +34,7 @@ const withSortingOptions = (Component: React.ComponentType) => {
       }));
     }
 
-    handleOptionClick(option: `Popular` | `Price: low to high` | `Price: high to low` | `Top rated first`) {
+    handleOptionClick(option: ActiveOption) {
       this.setState({
         activeOption: option
       });

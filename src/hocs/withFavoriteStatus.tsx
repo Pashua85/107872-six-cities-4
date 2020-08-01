@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, {Dispatch} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router';

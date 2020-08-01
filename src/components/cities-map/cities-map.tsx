@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Map from '../map/map';
+import Map from '../map/map-type';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
