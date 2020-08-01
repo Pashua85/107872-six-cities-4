@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {RouteComponentProps} from 'react-router';
 import {connect} from 'react-redux';
 import UserOperation from '../store/operations/user-operation/user-operation';
 import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
 import {AUTH_STATUS} from '../store/reducers/authStatusReducer/authStatusReducer';
 
-const withAuthData = (Component) => {
-  class WithAuthData extends React.PureComponent {
-    constructor(props) {
+type WithAuthDataProps = RouteComponentProps<any> & {
+  onSignInClick: (authData: {email: string, password: string}) => void,
+  authStatus: string
+}
+
+interface WithAuthDataState {
+  email: string,
+  password: string
+}
+
+const withAuthData = (Component: React.ComponentType) => {
+  class WithAuthData extends React.PureComponent<WithAuthDataProps, WithAuthDataState> {
+    constructor(props: WithAuthDataProps) {
       super(props);
       this.handleEmailChange = this.handleEmailChange.bind(this);
       this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -18,14 +29,14 @@ const withAuthData = (Component) => {
       };
     }
 
-    handleEmailChange(e) {
+    handleEmailChange(e: React.ChangeEvent<HTMLInputElement>) {
       e.preventDefault();
       this.setState({
         email: e.target.value
       });
     }
 
-    handlePasswordChange(e) {
+    handlePasswordChange(e: React.ChangeEvent<HTMLInputElement>) {
       e.preventDefault();
       this.setState({
         password: e.target.value
@@ -39,40 +50,29 @@ const withAuthData = (Component) => {
       }
       return (
         <Component
-          {...this.props}
           email={this.state.email}
           password={this.state.password}
           onEmailChange={this.handleEmailChange}
           onPasswordChange={this.handlePasswordChange}
           onSignInClick={this.props.onSignInClick}
+          {...this.props as any}
         />
       );
     }
   }
-
-  WithAuthData.propTypes = {
-    onSignInClick: PropTypes.func.isRequired,
-    authStatus: PropTypes.string.isRequired,
-    history: PropTypes.object.isRequired
-  };
 
   const mapStateToProps = (state) => ({
     authStatus: getAuthStatus(state)
   });
 
   const mapDispatchToProps = (dispatch) => ({
-    onSignInClick: (authData) => {
+    onSignInClick: (authData: {email: string, password: string}) => {
       dispatch(UserOperation.login(authData));
     }
   });
 
-  WithAuthData.displayName = `WithAuthData(${getDisplayName(Component)})`;
   return connect(mapStateToProps, mapDispatchToProps)(WithAuthData);
 };
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || `Component`;
-}
 
 export default withAuthData;
 

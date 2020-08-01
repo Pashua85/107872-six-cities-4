@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {withRouter} from 'react-router';
+import {RouteComponentProps, withRouter} from 'react-router';
 import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
 import OffersOperation from '../store/operations/offers-operation/offers-operation';
+import {IPlace} from '../types/place';
 
+type WithFavoriteStatusProps = RouteComponentProps<any> & {
+  place: IPlace,
+  authStatus: string,
+  onAddToFavorite: (id: string) => void,
+  onDeleteFromFavorite: (id: string) => void
+}
 
-const withFavoriteStatus = (Component) => {
-  class WithFavoriteStatus extends React.PureComponent {
+interface WithFavoriteStatusState {
+  isFavorite: boolean
+}
+
+const withFavoriteStatus = (Component: React.ComponentType) => {
+  class WithFavoriteStatus extends React.PureComponent<WithFavoriteStatusProps, WithFavoriteStatusState> {
     constructor(props) {
       super(props);
       this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
@@ -41,41 +52,28 @@ const withFavoriteStatus = (Component) => {
     render() {
       return (
         <Component
-          {...this.props}
           isFavorite={this.state.isFavorite}
           onFavoriteClick={this.handleFavoriteClick}
+          {...this.props as any}
         />
       );
     }
   }
-
-  WithFavoriteStatus.propTypes = {
-    place: PropTypes.object.isRequired,
-    authStatus: PropTypes.string.isRequired,
-    history: PropTypes.object.isRequired,
-    onAddToFavorite: PropTypes.func.isRequired,
-    onDeleteFromFavorite: PropTypes.func.isRequired
-  };
 
   const mapStateToProps = (state) => ({
     authStatus: getAuthStatus(state)
   });
 
   const mapDispatchToProps = (dispatch) => ({
-    onAddToFavorite: (id) => {
+    onAddToFavorite: (id: string) => {
       dispatch(OffersOperation.addToFavorite(id));
     },
-    onDeleteFromFavorite: (id) => {
+    onDeleteFromFavorite: (id: string) => {
       dispatch(OffersOperation.deleteFromFavorite(id));
     }
   });
 
-  WithFavoriteStatus.displayName = `WithFavoriteStatus(${getDisplayName(Component)})`;
   return connect(mapStateToProps, mapDispatchToProps)(withRouter(WithFavoriteStatus));
 };
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || `Component`;
-}
 
 export default withFavoriteStatus;

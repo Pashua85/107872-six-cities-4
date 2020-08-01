@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from 'react-router';
+import {RouteComponentProps, withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import ReviewsList from '../reviews-list/reviews-list';
 import PropertyMap from '../property-map/property-map';
@@ -17,19 +17,14 @@ import {IPlace} from '../../types/place';
 import {IReview} from '../../types/review';
 import ActionCreator from '../../store/action-creator/action-creator';
 
-interface OfferDetailsProps {
+type OfferDetailsProps = RouteComponentProps<any> & {
   place: null | IPlace,
   nearPlaces: IPlace[],
   reviews: IReview[],
   authStatus: string,
   onComponentMount: (id: string) => void,
   onComponentUpdate: (id: string) => void,
-  onComponentUnmount: () => void,
-  match: {
-    params: {
-      id: string
-    }
-  }
+  onComponentUnmount: () => void
 }
 
 class OfferDetails extends React.PureComponent<OfferDetailsProps> {
