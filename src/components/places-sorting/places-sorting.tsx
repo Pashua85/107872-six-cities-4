@@ -1,5 +1,5 @@
 import React from 'react';
-import withSortingOpgions from '../../hocs/withSortingOptions';
+import withSortingOptions from '../../hocs/withSortingOptions';
 
 interface PlacesSortingProps {
   onOptionClick: (op: string) => void,
@@ -42,5 +42,5 @@ const PlacesSorting: React.FC<PlacesSortingProps> = (props) => {
   );
 };
 
-export default withSortingOpgions(PlacesSorting);
+export default withSortingOptions(PlacesSorting);
 export {PlacesSorting};

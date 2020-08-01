@@ -1,4 +1,4 @@
-import React, {FunctionComponent, ComponentType, SyntheticEvent} from 'react';
+import React, {SyntheticEvent} from 'react';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -116,7 +116,7 @@ const withCommentText = (Component: React.ComponentType) => {
       }
     }
 
-    handleCommentTextChange(e) {
+    handleCommentTextChange(e: React.ChangeEvent<HTMLInputElement>) {
       this.setState({
         commentText: e.target.value
       }, () => {
@@ -124,7 +124,7 @@ const withCommentText = (Component: React.ComponentType) => {
       });
     }
 
-    handleRatingChange(e) {
+    handleRatingChange(e: React.ChangeEvent<HTMLInputElement>) {
       if (e.target.checked) {
         const newRadioButtons = this.state.radioButtons.map((rb) => {
           if (rb.value === e.target.value) {

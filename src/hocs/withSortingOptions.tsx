@@ -3,9 +3,19 @@ import PropsTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ActionCreator from '../store/action-creator/action-creator';
 
-const withSortingOptions = (Component) => {
-  class WithSortingOptions extends React.PureComponent {
-    constructor(props) {
+interface WithSortingOptionsProps {
+  onOptionClickHOC: (option: string) => void
+}
+
+interface WithSortingOptionsState {
+  isOptionsVisible: boolean,
+  options: string[],
+  activeOption: `Popular` | `Price: low to high` | `Price: high to low` | `Top rated first`
+}
+
+const withSortingOptions = (Component: React.ComponentType) => {
+  class WithSortingOptions extends React.PureComponent<WithSortingOptionsProps, WithSortingOptionsState> {
+    constructor(props: WithSortingOptionsProps) {
       super(props);
       this.toggleVisibility = this.toggleVisibility.bind(this);
       this.handleOptionClick = this.handleOptionClick.bind(this);
@@ -23,45 +33,36 @@ const withSortingOptions = (Component) => {
       }));
     }
 
-    handleOptionClick(option) {
+    handleOptionClick(option: `Popular` | `Price: low to high` | `Price: high to low` | `Top rated first`) {
       this.setState({
         activeOption: option
       });
-      this.props.onOptionClick(option);
+      this.props.onOptionClickHOC(option);
       this.toggleVisibility();
     }
 
     render() {
       return (
         <Component
-          {...this.props}
           options={this.state.options}
           isOptionsVisible={this.state.isOptionsVisible}
           activeOption={this.state.activeOption}
           onOptionClick={this.handleOptionClick}
           toggleVisibility={this.toggleVisibility}
+          {...this.props as any}
         />
       );
     }
   }
 
-
-  WithSortingOptions.propTypes = {
-    onOptionClick: PropsTypes.func.isRequired
-  };
-
   const mapDispatchToProps = (dispatch) => ({
-    onOptionClick: (option) => {
+    onOptionClickHOC: (option: string) => {
       dispatch(ActionCreator.setSortingOption(option));
     }
   });
-  WithSortingOptions.displayName = `WithSortingOptions(${getDisplayName(Component)})`;
+
   return connect(null, mapDispatchToProps)(WithSortingOptions);
 };
-
-function getDisplayName(WrappedComponent) {
-  return WrappedComponent.displayName || WrappedComponent.name || `Component`;
-}
 
 export default withSortingOptions;
 

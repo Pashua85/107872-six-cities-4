@@ -10,8 +10,8 @@ interface IRadioButton {
 interface ReviewFormProps {
   commentText: string,
   disabled: boolean,
-  onCommentTextChange: (e: SyntheticEvent) => void,
-  onRatingChange: (e: SyntheticEvent) => void,
+  onCommentTextChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
+  onRatingChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
   onFormSubmit: (e: SyntheticEvent) => void,
   radioButtons: IRadioButton[],
   errorMessage: string
