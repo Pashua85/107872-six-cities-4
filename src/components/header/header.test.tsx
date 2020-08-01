@@ -10,7 +10,7 @@ Enzyme.configure({
 describe(`Header`, () => {
   it(`should render correctly for guest`, () => {
     const wrapper = shallow(
-        <Header authStatus={`NO_AUTH`} user={{email: `email`}} />
+        <Header authStatus={`NO_AUTH`} user={{email: `email`, name: `Mark`, avatar_url: `someUrl`, is_pro: false, id: 1}} />
     );
     expect(wrapper).toMatchSnapshot();
   });

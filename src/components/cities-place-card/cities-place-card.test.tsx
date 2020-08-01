@@ -1,17 +1,23 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import {CitiesPlaceCardList} from './cities-place-card-list';
+import CitiesPlaceCard from './cities-place-card';
 import places from '../../mock/test-offers';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-describe(`CitiesPlaceCardList`, () => {
+describe(`CititesPlaceCard`, () => {
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <CitiesPlaceCardList places={places} />
+        <CitiesPlaceCard
+          key={2}
+          place={places[1]}
+          onCardHover={() => {}}
+          onCardUnhover={() => {}}
+          styleObject={{}}
+        />
     );
     expect(wrapper).toMatchSnapshot();
   });

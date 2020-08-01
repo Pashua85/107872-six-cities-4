@@ -1,17 +1,21 @@
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import NearPlaceCard from './near-place-card';
+import {CitiesMap} from './cities-map';
 import places from '../../mock/test-offers';
 
 Enzyme.configure({
   adapter: new Adapter()
 });
 
-describe(`NearPlaceCard`, () => {
+describe(`CitiesMap`, () => {
   it(`should render correctly`, () => {
     const wrapper = shallow(
-        <NearPlaceCard place={places[2]} onCardHover={() => {}} onCardUnhover={() => {}} />
+        <CitiesMap
+          places={places}
+          activePlace={places[0]}
+          currentCity={places[0].city}
+        />
     );
     expect(wrapper).toMatchSnapshot();
   });

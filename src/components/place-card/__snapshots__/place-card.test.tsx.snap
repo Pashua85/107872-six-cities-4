@@ -6,6 +6,7 @@ exports[`PlaceCard should render correctly 1`] = `
   onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
+  style={Object {}}
 >
   <div
     className="place-card__mark"
@@ -21,7 +22,7 @@ exports[`PlaceCard should render correctly 1`] = `
       alt="Place image"
       className="place-card__image"
       height="200"
-      src="apartment-01.jpg"
+      src="img/apartment-01.jpg"
       width="260"
     />
   </div>
@@ -38,7 +39,7 @@ exports[`PlaceCard should render correctly 1`] = `
           className="place-card__price-value"
         >
           €
-          175
+          120
         </b>
         <span
           className="place-card__price-text"
@@ -90,12 +91,12 @@ exports[`PlaceCard should render correctly 1`] = `
     <h2
       className="place-card__name"
     >
-      Little house
+      Beautiful luxurious apartment at great location
     </h2>
     <p
       className="place-card__type"
     >
-      House
+      Apartment
     </p>
   </div>
 </article>

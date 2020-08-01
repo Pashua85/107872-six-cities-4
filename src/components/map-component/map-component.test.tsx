@@ -5,7 +5,6 @@ import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import MapComponent from './map-component';
 import offers from '../../mock/test-offers';
-import cities from '../../mock/test-cities';
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -22,9 +21,7 @@ describe(`Map`, () => {
             places={offers}
             className={`ities__map`}
             currentPlace={null}
-            onMarkerHover={() => {}}
-            onMarkerUnhover={() => {}}
-            city={cities[1]}
+            city={offers[0].city}
           />
         </Provider>
     );

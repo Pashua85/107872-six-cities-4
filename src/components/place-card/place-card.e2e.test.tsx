@@ -10,14 +10,22 @@ Enzyme.configure({
 
 describe(`PlaceCard`, () => {
   test(`When user hovers the card with mouse, onCardHover should be called with place object from its props as a parameter`, () => {
+    const routeComponentPropsMock = {
+      history: {} as any,
+      location: {} as any,
+      match: {} as any,
+    }
     const onCardHover = jest.fn();
     const wrapper = shallow(
         <PlaceCard
+          {...routeComponentPropsMock}
           place={places[3]}
           onCardHover={onCardHover}
           onCardUnhover={() => {}}
-          onCardClick={() => {}}
           onFavoriteClick={() => {}}
+          cardClass="cities__place-card"
+          imageClass="cities__image-wrapper"
+          styleObject={{}}
         />
     );
     wrapper

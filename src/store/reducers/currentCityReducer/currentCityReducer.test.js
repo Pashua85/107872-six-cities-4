@@ -1,5 +1,5 @@
 import currentCityReducer from './currentCityReducer';
-import cities from '../../../mock/cities';
+import cities from '../../../mock/test-cities';
 
 describe(`currentCityReducer`, () => {
   const city0 = cities[0];

@@ -24,7 +24,7 @@ describe(`PlacesSorting`, () => {
       .find(`.places__option`)
       .at(0)
       .props()
-      .onClick();
+      .onClick({} as any);
     expect(mockFunction).toHaveBeenCalledTimes(1);
     expect(mockFunction).toHaveBeenCalledWith(`Popular`);
   });
@@ -44,7 +44,7 @@ describe(`PlacesSorting`, () => {
       .find(`.places__option`)
       .at(1)
       .props()
-      .onClick();
+      .onClick({} as any);
     expect(mockFunction).toHaveBeenCalledTimes(1);
     expect(mockFunction).toHaveBeenCalledWith(`Price: low to high`);
   });

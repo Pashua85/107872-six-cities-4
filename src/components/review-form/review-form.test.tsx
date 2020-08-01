@@ -9,8 +9,15 @@ Enzyme.configure({
 
 describe(`ReviewForm`, () => {
   it(`should render correctly`, () => {
+    const routeComponentPropsMock = {
+      history: {} as any,
+      location: {} as any,
+      match: {} as any,
+    }
+
     const wrapper = shallow(
         <ReviewForm
+          {...routeComponentPropsMock}
           commentText=""
           disabled={true}
           onCommentTextChange={() => {}}
