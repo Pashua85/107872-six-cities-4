@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Map from '../map/map-type';
+import MapComponent from '../map/map-component';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
@@ -19,7 +19,7 @@ const CitiesMap: React.FC<CitiesMapProps> = (props) => {
   const otherPlaces = places.filter((p) => p !== activePlace);
 
   return (
-    <Map className="cities__map" places={otherPlaces} currentPlace={activePlace} city={currentCity} />
+    <MapComponent className="cities__map" places={otherPlaces} currentPlace={activePlace} city={currentCity} />
   );
 };
 

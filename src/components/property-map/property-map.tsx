@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
-import Map from '../map/map';
+import MapComponent from '../map/map-component';
 import {IPlace} from '../../types/place';
 import {ICity} from '../../types/city';
 import {IStore} from '../../types/store';
@@ -16,7 +16,7 @@ const PropertyMap: React.FC<PropertyMapProps> = (props) => {
   const {places, currentPlace, city} = props;
 
   return (
-    <Map className="property__map" places={places} currentPlace={currentPlace} city={city} />
+    <MapComponent className="property__map" places={places} currentPlace={currentPlace} city={city} />
   );
 };
 

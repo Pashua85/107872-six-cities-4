@@ -3,7 +3,7 @@ import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
-import Map from './map';
+import MapComponent from './map-component';
 import offers from '../../mock/test-offers';
 import cities from '../../mock/test-cities';
 
@@ -18,7 +18,7 @@ describe(`Map`, () => {
 
     const wrapper = mount(
         <Provider store={store}>
-          <Map
+          <MapComponent
             places={offers}
             className={`ities__map`}
             currentPlace={null}

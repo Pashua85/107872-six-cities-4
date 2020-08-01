@@ -1,29 +1,45 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Dispatch} from 'react';
 import {connect} from 'react-redux';
-import leaflet from 'leaflet';
+import leaflet, {Map, LayerGroup} from 'leaflet';
 import ActionCreator from '../../store/action-creator/action-creator';
+import {IPlace} from '../../types/place';
+import {ICity} from '../../types/city';
 
-class Map extends React.PureComponent {
-  constructor(props) {
+interface MapProps {
+  places: IPlace[],
+  className: string,
+  currentPlace: IPlace,
+  onMarkerHover: (place: IPlace) => void,
+  onMarkerUnhover: () => void
+  city: ICity
+}
+
+class MapComponent extends React.PureComponent<MapProps> {
+  map: Map
+  mapRef: {
+    current: HTMLElement
+  }
+  markerHoverHandler: (e: Event) => void
+  activeMarker: LayerGroup<any>
+  simpleMarkers: LayerGroup<any>
+
+
+  constructor(props: MapProps) {
     super(props);
 
     this.mapRef = React.createRef();
     this.renderMarkers = this.renderMarkers.bind(this);
-    this.markerHoverHandler = this.handleMarkerHover.bind(this);
-    this.markerHoverHandler = this.handleMarkerUnhover.bind(this);
   }
 
   componentDidMount() {
 
     const {city} = this.props;
-    const cityCoords = [city.location.latitude, city.location.longitude];
+    const cityCoords: [number, number] = [city.location.latitude, city.location.longitude];
     const zoom = city.location.zoom;
     this.map = leaflet.map(this.mapRef.current, {
       center: cityCoords,
       zoom,
       zoomControl: false,
-      marker: true
     });
     this.map.setView(cityCoords, zoom);
     leaflet
@@ -41,7 +57,7 @@ class Map extends React.PureComponent {
   renderMarkers() {
     const {places, currentPlace} = this.props;
 
-    const MarkerIcon = leaflet.Icon.extend({
+    const MarkerIcon: (new (...args: any[]) => any) = leaflet.Icon.extend({
       options: {
         iconSize: [27, 39],
         iconAnchor: [13.5, 39]
@@ -77,7 +93,8 @@ class Map extends React.PureComponent {
 
     if (this.props.city.name !== prevProps.city.name) {
       const {city} = this.props;
-      this.map.setView(new leaflet.LatLng(city.location.latitude, city.location.longitude));
+      const cityCoords: [number, number] = [city.location.latitude, city.location.longitude];
+      this.map.setView(cityCoords, city.location.zoom);
     }
 
     this.renderMarkers();
@@ -98,53 +115,9 @@ class Map extends React.PureComponent {
 
 }
 
-Map.defaultProps = {
-  className: `cities__map`,
-  currentPlace: null
-};
 
-Map.propTypes = {
-  // places: PropTypes.arrayOf(
-  //     PropTypes.shape({
-  //       id: PropTypes.number.isRequired,
-  //       propertyName: PropTypes.string.isRequired,
-  //       propertyType: PropTypes.oneOf([`apartment`, `room`, `house`, `hotel`]),
-  //       propertyText: PropTypes.arrayOf(PropTypes.string),
-  //       price: PropTypes.number.isRequired,
-  //       rating: PropTypes.number.isRequired,
-  //       isPremium: PropTypes.bool.isRequired,
-  //       bedroomsAmount: PropTypes.number.isRequired,
-  //       guestMax: PropTypes.number.isRequired,
-  //       propertyItems: PropTypes.arrayOf(PropTypes.string),
-  //       host: PropTypes.shape({
-  //         name: PropTypes.string,
-  //         avatar: PropTypes.string,
-  //         isSuper: PropTypes.bool
-  //       }).isRequired,
-  //       titlePhoto: PropTypes.string.isRequired,
-  //       photos: PropTypes.arrayOf(PropTypes.string).isRequired,
-  //       reviews: PropTypes.arrayOf(
-  //           PropTypes.shape({
-  //             id: PropTypes.string,
-  //             userName: PropTypes.string,
-  //             avatar: PropTypes.string,
-  //             rating: PropTypes.number,
-  //             text: PropTypes.string
-  //           })
-  //       ),
-  //       coords: PropTypes.arrayOf(PropTypes.number).isRequired
-  //     })
-  // ),
-  places: PropTypes.arrayOf(PropTypes.object),
-  className: PropTypes.string,
-  currentPlace: PropTypes.object,
-  onMarkerHover: PropTypes.func,
-  onMarkerUnhover: PropTypes.func,
-  city: PropTypes.object
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onMarkerHover: (place) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  onMarkerHover: (place: IPlace) => {
     dispatch(ActionCreator.setActiveOffer(place));
   },
   onMarkerUnhover: () => {
@@ -152,5 +125,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(Map);
-export {Map};
+export default connect(null, mapDispatchToProps)(MapComponent);
+export {MapComponent};
