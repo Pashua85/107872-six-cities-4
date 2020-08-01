@@ -15,6 +15,8 @@ describe(`PlaceCard`, () => {
               onCardUnhover={() => {}}
               onCardClick={() => {}}
               onFavoriteClick={() => {}}
+              cardClass="cities__place-card"
+              imageClass="cities__image-wrapper"
             />
           </MemoryRouter>
       )
