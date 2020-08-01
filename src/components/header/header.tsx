@@ -4,16 +4,12 @@ import {connect} from 'react-redux';
 import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
 import {getUser} from '../../store/reducers/userReducer/selectors';
 import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
+import {IUser} from '../../types/user';
+import {IStore} from '../../types/store';
 
 interface HeaderProps {
   authStatus: string,
-  user: null | {
-    id: number,
-    email: string,
-    name: string,
-    avatar_url: string,
-    is_pro: boolean
-  }
+  user: null | IUser
 }
 
 const Header: React.FC<HeaderProps> = ({authStatus, user}) => {
@@ -59,7 +55,7 @@ const Header: React.FC<HeaderProps> = ({authStatus, user}) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   authStatus: getAuthStatus(state),
   user: getUser(state)
 });

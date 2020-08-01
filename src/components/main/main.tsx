@@ -10,6 +10,7 @@ import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors'
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {IPlace} from '../../types/place';
 import {ICity} from '../../types/city';
+import {IStore} from '../../types/store';
 
 interface MainProps {
   places: IPlace[],
@@ -59,7 +60,7 @@ const Main: React.FC<MainProps> = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   places: getCityOffers(state),
   city: getCurrentCity(state)
 });

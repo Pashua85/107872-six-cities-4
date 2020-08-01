@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import ReviewsList from '../reviews-list/reviews-list';
@@ -16,6 +16,7 @@ import CommentsOperation from '../../store/operations/comments-operation/comment
 import {IPlace} from '../../types/place';
 import {IReview} from '../../types/review';
 import ActionCreator from '../../store/action-creator/action-creator';
+import {IStore} from '../../types/store';
 
 type OfferDetailsProps = RouteComponentProps<any> & {
   place: null | IPlace,
@@ -206,14 +207,14 @@ class OfferDetails extends React.PureComponent<OfferDetailsProps> {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state: IStore, ownProps: RouteComponentProps<any>) => ({
   place: getOfferByParamsId(state, ownProps.match.params.id),
   nearPlaces: getOffersNearby(state),
   reviews: getComments(state),
   authStatus: getAuthStatus(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onComponentMount: (id: string) => {
     dispatch(OffersOperation.loadOffersNearby(id));
     dispatch(CommentsOperation.loadComments(id));

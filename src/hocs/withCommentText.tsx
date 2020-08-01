@@ -1,4 +1,4 @@
-import React, {SyntheticEvent} from 'react';
+import React, {SyntheticEvent, Dispatch} from 'react';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,6 +6,7 @@ import {getSendingComment} from '../store/reducers/sending-comment-reducer/selec
 import {getCommentError} from '../store/reducers/comment-error-reducer/selectors';
 import ActionCreator from '../store/action-creator/action-creator';
 import CommentsOperation from '../store/operations/comments-operation/comments-operation';
+import {IStore} from '../types/store';
 
 type WithCommentTextProps = RouteComponentProps<any> & {
   sendingComment: boolean,
@@ -192,14 +193,14 @@ const withCommentText = (Component: React.ComponentType) => {
     }
   }
 
-  const mapStateToProps = (state) => {
+  const mapStateToProps = (state: IStore) => {
     return {
       sendingComment: getSendingComment(state),
       commentError: getCommentError(state),
     };
   };
 
-  const mapDispatchToProps = (dispatch) => ({
+  const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
     onFormSubmitHOC: (id: string, commentData: { comment: string, rating: number}) => {
       dispatch(ActionCreator.setSendingComment(true));
       dispatch(CommentsOperation.sendComment(id, commentData));

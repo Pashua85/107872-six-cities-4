@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
 import OffersOperation from '../store/operations/offers-operation/offers-operation';
 import {IPlace} from '../types/place';
+import {IStore} from '../types/store';
 
 type WithFavoriteStatusProps = RouteComponentProps<any> & {
   place: IPlace,
@@ -60,11 +61,11 @@ const withFavoriteStatus = (Component: React.ComponentType) => {
     }
   }
 
-  const mapStateToProps = (state) => ({
+  const mapStateToProps = (state: IStore) => ({
     authStatus: getAuthStatus(state)
   });
 
-  const mapDispatchToProps = (dispatch) => ({
+  const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
     onAddToFavorite: (id: string) => {
       dispatch(OffersOperation.addToFavorite(id));
     },

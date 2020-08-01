@@ -4,6 +4,7 @@ import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/select
 import Map from '../map/map';
 import {IPlace} from '../../types/place';
 import {ICity} from '../../types/city';
+import {IStore} from '../../types/store';
 
 interface PropertyMapProps {
   places: IPlace[],
@@ -19,7 +20,7 @@ const PropertyMap: React.FC<PropertyMapProps> = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   places: getOffersNearby(state)
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import Header from '../header/header';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -6,6 +6,7 @@ import FavoritesPlaceCard from '../favorites-place-card/favorites-place-card';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import {getCitiesWithFavoriteOffers} from '../../store/reducers/favorite-offers-reducer/selectors';
 import {ICityWithFavoriteOffers} from '../../types/city-with-favorite-offers';
+import {IStore} from '../../types/store';
 
 interface FavoritesProps {
   citiesWithFavoriteOffers: ICityWithFavoriteOffers[],
@@ -99,11 +100,11 @@ class Favorites extends React.PureComponent<FavoritesProps> {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   citiesWithFavoriteOffers: getCitiesWithFavoriteOffers(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   onComponentMount: () => {
     dispatch(OffersOperation.loadFavoriteOffers());
   }

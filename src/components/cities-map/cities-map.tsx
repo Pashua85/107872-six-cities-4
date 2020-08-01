@@ -6,6 +6,7 @@ import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors'
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
 import {IPlace} from '../../types/place';
 import {ICity} from '../../types/city';
+import {IStore} from '../../types/store';
 
 interface CitiesMapProps {
   places: IPlace[],
@@ -22,7 +23,7 @@ const CitiesMap: React.FC<CitiesMapProps> = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   places: getCityOffers(state),
   activePlace: getActiveOffer(state),
   currentCity: getCurrentCity(state)

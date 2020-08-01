@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {connect} from 'react-redux';
 import {IPlace} from '../../types/place';
+import {IStore} from '../../types/store';
 
 interface PlaceCardListProps {
   places: IPlace[],
@@ -88,12 +89,12 @@ class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   activeOffer: getActiveOffer(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onMouseEnter: (place) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  onMouseEnter: (place: IPlace) => {
     dispatch(ActionCreator.setActiveOffer(place));
   },
   onMouseLeave: () => {

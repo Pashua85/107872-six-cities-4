@@ -1,5 +1,4 @@
-import React from 'react';
-import PropsTypes from 'prop-types';
+import React, { Dispatch } from 'react';
 import {connect} from 'react-redux';
 import ActionCreator from '../store/action-creator/action-creator';
 
@@ -55,7 +54,7 @@ const withSortingOptions = (Component: React.ComponentType) => {
     }
   }
 
-  const mapDispatchToProps = (dispatch) => ({
+  const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
     onOptionClickHOC: (option: string) => {
       dispatch(ActionCreator.setSortingOption(option));
     }

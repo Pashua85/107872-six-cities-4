@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {IPlace} from '../../types/place';
+import {IStore} from '../../types/store';
 
 interface NearPlaceCardListProps {
   places: IPlace[]
@@ -14,7 +15,7 @@ const NearPlaceCardList: React.FC<NearPlaceCardListProps> = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   places: getOffersNearby(state)
 });
 

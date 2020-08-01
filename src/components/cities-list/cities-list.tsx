@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Dispatch } from 'react';
 import {connect} from 'react-redux';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {getCities} from '../../store/reducers/citiesReducer/selectors';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
 import {ICity} from '../../types/city';
+import {IStore} from '../../types/store';
 
 interface CitiesListProps {
   cities: ICity[],
@@ -42,13 +43,13 @@ const CitiesList: React.FC<CitiesListProps> = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IStore) => ({
   currentCity: getCurrentCity(state),
   cities: getCities(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onClick: (city) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  onClick: (city: ICity) => {
     dispatch(ActionCreator.setCurrentCity(city));
   }
 });

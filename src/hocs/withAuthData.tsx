@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Dispatch } from 'react';
 import {RouteComponentProps} from 'react-router';
 import {connect} from 'react-redux';
 import UserOperation from '../store/operations/user-operation/user-operation';
 import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
 import {AUTH_STATUS} from '../store/reducers/authStatusReducer/authStatusReducer';
+import {IStore} from '../types/store';
 
 type WithAuthDataProps = RouteComponentProps<any> & {
   onSignInClick: (authData: {email: string, password: string}) => void,
@@ -61,11 +61,11 @@ const withAuthData = (Component: React.ComponentType) => {
     }
   }
 
-  const mapStateToProps = (state) => ({
+  const mapStateToProps = (state: IStore) => ({
     authStatus: getAuthStatus(state)
   });
 
-  const mapDispatchToProps = (dispatch) => ({
+  const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
     onSignInClick: (authData: {email: string, password: string}) => {
       dispatch(UserOperation.login(authData));
     }
