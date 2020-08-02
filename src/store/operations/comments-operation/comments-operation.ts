@@ -1,23 +1,32 @@
 import ActionCreator from '../../action-creator/action-creator';
+import {IReview} from '../../../types/types';
+
+interface ICommentsResponse {
+  data: IReview[]
+}
+
+interface IError {
+  response: object
+}
 
 const CommentsOperation = {
-  loadComments: (id) => (dispatch, getState, api) => {
+  loadComments: (id: string) => (dispatch, getState, api) => {
     return api.get(`/comments/${id}`)
-      .then((response) => {
+      .then((response: ICommentsResponse) => {
         dispatch(ActionCreator.loadComments(response.data));
       });
   },
-  sendComment: (id, commentData) => (dispatch, getState, api) => {
+  sendComment: (id: string, commentData: {comment: string, rating: number}) => (dispatch, getState, api) => {
     return api.post(`/comments/${id}`, {
       comment: commentData.comment,
       rating: commentData.rating
     })
-      .then((response) => {
+      .then((response: ICommentsResponse) => {
         dispatch(ActionCreator.setCommentError(null));
         dispatch(ActionCreator.loadComments(response.data));
         dispatch(ActionCreator.setSendingComment(false));
       })
-      .catch((err) => {
+      .catch((err: IError) => {
         dispatch(ActionCreator.setCommentError(err.response));
         dispatch(ActionCreator.setSendingComment(false));
       });

@@ -29,7 +29,7 @@ describe(`OffersOperation`, () => {
   it(`should make a correct get request to /hotels/:id/nearby`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const offersNearbyLoader = OffersOperation.loadOffersNearby(1);
+    const offersNearbyLoader = OffersOperation.loadOffersNearby(`1`);
 
     apiMock
       .onGet(`/hotels/1/nearby`)
@@ -48,7 +48,7 @@ describe(`OffersOperation`, () => {
   it(`should make a correct post request to /favorite/:id/1`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const toFavoriteAdder = OffersOperation.addToFavorite(1);
+    const toFavoriteAdder = OffersOperation.addToFavorite(`1`);
 
     apiMock
       .onPost(`/favorite/1/1`)
@@ -67,7 +67,7 @@ describe(`OffersOperation`, () => {
   it(`should make a correct post request to /favorite/:id/0`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const fromFavoriteDeleter = OffersOperation.deleteFromFavorite(1);
+    const fromFavoriteDeleter = OffersOperation.deleteFromFavorite(`1`);
 
     apiMock
       .onPost(`/favorite/1/0`)
