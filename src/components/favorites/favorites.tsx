@@ -7,9 +7,9 @@ import OffersOperation from '../../store/operations/offers-operation/offers-oper
 import {getCitiesWithFavoriteOffers} from '../../store/reducers/favorite-offers-reducer/selectors';
 import {ICityWithFavoriteOffers, IStore} from '../../types/types';
 
-interface FavoritesProps {
+export interface FavoritesProps {
   citiesWithFavoriteOffers: ICityWithFavoriteOffers[],
-  onComponentMount: () => void
+  onComponentMount: () => void,
 }
 
 
