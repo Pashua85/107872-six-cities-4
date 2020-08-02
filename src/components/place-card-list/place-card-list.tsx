@@ -2,7 +2,7 @@ import React, { Dispatch } from 'react';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
-import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
+import {getActiveOffer} from '../../store/reducers/active-offer-reducer/selectors';
 import {connect} from 'react-redux';
 import {IPlace, IStore} from '../../types/types';
 

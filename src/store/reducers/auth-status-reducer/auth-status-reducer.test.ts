@@ -1,5 +1,5 @@
 import {REQUIRE_AUTHORIZATION} from '../../action-types/action-types';
-import authStatusReducer from './authStatusReducer';
+import authStatusReducer from './auth-status-reducer';
 
 describe(`authStatusReducer`, () => {
   test(`When it is called with "NO_AUTH" as state and object { type: ${REQUIRE_AUTHORIZATION}, payload: "AUTH" } as action, it should return "AUTH"`, () => {
@@ -8,13 +8,5 @@ describe(`authStatusReducer`, () => {
       payload: `AUTH`
     });
     expect(result).toBe(`AUTH`);
-  });
-
-  test(`When it is called with "NO_AUTH" as state and object { type: "SOME_ACTION", payload: "AUTH" } as action, it should return "NO_AUTH"`, () => {
-    const result = authStatusReducer(`NO_AUTH`, {
-      type: `SOME_ACTION`,
-      payload: `AUTH`
-    });
-    expect(result).toBe(`NO_AUTH`);
   });
 });

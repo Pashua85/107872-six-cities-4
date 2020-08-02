@@ -2,7 +2,7 @@ import React, {Dispatch} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router';
-import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
+import {getAuthStatus} from '../store/reducers/auth-status-reducer/selectors';
 import OffersOperation from '../store/operations/offers-operation/offers-operation';
 import {IPlace} from '../types/place';
 import {IStore} from '../types/store';

@@ -2,8 +2,8 @@ import React, { Dispatch } from 'react';
 import {RouteComponentProps} from 'react-router';
 import {connect} from 'react-redux';
 import UserOperation from '../store/operations/user-operation/user-operation';
-import {getAuthStatus} from '../store/reducers/authStatusReducer/selectors';
-import {AUTH_STATUS} from '../store/reducers/authStatusReducer/authStatusReducer';
+import {getAuthStatus} from '../store/reducers/auth-status-reducer/selectors';
+import {AUTH_STATUS} from '../store/reducers/auth-status-reducer/auth-status-reducer';
 import {IStore} from '../types/store';
 
 type WithAuthDataProps = RouteComponentProps<any> & {

@@ -1,5 +1,5 @@
 import ActionCreator from '../../action-creator/action-creator';
-import {AUTH_STATUS} from '../../reducers/authStatusReducer/authStatusReducer';
+import {AUTH_STATUS} from '../../reducers/auth-status-reducer/auth-status-reducer';
 
 const UserOperation = {
   checkAuth: () => (dispatch, getState, api) => {

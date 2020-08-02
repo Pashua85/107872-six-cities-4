@@ -8,7 +8,7 @@ import {createAPI} from './api';
 import OffersOperation from './store/operations/offers-operation/offers-operation';
 import UserOperation from './store/operations/user-operation/user-operation';
 import ActionCreator from './store/action-creator/action-creator';
-import {AUTH_STATUS} from './store/reducers/authStatusReducer/authStatusReducer';
+import {AUTH_STATUS} from './store/reducers/auth-status-reducer/auth-status-reducer';
 import reducer from './store/reducers/reducer';
 import App from './components/app/app';
 

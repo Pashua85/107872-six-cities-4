@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
+import {getAuthStatus} from '../../store/reducers/auth-status-reducer/selectors';
 import {getUser} from '../../store/reducers/userReducer/selectors';
-import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
+import {AUTH_STATUS} from '../../store/reducers/auth-status-reducer/auth-status-reducer';
 import {IUser, IStore} from '../../types/types';
 
 interface HeaderProps {
