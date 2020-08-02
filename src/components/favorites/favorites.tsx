@@ -75,8 +75,6 @@ class Favorites extends React.PureComponent<FavoritesProps> {
                               place={of}
                               onCardHover={() => {}}
                               onCardUnhover={() => {}}
-                              styleObject={{}}
-                              onCardClick={() => {}}
                             />
                           ))
                         }

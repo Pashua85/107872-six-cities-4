@@ -9,7 +9,7 @@ interface FavoritesPlaceCardProps {
   onCardUnhover: () => void
 }
 
-const FavoritesPlaceCard: React.FC = (props) => {
+const FavoritesPlaceCard: React.FC<FavoritesPlaceCardProps> = (props) => {
   return (
     <PlaceCard
       cardClass="favorites__card"
