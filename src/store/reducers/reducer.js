@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
 import currentCityReducer from './currentCityReducer/currentCityReducer';
-import activeOfferReducer from './activeOfferReducer/activeOfferReducer';
+import activeOfferReducer from './activeOfferReducer/active-offer-reducer';
 import sortingOptionReducer from './sortingOptionReducer/sortingOptionReducer';
 import citiesReducer from './citiesReducer/citiesReducer';
 import offersReducer from './offersReducer/offersReducer';

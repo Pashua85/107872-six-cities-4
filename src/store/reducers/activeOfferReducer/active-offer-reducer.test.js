@@ -1,4 +1,4 @@
-import activeOfferReducer from './activeOfferReducer';
+import activeOfferReducer from './active-offer-reducer';
 import offers from '../../../mock/test-offers';
 
 describe(`activeOfferReducer`, () => {

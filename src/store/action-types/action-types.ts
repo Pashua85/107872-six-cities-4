@@ -1,3 +1,5 @@
+import {IOffer, ICity, IPlace, ActiveOption, Status, IUser, IReview} from '../../types/types';
+
 const SET_CURRENT_CITY = `SET_CURRENT_CITY`;
 const SET_ACTIVE_OFFER = `SET_ACTIVE_OFFER`;
 const SET_SORTING_OPTION = `SET_SORTING_OPTION`;
@@ -13,7 +15,79 @@ const LOAD_FAVORITE_OFFERS = `LOAD-FAVORITE-OFFERS`;
 const DELETE_OFFERS_NEARBY = `DELETE_OFFERS_NEARBY`;
 const DELETE_COMMENTS = `DELETE_COMMENTS`;
 
+interface ILoadOffers {
+  type: typeof LOAD_OFFERS,
+  payload: IOffer[]
+}
+
+interface ISetCurrentCity {
+  type: typeof SET_CURRENT_CITY,
+  city: ICity
+}
+
+interface ISetActiveOffer {
+  type: typeof SET_ACTIVE_OFFER,
+  offer: null | IPlace
+}
+
+interface ISetSortingOption {
+  type: typeof SET_SORTING_OPTION,
+  option: ActiveOption
+}
+
+interface IRequireAuthorization {
+  type: typeof REQUIRE_AUTHORIZATION,
+  payload: Status
+}
+
+interface ISetUser {
+  type: typeof SET_USER,
+  user: null | IUser
+}
+
+interface ILoadOffersNearby {
+  type: typeof LOAD_OFFERS_NEARBY,
+  offers: IOffer[]
+}
+
+interface ILoadComments {
+  type: typeof LOAD_COMMENTS,
+  comments: IReview[]
+}
+
+interface ISetSendingComment {
+  type: typeof SET_SENDING_COMMENT,
+  isSending: boolean
+}
+
+interface ISetCommentError {
+  type: typeof SET_COMMENT_ERROR,
+  error: null | object
+}
+
+interface IReplaceOffer {
+  type: typeof REPLACE_OFFER,
+  offer: IOffer
+}
+
+interface ILoadFavoriteOffer {
+  type: typeof LOAD_FAVORITE_OFFERS,
+  offers: IOffer[]
+}
+
+interface IDeleteOffersNearby {
+  type: typeof DELETE_OFFERS_NEARBY
+}
+
+interface IDeleteComments {
+  type: typeof DELETE_COMMENTS
+}
+
+type AppActionTypes = ILoadOffers | ISetCurrentCity | ISetActiveOffer | ISetSortingOption | IRequireAuthorization | ISetUser | ILoadOffersNearby
+  | ILoadComments | ISetSendingComment | ISetCommentError | IReplaceOffer | ILoadFavoriteOffer | IDeleteOffersNearby | IDeleteComments;
+
 export {
+  AppActionTypes,
   SET_CURRENT_CITY,
   SET_ACTIVE_OFFER,
   SET_SORTING_OPTION,
@@ -29,3 +103,4 @@ export {
   DELETE_OFFERS_NEARBY,
   DELETE_COMMENTS
 };
+

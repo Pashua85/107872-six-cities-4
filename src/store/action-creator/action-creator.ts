@@ -25,7 +25,7 @@ const ActionCreator = {
     type: SET_CURRENT_CITY,
     city
   }),
-  setActiveOffer: (offer: IPlace) => ({
+  setActiveOffer: (offer: null | IPlace) => ({
     type: SET_ACTIVE_OFFER,
     offer
   }),
