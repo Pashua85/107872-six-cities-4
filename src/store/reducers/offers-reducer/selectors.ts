@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import NameSpace from '../name-space';
 import {getCurrentCity} from '../current-city-reducer/selectors';
-import {getSortingOption} from '../sortingOptionReducer/selectors';
+import {getSortingOption} from '../sorting-option-reducer/selectors';
 import {createOffer} from '../../../adapters/offer';
 import {IStore, IOffer, IPlace} from '../../../types/types';
 

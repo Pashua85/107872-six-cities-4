@@ -1,17 +1,16 @@
 import React, {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import ActionCreator from '../store/action-creator/action-creator';
-import {ActiveOption} from '../types/store';
-
+import {SortingOption} from '../types/types';
 
 interface WithSortingOptionsProps {
-  onOptionClickHOC: (option: ActiveOption) => void
+  onOptionClickHOC: (option: SortingOption) => void
 }
 
 interface WithSortingOptionsState {
   isOptionsVisible: boolean,
-  options: ActiveOption[],
-  activeOption: ActiveOption
+  options: SortingOption[],
+  activeOption: SortingOption
 }
 
 const withSortingOptions = (Component: React.ComponentType) => {
@@ -34,7 +33,7 @@ const withSortingOptions = (Component: React.ComponentType) => {
       }));
     }
 
-    handleOptionClick(option: ActiveOption) {
+    handleOptionClick(option: SortingOption) {
       this.setState({
         activeOption: option
       });
