@@ -84,6 +84,7 @@ export interface IReview {
 }
 
 export type ActiveOption = `Popular` | `Price: low to high` | `Price: high to low` | `Top rated first`;
+export type Status = `AUTH` | `NO_AUTH`;
 
 export interface IStore {
   ACTIVE_OFFER: null | IPlace,
@@ -91,7 +92,7 @@ export interface IStore {
   CURRENT_CITY: ICity,
   OFFERS: IOffer[],
   SORTING_OPTION: ActiveOption,
-  AUTH_STATUS: `AUTH` | `NO_AUTH`,
+  AUTH_STATUS: Status,
   USER: null | IUser,
   OFFERS_NEARBY: IOffer[],
   COMMENTS: IReview[],
