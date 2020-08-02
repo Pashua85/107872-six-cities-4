@@ -8,7 +8,7 @@ import Header from '../header/header';
 import ReviewForm from '../review-form/review-form';
 import {getOfferByParamsId} from '../../store/reducers/offersReducer/selectors';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
-import {getComments} from '../../store/reducers/commentsReducer/selectors';
+import {getComments} from '../../store/reducers/comments-reducer/selectors';
 import {getAuthStatus} from '../../store/reducers/auth-status-reducer/selectors';
 import {AUTH_STATUS} from '../../store/reducers/auth-status-reducer/auth-status-reducer';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';

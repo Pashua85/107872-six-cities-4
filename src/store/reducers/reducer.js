@@ -10,7 +10,7 @@ import offersNearbyReducer from './offers-nearby-reducer/offers-nearby-reducer';
 import sendingCommentReducer from './sending-comment-reducer/sending-comment-reducer';
 import commentErrorReducer from './comment-error-reducer/comment-error-reducer';
 import NameSpace from './name-space';
-import commentsReducer from './commentsReducer/commentsReducer';
+import commentsReducer from './comments-reducer/comments-reducer';
 import favoriteOffersReducer from './favorite-offers-reducer/favorite-offers-reducer';
 
 export default combineReducers({

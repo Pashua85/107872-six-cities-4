@@ -1,4 +1,4 @@
-import commentsReducer from './commentsReducer';
+import commentsReducer from './comments-reducer';
 import reviews from '../../../mock/test-reviews';
 
 describe(`commentsReducer`, () => {
@@ -10,10 +10,9 @@ describe(`commentsReducer`, () => {
     expect(result).toEqual(reviews);
   });
 
-  test(`When it is called with [] as state and object { type: "LOAD_THINGS", commens: reviews} as action, it should return []`, () => {
-    const result = commentsReducer([], {
-      type: `LOAD_THINGS`,
-      comments: reviews
+  test(`When it is called with [] as state and object { type: "DELETE_COMMENTS"} as action, it should return []`, () => {
+    const result = commentsReducer(reviews, {
+      type: `DELETE_COMMENTS`
     });
     expect(result).toEqual([]);
   });
