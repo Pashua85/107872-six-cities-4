@@ -31,9 +31,9 @@ describe(`CommentsOperation`, () => {
     const dispatch = jest.fn();
     const commentData = {
       comment: `commentText`,
-      reting: 4
+      rating: 4
     };
-    const commentCourier = CommentsOperation.sendComment(1, commentData);
+    const commentCourier = CommentsOperation.sendComment(`1`, commentData);
 
     apiMock
         .onPost(`/comments/1`)
