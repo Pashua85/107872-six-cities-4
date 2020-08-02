@@ -1,4 +1,4 @@
-import currentCityReducer from './currentCityReducer';
+import currentCityReducer from './current-city-reducer';
 import cities from '../../../mock/test-cities';
 
 describe(`currentCityReducer`, () => {
@@ -11,13 +11,5 @@ describe(`currentCityReducer`, () => {
       city: city1
     });
     expect(result).toEqual(city1);
-  });
-
-  test(`When it is called with "London" as state and object { type: "SET_CURRENT_TOWN", city: city-1-object } as action, it should return city-0-object`, () => {
-    const result = currentCityReducer(city0, {
-      type: `SET_CURRENT_TOWN`,
-      city: city1
-    });
-    expect(result).toEqual(city0);
   });
 });

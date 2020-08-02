@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import MapComponent from '../map-component/map-component';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {getActiveOffer} from '../../store/reducers/active-offer-reducer/selectors';
-import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
+import {getCurrentCity} from '../../store/reducers/current-city-reducer/selectors';
 import {IPlace, ICity, IStore} from '../../types/types';
 
 interface CitiesMapProps {

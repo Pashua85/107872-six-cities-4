@@ -1,4 +1,5 @@
-import {SET_CURRENT_CITY} from '../../action-types/action-types';
+import {SET_CURRENT_CITY, AppActionTypes} from '../../action-types/action-types';
+import {ICity} from '../../../types/types';
 
 const initialState = {
   name: `Amsterdam`,
@@ -9,7 +10,7 @@ const initialState = {
   }
 };
 
-function cityReducer(state = initialState, action) {
+function cityReducer(state: ICity = initialState, action: AppActionTypes) {
   switch (action.type) {
     case SET_CURRENT_CITY: {
       return action.city;

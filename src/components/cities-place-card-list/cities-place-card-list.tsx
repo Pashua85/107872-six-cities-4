@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {getSortedCityOffers} from '../../store/reducers/offersReducer/selectors';
-import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
+import {getCurrentCity} from '../../store/reducers/current-city-reducer/selectors';
 import {IPlace, ICity, IStore} from '../../types/types';
 
 interface CititesPlaceCardListProps {

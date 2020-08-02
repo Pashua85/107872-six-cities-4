@@ -6,7 +6,7 @@ import CitiesList from '../cities-list/cities-list';
 import PlacesSorting from '../places-sorting/places-sorting';
 import EmptyMain from '../empty-main/empty-main';
 import Header from '../header/header';
-import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
+import {getCurrentCity} from '../../store/reducers/current-city-reducer/selectors';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {IPlace, ICity, IStore} from '../../types/types';
 

@@ -2,7 +2,7 @@ import React, { Dispatch } from 'react';
 import {connect} from 'react-redux';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {getCities} from '../../store/reducers/cities-reducer/selectors';
-import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
+import {getCurrentCity} from '../../store/reducers/current-city-reducer/selectors';
 import {ICity, IStore} from '../../types/types';
 
 interface CitiesListProps {

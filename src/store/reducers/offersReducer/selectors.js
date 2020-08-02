@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 import NameSpace from '../name-space';
-import {getCurrentCity} from '../currentCityReducer/selectors';
+import {getCurrentCity} from '../current-city-reducer/selectors';
 import {getSortingOption} from '../sortingOptionReducer/selectors';
 import {createOffer} from '../../../adapters/offer';
 
