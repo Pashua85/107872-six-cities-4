@@ -1,5 +1,5 @@
 import React, {SyntheticEvent} from 'react';
-import withCommentText from '../../hocs/withCommentText';
+import withCommentText from '../../hocs/with-comment-text';
 
 interface IRadioButton {
   value: string,

@@ -1,6 +1,6 @@
 import React, {SyntheticEvent} from 'react';
 import PropTypes from 'prop-types';
-import withAuthData from '../../hocs/withAuthData';
+import withAuthData from '../../hocs/with-auth-data';
 import Header from '../header/header';
 
 interface SignInProps {

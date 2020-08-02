@@ -1,5 +1,5 @@
 import React from 'react';
-import withSortingOptions from '../../hocs/withSortingOptions';
+import withSortingOptions from '../../hocs/with-sorting-options';
 
 interface PlacesSortingProps {
   onOptionClick: (op: string) => void,
