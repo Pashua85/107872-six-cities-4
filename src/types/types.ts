@@ -8,7 +8,7 @@ export interface ICity {
 }
 
 export interface ICityWithFavoriteOffers {
-  city: ICity,
+  city: string,
   offers: IPlace[]
 } 
 

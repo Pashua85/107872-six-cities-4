@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
 import {Provider} from 'react-redux';
 import MapComponent from './map-component';
-import offers from '../../mock/test-offers';
+import offers from '../../mock/test-places';
 
 Enzyme.configure({
   adapter: new Adapter()

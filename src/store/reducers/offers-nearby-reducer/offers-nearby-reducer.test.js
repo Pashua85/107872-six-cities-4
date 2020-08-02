@@ -1,5 +1,5 @@
 import offersNearbyReducer from './offers-nearby-reducer';
-import offers from '../../../mock/test-offers';
+import offers from '../../../mock/test-places';
 
 describe(`offersNearbyReducer`, () => {
   test(`When it is called with [] as state and object { type: "LOAD_OFFERS_NEARBY, offers: offers} as action, it should return [offers]`, () => {

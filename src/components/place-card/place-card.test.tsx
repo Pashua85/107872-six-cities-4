@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import {MemoryRouter} from 'react-router-dom';
 import {PlaceCard} from './place-card';
-import places from '../../mock/test-offers';
+import places from '../../mock/test-places';
 
 describe(`PlaceCard`, () => {
   it(`should render correctly`, () => {

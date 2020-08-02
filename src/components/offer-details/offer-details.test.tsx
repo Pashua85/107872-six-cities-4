@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {OfferDetails} from './offer-details';
-import places from '../../mock/test-offers';
+import places from '../../mock/test-places';
 import reviews from '../../mock/test-reviews';
 
 Enzyme.configure({

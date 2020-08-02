@@ -2,7 +2,7 @@ import MockAdapter from 'axios-mock-adapter';
 import {createAPI} from '../../../api';
 import OffersOperation from './offers-operation';
 import {LOAD_OFFERS, LOAD_OFFERS_NEARBY, REPLACE_OFFER} from '../../action-types/action-types';
-import offers from '../../../mock/test-offers';
+import offers from '../../../mock/test-places';
 
 const api = createAPI(() => {});
 

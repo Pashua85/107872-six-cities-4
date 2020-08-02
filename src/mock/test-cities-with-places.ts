@@ -2,14 +2,7 @@ const coords: [number, number] = [52.3909553943508, 4.85309666406198];
 
 export default [
   {
-    city: {
-      name: `Amsterdam`,
-      location: {
-        latitude: 52.37454,
-        longitude: 4.897976,
-        zoom: 13
-      }
-    },
+    city: `Amsterdam`,
     offers: [
       {
         city: {

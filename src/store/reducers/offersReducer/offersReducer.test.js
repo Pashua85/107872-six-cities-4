@@ -1,6 +1,6 @@
 import {LOAD_OFFERS, SET_CURRENT_CITY} from '../../action-types/action-types';
 import offersReducer from './offersReducer';
-import offers from '../../../mock/test-offers';
+import offers from '../../../mock/test-places';
 
 describe(`offersReducer`, () => {
   test(`When it is called with [] as state and object {type: ${LOAD_OFFERS}, payload: offers}, it should return offers`, () => {

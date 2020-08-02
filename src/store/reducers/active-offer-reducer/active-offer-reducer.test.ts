@@ -1,5 +1,5 @@
 import activeOfferReducer from './active-offer-reducer';
-import offers from '../../../mock/test-offers';
+import offers from '../../../mock/test-places';
 
 describe(`activeOfferReducer`, () => {
   test(`When it is called with offer-1-object as state and object { type: "SET_ACTIVE_OFFER", offer: offer-2-object }, it should return offer-2-object`, () => {

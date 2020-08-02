@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import {Favorites} from './favorites';
-import citiesWithFavoriteOffers from '../../mock/test-cities-with-offers';
+import citiesWithFavoriteOffers from '../../mock/test-cities-with-places';
 
 Enzyme.configure({
   adapter: new Adapter()
