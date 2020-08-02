@@ -1,6 +1,7 @@
-import {LOAD_OFFERS, REPLACE_OFFER} from '../../../store/action-types/action-types';
+import {LOAD_OFFERS, REPLACE_OFFER, AppActionTypes} from '../../action-types/action-types';
+import {IOffer} from '../../../types/types';
 
-function offersReducer(state = [], action) {
+function offersReducer(state: IOffer[] = [], action: AppActionTypes) {
   switch (action.type) {
     case LOAD_OFFERS: {
       return action.payload;

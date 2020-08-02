@@ -1,6 +1,6 @@
 import NameSpace from '../name-space';
 import {createOffer} from '../../../adapters/offer';
-import {IOffer, IStore, ICityWithFavoriteOffers} from '../../../types/types';
+import {IOffer, IStore, ICityWithFavoriteOffers, IPlace} from '../../../types/types';
 
 let tmpArray = [];
 function checkOffer(offer: IOffer) {
@@ -19,7 +19,7 @@ export const getCitiesWithFavoriteOffers = (state: IStore): ICityWithFavoriteOff
     const cityOffers = state[NameSpace.FAVORITE_OFFERS].filter((of: IOffer) => of.city.name === city);
     return {
       city,
-      offers: cityOffers.map((of: IOffer) => createOffer(of))
+      offers: cityOffers.map((of: IOffer): IPlace => createOffer(of))
     };
   });
   return citiesWiFavoritesOffers;

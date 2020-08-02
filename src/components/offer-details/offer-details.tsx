@@ -6,7 +6,7 @@ import PropertyMap from '../property-map/property-map';
 import NearPlaceCardList from '../near-place-card-list/near-place-card-list';
 import Header from '../header/header';
 import ReviewForm from '../review-form/review-form';
-import {getOfferByParamsId} from '../../store/reducers/offersReducer/selectors';
+import {getOfferByParamsId} from '../../store/reducers/offers-reducer/selectors';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 import {getComments} from '../../store/reducers/comments-reducer/selectors';
 import {getAuthStatus} from '../../store/reducers/auth-status-reducer/selectors';

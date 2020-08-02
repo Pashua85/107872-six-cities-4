@@ -7,7 +7,7 @@ import PlacesSorting from '../places-sorting/places-sorting';
 import EmptyMain from '../empty-main/empty-main';
 import Header from '../header/header';
 import {getCurrentCity} from '../../store/reducers/current-city-reducer/selectors';
-import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
+import {getCityOffers} from '../../store/reducers/offers-reducer/selectors';
 import {IPlace, ICity, IStore} from '../../types/types';
 
 interface MainProps {

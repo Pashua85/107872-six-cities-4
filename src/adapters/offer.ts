@@ -1,10 +1,12 @@
-export const createOffer = (data) => {
+import {IOffer, IPlace} from '../types/types'
+
+export const createOffer = (data: IOffer): IPlace => {
   return {
     city: data.city,
     id: data.id,
     propertyName: data.title,
     propertyType: data.type,
-    propertyText: data.desription,
+    propertyText: data.description,
     price: data.price,
     rating: data.rating,
     isPremium: data.is_premium,

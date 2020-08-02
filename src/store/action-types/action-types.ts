@@ -10,10 +10,16 @@ const LOAD_OFFERS_NEARBY = `LOAD_OFFERS_NEARBY`;
 const LOAD_COMMENTS = `LOAD_COMMENTS`;
 const SET_SENDING_COMMENT = `SET_SENDING_COMMENT`;
 const SET_COMMENT_ERROR = `SET_COMMENT_ERROR`;
-const REPLACE_OFFER = `PEPLACE_OFFER`;
+const REPLACE_OFFER = `REPLACE_OFFER`;
 const LOAD_FAVORITE_OFFERS = `LOAD-FAVORITE-OFFERS`;
 const DELETE_OFFERS_NEARBY = `DELETE_OFFERS_NEARBY`;
 const DELETE_COMMENTS = `DELETE_COMMENTS`;
+
+
+interface IReplaceOffer {
+  type: typeof REPLACE_OFFER,
+  offer: IOffer
+}
 
 interface ILoadOffers {
   type: typeof LOAD_OFFERS,
@@ -65,11 +71,6 @@ interface ISetCommentError {
   error: null | object
 }
 
-interface IReplaceOffer {
-  type: typeof REPLACE_OFFER,
-  offer: IOffer
-}
-
 interface ILoadFavoriteOffer {
   type: typeof LOAD_FAVORITE_OFFERS,
   offers: IOffer[]
@@ -84,7 +85,7 @@ interface IDeleteComments {
 }
 
 type AppActionTypes = ILoadOffers | ISetCurrentCity | ISetActiveOffer | ISetSortingOption | IRequireAuthorization | ISetUser | ILoadOffersNearby
-  | ILoadComments | ISetSendingComment | ISetCommentError | IReplaceOffer | ILoadFavoriteOffer | IDeleteOffersNearby | IDeleteComments;
+  | ILoadComments | ISetSendingComment | ISetCommentError | ILoadFavoriteOffer | IDeleteOffersNearby | IDeleteComments | IReplaceOffer;
 
 export {
   AppActionTypes,

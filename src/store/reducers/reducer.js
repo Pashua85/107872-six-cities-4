@@ -3,7 +3,7 @@ import currentCityReducer from './current-city-reducer/current-city-reducer';
 import activeOfferReducer from './active-offer-reducer/active-offer-reducer';
 import sortingOptionReducer from './sortingOptionReducer/sortingOptionReducer';
 import citiesReducer from './cities-reducer/cities-reducer';
-import offersReducer from './offersReducer/offersReducer';
+import offersReducer from './offers-reducer/offers-reducer';
 import authStatusReducer from './auth-status-reducer/auth-status-reducer';
 import userReducer from './userReducer/userReducer';
 import offersNearbyReducer from './offers-nearby-reducer/offers-nearby-reducer';
