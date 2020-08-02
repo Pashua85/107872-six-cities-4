@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 import currentCityReducer from './currentCityReducer/currentCityReducer';
 import activeOfferReducer from './active-offer-reducer/active-offer-reducer';
 import sortingOptionReducer from './sortingOptionReducer/sortingOptionReducer';
-import citiesReducer from './citiesReducer/citiesReducer';
+import citiesReducer from './cities-reducer/cities-reducer';
 import offersReducer from './offersReducer/offersReducer';
 import authStatusReducer from './auth-status-reducer/auth-status-reducer';
 import userReducer from './userReducer/userReducer';
