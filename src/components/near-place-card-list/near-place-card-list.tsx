@@ -2,8 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 import PlaceCardList from '../place-card-list/place-card-list';
-import {IPlace} from '../../types/place';
-import {IStore} from '../../types/store';
+import {IPlace, IStore} from '../../types/types';
 
 interface NearPlaceCardListProps {
   places: IPlace[]

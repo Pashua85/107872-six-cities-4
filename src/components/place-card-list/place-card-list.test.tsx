@@ -17,6 +17,7 @@ describe(`PlaceCardList`, () => {
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
           onPageLeave={() => {}}
+          activeOffer={null}
         />
     );
     expect(wrapper).toMatchSnapshot();
@@ -30,6 +31,7 @@ describe(`PlaceCardList`, () => {
           onMouseEnter={() => {}}
           onMouseLeave={() => {}}
           onPageLeave={() => {}}
+          activeOffer={null}
         />
     );
     expect(wrapper).toMatchSnapshot();

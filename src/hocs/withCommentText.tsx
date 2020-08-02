@@ -117,7 +117,7 @@ const withCommentText = (Component: React.ComponentType) => {
       }
     }
 
-    handleCommentTextChange(e: React.ChangeEvent<HTMLInputElement>) {
+    handleCommentTextChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
       this.setState({
         commentText: e.target.value
       }, () => {

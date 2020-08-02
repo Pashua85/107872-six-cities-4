@@ -1,7 +1,7 @@
 import React from 'react';
 import {RouteComponentProps, withRouter} from 'react-router';
 import withFavoriteStatus from '../../hocs/withFavoriteStatus';
-import {IPlace} from '../../types/place';
+import {IPlace} from '../../types/types';
 
 type PlaceCardProps = RouteComponentProps<any> & {
   place: IPlace,

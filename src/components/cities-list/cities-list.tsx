@@ -3,8 +3,7 @@ import {connect} from 'react-redux';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {getCities} from '../../store/reducers/citiesReducer/selectors';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
-import {ICity} from '../../types/city';
-import {IStore} from '../../types/store';
+import {ICity, IStore} from '../../types/types';
 
 interface CitiesListProps {
   cities: ICity[],

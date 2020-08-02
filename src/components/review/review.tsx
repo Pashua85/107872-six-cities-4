@@ -1,5 +1,5 @@
 import React from 'react';
-import {IReview} from '../../types/review';
+import {IReview} from '../../types/types';
 
 interface ReviewProps {
   review: IReview

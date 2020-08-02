@@ -1,6 +1,6 @@
 import React from 'react';
 import Review from '../review/review';
-import {IReview} from '../../types/review';
+import {IReview} from '../../types/types';
 
 interface ReviewsListProps {
   reviews: IReview[]

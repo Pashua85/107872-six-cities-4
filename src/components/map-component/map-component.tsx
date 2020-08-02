@@ -2,8 +2,7 @@ import React, {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import leaflet, {Map, LayerGroup} from 'leaflet';
 import ActionCreator from '../../store/action-creator/action-creator';
-import {IPlace} from '../../types/place';
-import {ICity} from '../../types/city';
+import {IPlace, ICity} from '../../types/types';
 
 interface MapProps {
   places: IPlace[],

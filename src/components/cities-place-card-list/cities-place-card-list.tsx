@@ -3,9 +3,7 @@ import {connect} from 'react-redux';
 import PlaceCardList from '../place-card-list/place-card-list';
 import {getSortedCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
-import {IPlace} from '../../types/place';
-import {ICity} from '../../types/city';
-import {IStore} from '../../types/store';
+import {IPlace, ICity, IStore} from '../../types/types';
 
 interface CititesPlaceCardListProps {
   places: IPlace[],

@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaceCard from '../place-card/place-card';
-import {IPlace} from '../../types/place';
+import {IPlace} from '../../types/types';
 
 interface NearPlaceCardProps {
   key: number,

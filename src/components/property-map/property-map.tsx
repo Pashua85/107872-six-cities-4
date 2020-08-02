@@ -2,9 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getOffersNearby} from '../../store/reducers/offers-nearby-reducer/selectors';
 import MapComponent from '../map-component/map-component';
-import {IPlace} from '../../types/place';
-import {ICity} from '../../types/city';
-import {IStore} from '../../types/store';
+import {IPlace, ICity, IStore} from '../../types/types';
 
 interface PropertyMapProps {
   places: IPlace[],

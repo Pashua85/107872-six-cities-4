@@ -4,9 +4,7 @@ import MapComponent from '../map-component/map-component';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
-import {IPlace} from '../../types/place';
-import {ICity} from '../../types/city';
-import {IStore} from '../../types/store';
+import {IPlace, ICity, IStore} from '../../types/types';
 
 interface CitiesMapProps {
   places: IPlace[],

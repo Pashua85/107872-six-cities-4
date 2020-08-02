@@ -4,8 +4,7 @@ import {connect} from 'react-redux';
 import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
 import {getUser} from '../../store/reducers/userReducer/selectors';
 import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
-import {IUser} from '../../types/user';
-import {IStore} from '../../types/store';
+import {IUser, IStore} from '../../types/types';
 
 interface HeaderProps {
   authStatus: string,

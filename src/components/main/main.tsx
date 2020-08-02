@@ -8,9 +8,7 @@ import EmptyMain from '../empty-main/empty-main';
 import Header from '../header/header';
 import {getCurrentCity} from '../../store/reducers/currentCityReducer/selectors';
 import {getCityOffers} from '../../store/reducers/offersReducer/selectors';
-import {IPlace} from '../../types/place';
-import {ICity} from '../../types/city';
-import {IStore} from '../../types/store';
+import {IPlace, ICity, IStore} from '../../types/types';
 
 interface MainProps {
   places: IPlace[],

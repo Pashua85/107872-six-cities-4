@@ -13,10 +13,9 @@ import {getAuthStatus} from '../../store/reducers/authStatusReducer/selectors';
 import {AUTH_STATUS} from '../../store/reducers/authStatusReducer/authStatusReducer';
 import OffersOperation from '../../store/operations/offers-operation/offers-operation';
 import CommentsOperation from '../../store/operations/comments-operation/comments-operation';
-import {IPlace} from '../../types/place';
-import {IReview} from '../../types/review';
+import {IPlace, IReview, IStore} from '../../types/types';
 import ActionCreator from '../../store/action-creator/action-creator';
-import {IStore} from '../../types/store';
+
 
 type OfferDetailsProps = RouteComponentProps<any> & {
   place: null | IPlace,

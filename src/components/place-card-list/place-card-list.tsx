@@ -4,8 +4,7 @@ import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {getActiveOffer} from '../../store/reducers/activeOfferReducer/selectors';
 import {connect} from 'react-redux';
-import {IPlace} from '../../types/place';
-import {IStore} from '../../types/store';
+import {IPlace, IStore} from '../../types/types';
 
 interface PlaceCardListProps {
   places: IPlace[],
