@@ -16,12 +16,4 @@ describe(`commentErrorReducer`, () => {
     });
     expect(result).toEqual(null);
   });
-  test(`When it is called with null as state and object { type: "SET_OTHER_ERROR", error: {status: 404}} as action, it should return null`, () => {
-    const error = {status: 404};
-    const result = commentErrorReducer(null, {
-      type: `SET_OTHER_ERROR`,
-      error
-    });
-    expect(result).toEqual(null);
-  });
 });
