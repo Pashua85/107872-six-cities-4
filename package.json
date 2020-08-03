@@ -12,35 +12,6 @@
     "test.jest": "jest",
     "test": "npm run eslint && npm run test.jest"
   },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "browser": true,
-      "commonjs": true,
-      "jest": true
-    },
-    "extends": [
-      "htmlacademy/es6",
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/recommended"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true,
-        "experimentalObjectRestSpread": true
-      },
-      "ecmaVersion": 2017,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/no-use-before-define": "off"
-    }
-  },
   "devDependencies": {
     "@babel/core": "7.10.2",
     "@babel/preset-env": "7.10.2",
@@ -50,8 +21,12 @@
     "@types/enzyme-adapter-react-16": "1.0.6",
     "@types/eslint": "7.2.0",
     "@types/jest": "26.0.8",
+    "@types/leaflet": "1.5.17",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
+    "@types/react-redux": "7.1.9",
+    "@types/react-router": "5.1.8",
+    "@types/react-router-dom": "5.1.5",
     "@types/react-test-renderer": "16.9.2",
     "@typescript-eslint/eslint-plugin": "3.7.1",
     "@typescript-eslint/parser": "3.7.1",
@@ -60,7 +35,7 @@
     "babel-loader": "8.1.0",
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
-    "eslint": "5.13.0",
+    "eslint": "7.6.0",
     "eslint-config-htmlacademy": "0.5.2",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-prettier": "3.1.4",
@@ -81,9 +56,6 @@
     "node": "10"
   },
   "dependencies": {
-    "@types/leaflet": "1.5.17",
-    "@types/react-redux": "7.1.9",
-    "@types/react-router": "5.1.8",
     "axios": "0.19.2",
     "leaflet": "1.6.0",
     "prop-types": "15.7.2",
