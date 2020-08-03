@@ -14,10 +14,8 @@ describe(`Review`, () => {
     id: 1,
     rating: 4,
     user: {
-      // eslint-disable-next-line
       avatar_url: `img/1.png`,
       id: 4,
-      // eslint-disable-next-line
       is_pro: false,
       name: `Max`
     }

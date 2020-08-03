@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, {Dispatch} from 'react';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import ReviewsList from '../reviews-list/reviews-list';
@@ -28,21 +28,21 @@ type OfferDetailsProps = RouteComponentProps<any> & {
 }
 
 class OfferDetails extends React.PureComponent<OfferDetailsProps> {
-  componentDidMount() {
+  componentDidMount(): void {
     this.props.onComponentMount(this.props.match.params.id);
   }
 
-  componentDidUpdate(prevProps: OfferDetailsProps) {
+  componentDidUpdate(prevProps: OfferDetailsProps): void {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.props.onComponentUpdate(this.props.match.params.id);
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.props.onComponentUnmount();
   }
 
-  render() {
+  render(): React.ReactNode {
     if (this.props.place === null) {
       return (<div></div>);
     }

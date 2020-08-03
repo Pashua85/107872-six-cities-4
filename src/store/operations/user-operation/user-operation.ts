@@ -13,7 +13,7 @@ const UserOperation = {
         dispatch(ActionCreator.setUser(response.data));
         dispatch(ActionCreator.requireAuthorization(AUTH_STATUS.AUTH));
       })
-      .catch((err: object) => {
+      .catch((err: Record<string, unknown>) => {
         throw err;
       });
   },
@@ -26,7 +26,7 @@ const UserOperation = {
         dispatch(ActionCreator.setUser(response.data));
         dispatch(ActionCreator.requireAuthorization(AUTH_STATUS.AUTH));
       })
-      .catch((err: object) => {
+      .catch((err: Record<string, unknown>) => {
         throw err;
       });
   }

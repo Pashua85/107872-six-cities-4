@@ -6,7 +6,7 @@ interface ICommentsResponse {
 }
 
 interface IError {
-  response: object
+  response: Record<string, unknown>
 }
 
 const CommentsOperation = {

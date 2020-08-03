@@ -1,6 +1,6 @@
 import NameSpace from '../name-space';
-import {IStore} from '../../../types/types';
+import {IStore, IReview} from '../../../types/types';
 
-export const getComments = (state: IStore) => {
+export const getComments = (state: IStore): IReview[] => {
   return state[NameSpace.COMMENTS];
 };

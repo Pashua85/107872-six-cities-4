@@ -8,7 +8,7 @@
     "start": "webpack-dev-server",
     "eslint-js": "eslint --ext .jsx --ext .js src/",
     "eslint-ts": "eslint --ext .tsx --ext .ts src/",
-    "eslint": "npm run eslint-js && npm run eslint-ts",
+    "eslint": "npm run eslint-ts",
     "test.jest": "jest",
     "test": "npm run eslint && npm run test.jest"
   },

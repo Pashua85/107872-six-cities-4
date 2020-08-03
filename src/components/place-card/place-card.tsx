@@ -9,7 +9,7 @@ type PlaceCardProps = RouteComponentProps<any> & {
   onCardUnhover: () => void,
   cardClass: string,
   imageClass: string,
-  styleObject: object,
+  styleObject: {opacity?: string},
   onFavoriteClick: (id: string) => void,
 }
 

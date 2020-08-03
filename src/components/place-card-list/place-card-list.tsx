@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, {Dispatch} from 'react';
 import CitiesPlaceCard from '../cities-place-card/cities-place-card';
 import NearPlaceCard from '../near-place-card/near-place-card';
 import ActionCreator from '../../store/action-creator/action-creator';
@@ -16,11 +16,11 @@ interface PlaceCardListProps {
 }
 
 class PlaceCardList extends React.PureComponent<PlaceCardListProps> {
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.props.onPageLeave();
   }
 
-  render() {
+  render(): React.ReactNode {
     const {places, className, onMouseEnter, onMouseLeave, activeOffer} = this.props;
     if (className === `cities__places-list`) {
       return (

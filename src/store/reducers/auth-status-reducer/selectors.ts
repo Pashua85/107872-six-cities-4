@@ -1,6 +1,6 @@
 import NameSpace from '../name-space';
-import {IStore} from '../../../types/types';
+import {IStore, Status} from '../../../types/types';
 
-export const getAuthStatus = (state: IStore) => {
+export const getAuthStatus = (state: IStore): Status => {
   return state[NameSpace.AUTH_STATUS];
 };

@@ -14,8 +14,8 @@ describe(`offersNearbyReducer`, () => {
     const newOffer = Object.assign({}, offers[0]);
     newOffer.is_favorite = false;
     const expectedResult = offers.slice();
-    expectedResult.splice(0,1,newOffer);
-    
+    expectedResult.splice(0, 1, newOffer);
+
     const result = offersNearbyReducer(offers, {
       type: `REPLACE_OFFER`,
       offer: newOffer

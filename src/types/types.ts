@@ -10,7 +10,7 @@ export interface ICity {
 export interface ICityWithFavoriteOffers {
   city: string,
   offers: IPlace[]
-} 
+}
 
 export interface IOffer {
   bedrooms: number,
@@ -97,7 +97,7 @@ export interface IStore {
   OFFERS_NEARBY: IOffer[],
   COMMENTS: IReview[],
   SENDING_COMMENT: boolean,
-  COMMENT_ERROR: object,
+  COMMENT_ERROR: null | Record<string, unknown>,
   FAVORITE_OFFERS: IOffer[]
 }
 

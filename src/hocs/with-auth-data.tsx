@@ -1,10 +1,10 @@
-import React, { Dispatch } from 'react';
+import React, {Dispatch} from 'react';
 import {RouteComponentProps} from 'react-router';
 import {connect} from 'react-redux';
 import UserOperation from '../store/operations/user-operation/user-operation';
 import {getAuthStatus} from '../store/reducers/auth-status-reducer/selectors';
 import {AUTH_STATUS} from '../store/reducers/auth-status-reducer/auth-status-reducer';
-import {IStore} from '../types/store';
+import {IStore} from '../types/types';
 
 type WithAuthDataProps = RouteComponentProps<any> & {
   onSignInClick: (authData: {email: string, password: string}) => void,
@@ -16,7 +16,7 @@ interface WithAuthDataState {
   password: string
 }
 
-const withAuthData = (Component: React.ComponentType) => {
+const withAuthData = (Component: React.ComponentType): React.ReactNode => {
   class WithAuthData extends React.PureComponent<WithAuthDataProps, WithAuthDataState> {
     constructor(props: WithAuthDataProps) {
       super(props);

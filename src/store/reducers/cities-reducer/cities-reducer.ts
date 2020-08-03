@@ -51,6 +51,6 @@ const initialState = [
   }
 ];
 
-const citiesReducer = (state: ICity[] = initialState) => state;
+const citiesReducer = (state: ICity[] = initialState): ICity[] => state;
 
 export default citiesReducer;

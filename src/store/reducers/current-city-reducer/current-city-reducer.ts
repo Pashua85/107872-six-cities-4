@@ -10,7 +10,7 @@ const initialState = {
   }
 };
 
-function cityReducer(state: ICity = initialState, action: AppActionTypes) {
+function cityReducer(state: ICity = initialState, action: AppActionTypes): ICity {
   switch (action.type) {
     case SET_CURRENT_CITY: {
       return action.city;

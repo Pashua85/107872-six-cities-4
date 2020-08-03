@@ -10,7 +10,7 @@ describe(`CommentsOperation`, () => {
   it(`should make a correct API call to /comments/:hoteId`, () => {
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const commentsLoader = CommentsOperation.loadComments(1);
+    const commentsLoader = CommentsOperation.loadComments(`1`);
 
     apiMock
       .onGet(`/comments/1`)

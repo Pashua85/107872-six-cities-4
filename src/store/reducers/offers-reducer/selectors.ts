@@ -20,7 +20,7 @@ export const getCityOffers = createSelector(
     }
 );
 
-export const getOfferByParamsId = (state: IStore, id: string) => {
+export const getOfferByParamsId = (state: IStore, id: string): IPlace => {
   const offers = getOffers(state);
   if (offers.length === 0) {
     return null;
