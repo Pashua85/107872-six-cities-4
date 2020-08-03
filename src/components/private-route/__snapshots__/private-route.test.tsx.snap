@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrivateRoute should render correctly for authenticated user 1`] = `ShallowWrapper {}`;
+
+exports[`PrivateRoute should render correctly for nonauthenticated guest 1`] = `ShallowWrapper {}`;
