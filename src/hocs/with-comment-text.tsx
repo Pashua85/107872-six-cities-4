@@ -1,19 +1,18 @@
 import React, {SyntheticEvent, Dispatch} from 'react';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import {getSendingComment} from '../store/reducers/sending-comment-reducer/selectors';
 import {getCommentError} from '../store/reducers/comment-error-reducer/selectors';
 import ActionCreator from '../store/action-creator/action-creator';
 import CommentsOperation from '../store/operations/comments-operation/comments-operation';
-import {IStore} from '../types/store';
+import {IStore} from '../types/types';
 
 type WithCommentTextProps = RouteComponentProps<any> & {
   sendingComment: boolean,
   commentError: null | {
     status: number
   },
-  onFormSubmitHOC: (id: string, { comment: string, rating: number}) => void,
+  onFormSubmitHOC: (id: string, {comment: string, rating: number}) => void,
   match: {
     params: {
       id: string
@@ -35,7 +34,7 @@ interface WithCommentTextState {
   radioButtons: IRadioButton[]
 }
 
-const withCommentText = (Component: React.ComponentType) => {
+const withCommentText = (Component: React.ComponentType): React.ReactNode => {
   class WithCommentText extends React.PureComponent<WithCommentTextProps, WithCommentTextState> {
     constructor(props: WithCommentTextProps) {
       super(props);

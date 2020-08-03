@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, {Dispatch} from 'react';
 import {connect} from 'react-redux';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {getCities} from '../../store/reducers/cities-reducer/selectors';

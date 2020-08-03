@@ -7,7 +7,7 @@ describe(`favoriteOffersReducer`, () => {
     const result = favoriteOffersReducer([], {
       type: LOAD_FAVORITE_OFFERS,
       offers: favoriteOffers
-    })
+    });
     expect(result).toEqual(favoriteOffers);
   });
 

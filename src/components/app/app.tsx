@@ -6,7 +6,7 @@ import SignIn from '../sign-in/sign-in';
 import Favorites from '../favorites/favorites';
 import PrivateRoute from '../private-route/private-route';
 
-const App: React.FC<{}> = () => {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>

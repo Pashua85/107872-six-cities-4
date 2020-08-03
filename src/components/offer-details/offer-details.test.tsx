@@ -19,7 +19,7 @@ describe(`OfferDetails`, () => {
         id: `1`
       }
     } as any,
-  }
+  };
 
   it(`should render correctly`, () => {
     const wrapper = shallow(

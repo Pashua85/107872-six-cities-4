@@ -1,4 +1,4 @@
-import React, { Dispatch } from 'react';
+import React, {Dispatch} from 'react';
 import Header from '../header/header';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
@@ -15,11 +15,11 @@ export interface FavoritesProps {
 
 class Favorites extends React.PureComponent<FavoritesProps> {
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.props.onComponentMount();
   }
 
-  render() {
+  render(): React.ReactNode {
     const {citiesWithFavoriteOffers} = this.props;
 
     if (citiesWithFavoriteOffers.length === 0) {

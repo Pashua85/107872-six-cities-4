@@ -13,7 +13,7 @@ interface WithSortingOptionsState {
   activeOption: SortingOption
 }
 
-const withSortingOptions = (Component: React.ComponentType) => {
+const withSortingOptions = (Component: React.ComponentType): React.ReactNode => {
   class WithSortingOptions extends React.PureComponent<WithSortingOptionsProps, WithSortingOptionsState> {
     constructor(props: WithSortingOptionsProps) {
       super(props);

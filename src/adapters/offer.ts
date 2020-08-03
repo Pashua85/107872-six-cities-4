@@ -1,4 +1,4 @@
-import {IOffer, IPlace} from '../types/types'
+import {IOffer, IPlace} from '../types/types';
 
 export const createOffer = (data: IOffer): IPlace => {
   return {

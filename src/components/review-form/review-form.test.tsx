@@ -13,7 +13,7 @@ describe(`ReviewForm`, () => {
       history: {} as any,
       location: {} as any,
       match: {} as any,
-    }
+    };
 
     const wrapper = shallow(
         <ReviewForm

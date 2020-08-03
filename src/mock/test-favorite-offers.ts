@@ -71,4 +71,4 @@ export default [
     },
     is_favorite: true
   },
-]
+];

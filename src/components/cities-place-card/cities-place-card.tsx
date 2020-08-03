@@ -7,7 +7,7 @@ interface CitiesPlaceCardProps {
   place: IPlace,
   onCardHover: (place: IPlace) => void,
   onCardUnhover: () => void,
-  styleObject: object,
+  styleObject: {opacity?: string},
 }
 
 const CitiesPlaceCard: React.FC<CitiesPlaceCardProps> = (props) => {

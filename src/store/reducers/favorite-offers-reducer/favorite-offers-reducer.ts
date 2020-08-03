@@ -1,7 +1,7 @@
 import {LOAD_FAVORITE_OFFERS, REPLACE_OFFER, AppActionTypes} from '../../action-types/action-types';
 import {IOffer} from '../../../types/types';
 
-const favoriteOffersReducer = (state: IOffer[] = [], action: AppActionTypes) => {
+const favoriteOffersReducer = (state: IOffer[] = [], action: AppActionTypes): IOffer[] => {
   switch (action.type) {
     case LOAD_FAVORITE_OFFERS: {
       return action.offers;

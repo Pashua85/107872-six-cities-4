@@ -1,22 +1,22 @@
-import axios from 'axios';
+import axios, {AxiosInstance, AxiosResponse, AxiosError} from 'axios';
 
 const Error = {
   UNAUTHORIZED: 401
 };
 
 
-export const createAPI = (dispatch) => {
+export const createAPI = (dispatch: () => void): AxiosInstance => {
   const api = axios.create({
     baseURL: `https://4.react.pages.academy/six-cities`,
     timeout: 5000,
     withCredentials: true
   });
 
-  const onSucess = (response) => {
+  const onSucess = (response: AxiosResponse) => {
     return response;
   };
 
-  const onFail = (err) => {
+  const onFail = (err: AxiosError) => {
     const {response} = err;
 
     if (response.status === Error.UNAUTHORIZED) {

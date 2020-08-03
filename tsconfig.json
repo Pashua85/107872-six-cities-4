@@ -1,18 +1,24 @@
 {
   "compilerOptions": {
-    "sourceMap": true,
-    "module": "commonjs",
-    "target": "es2016",
-    "jsx": "react",
     "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
     "moduleResolution": "node",
-    "allowJs": true
+    "baseUrl": "./",
+    "sourceMap": true,
+    "module": "esnext",
+    "target": "esnext",
+    "jsx": "react",
+    "allowJs": true,
+    "noEmit": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "lib": ["es6", "dom"]
   },
   "include": [
-    "src/**/*"
+    "src/**/ts"
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
   ]
 }

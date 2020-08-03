@@ -4,7 +4,7 @@ import leaflet, {Map, LayerGroup} from 'leaflet';
 import ActionCreator from '../../store/action-creator/action-creator';
 import {IPlace, ICity} from '../../types/types';
 
-interface MapProps {
+interface MapComponentProps {
   places: IPlace[],
   className: string,
   currentPlace: IPlace,
@@ -13,7 +13,7 @@ interface MapProps {
   city: ICity
 }
 
-class MapComponent extends React.PureComponent<MapProps> {
+class MapComponent extends React.PureComponent<MapComponentProps> {
   map: Map
   mapRef: {
     current: HTMLElement
@@ -23,14 +23,14 @@ class MapComponent extends React.PureComponent<MapProps> {
   simpleMarkers: LayerGroup<any>
 
 
-  constructor(props: MapProps) {
+  constructor(props: MapComponentProps) {
     super(props);
 
     this.mapRef = React.createRef();
     this.renderMarkers = this.renderMarkers.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
 
     const {city} = this.props;
     const cityCoords: [number, number] = [city.location.latitude, city.location.longitude];
@@ -53,7 +53,7 @@ class MapComponent extends React.PureComponent<MapProps> {
     this.renderMarkers();
   }
 
-  renderMarkers() {
+  renderMarkers(): void {
     const {places, currentPlace} = this.props;
 
     const MarkerIcon: (new (...args: any[]) => any) = leaflet.Icon.extend({
@@ -78,15 +78,15 @@ class MapComponent extends React.PureComponent<MapProps> {
     }
   }
 
-  handleMarkerHover(place) {
+  handleMarkerHover(place: IPlace): void {
     this.props.onMarkerHover(place);
   }
 
-  handleMarkerUnhover() {
+  handleMarkerUnhover(): void {
     this.props.onMarkerUnhover();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: MapComponentProps): void {
     this.activeMarker.clearLayers();
     this.simpleMarkers.clearLayers();
 
@@ -99,13 +99,13 @@ class MapComponent extends React.PureComponent<MapProps> {
     this.renderMarkers();
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     this.simpleMarkers.clearLayers();
     this.activeMarker.clearLayers();
     this.props.onMarkerHover(null);
   }
 
-  render() {
+  render(): React.ReactNode {
     const {className} = this.props;
     return (
       <section className={`${className} map`} ref={this.mapRef}></section>

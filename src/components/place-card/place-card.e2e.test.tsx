@@ -14,7 +14,7 @@ describe(`PlaceCard`, () => {
       history: {} as any,
       location: {} as any,
       match: {} as any,
-    }
+    };
     const onCardHover = jest.fn();
     const wrapper = shallow(
         <PlaceCard

@@ -10,7 +10,7 @@ describe(`PlaceCard`, () => {
       history: {} as any,
       location: {} as any,
       match: {} as any,
-    }
+    };
 
     const tree = renderer
       .create(

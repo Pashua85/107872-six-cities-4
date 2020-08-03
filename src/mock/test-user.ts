@@ -4,4 +4,4 @@ export default {
   name: `Frank`,
   avatar_url: `someUrl`,
   is_pro: false
-}
+};

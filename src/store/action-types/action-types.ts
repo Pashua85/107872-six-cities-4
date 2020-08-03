@@ -1,4 +1,4 @@
-import {IOffer, ICity, IPlace, ActiveOption, Status, IUser, IReview} from '../../types/types';
+import {IOffer, ICity, IPlace, SortingOption, Status, IUser, IReview} from '../../types/types';
 
 const SET_CURRENT_CITY = `SET_CURRENT_CITY`;
 const SET_ACTIVE_OFFER = `SET_ACTIVE_OFFER`;
@@ -38,7 +38,7 @@ interface ISetActiveOffer {
 
 interface ISetSortingOption {
   type: typeof SET_SORTING_OPTION,
-  option: ActiveOption
+  option: SortingOption
 }
 
 interface IRequireAuthorization {
@@ -68,7 +68,7 @@ interface ISetSendingComment {
 
 interface ISetCommentError {
   type: typeof SET_COMMENT_ERROR,
-  error: null | object
+  error: null | Record<string, unknown>
 }
 
 interface ILoadFavoriteOffer {

@@ -1,4 +1,4 @@
-import {LOAD_OFFERS, SET_CURRENT_CITY, REPLACE_OFFER} from '../../action-types/action-types';
+import {LOAD_OFFERS} from '../../action-types/action-types';
 import offersReducer from './offers-reducer';
 import offers from '../../../mock/test-offers';
 
@@ -15,7 +15,7 @@ describe(`offersReducer`, () => {
     const newOffer = Object.assign({}, offers[0]);
     newOffer.is_favorite = false;
     const expectedResult = offers.slice();
-    expectedResult.splice(0,1,newOffer);
+    expectedResult.splice(0, 1, newOffer);
     const result = offersReducer(offers, {
       type: `REPLACE_OFFER`,
       offer: newOffer

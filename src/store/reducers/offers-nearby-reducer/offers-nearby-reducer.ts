@@ -1,7 +1,7 @@
 import {LOAD_OFFERS_NEARBY, REPLACE_OFFER, DELETE_OFFERS_NEARBY, AppActionTypes} from '../../action-types/action-types';
 import {IOffer} from '../../../types/types';
 
-const offersNearbyReducer = (state: IOffer[] = [], action: AppActionTypes) => {
+const offersNearbyReducer = (state: IOffer[] = [], action: AppActionTypes): IOffer[] => {
   switch (action.type) {
     case LOAD_OFFERS_NEARBY: {
       return action.offers;

@@ -11,7 +11,7 @@ function checkOffer(offer: IOffer) {
   return false;
 }
 
-export const getCitiesWithFavoriteOffers = (state: IStore): ICityWithFavoriteOffers => {
+export const getCitiesWithFavoriteOffers = (state: IStore): ICityWithFavoriteOffers[] => {
   const offersWithUniqueCity = state[NameSpace.FAVORITE_OFFERS].filter((offer: IOffer) => checkOffer(offer));
   tmpArray = [];
   const sortedCitiesList = offersWithUniqueCity.map((of: IOffer) => of.city.name).sort();
