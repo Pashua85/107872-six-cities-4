@@ -12,6 +12,35 @@
     "test.jest": "jest",
     "test": "npm run eslint && npm run test.jest"
   },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "browser": true,
+      "commonjs": true,
+      "jest": true
+    },
+    "extends": [
+      "htmlacademy/es6",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+      },
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react"
+    ],
+    "rules": {
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/no-use-before-define": "off"
+    }
+  },
   "devDependencies": {
     "@babel/core": "7.10.2",
     "@babel/preset-env": "7.10.2",
@@ -19,6 +48,7 @@
     "@babel/preset-typescript": "7.10.4",
     "@types/axios": "0.14.0",
     "@types/enzyme-adapter-react-16": "1.0.6",
+    "@types/eslint": "7.2.0",
     "@types/jest": "26.0.8",
     "@types/react": "^16.9.43",
     "@types/react-dom": "^16.9.8",
