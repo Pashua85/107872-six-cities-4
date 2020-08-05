@@ -18,7 +18,7 @@ interface WithFavoriteStatusState {
 
 const withFavoriteStatus = (Component: React.ComponentType): React.ReactNode => {
   class WithFavoriteStatus extends React.PureComponent<WithFavoriteStatusProps, WithFavoriteStatusState> {
-    constructor(props) {
+    constructor(props: WithFavoriteStatusProps) {
       super(props);
       this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
 

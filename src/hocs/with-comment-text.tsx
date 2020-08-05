@@ -38,11 +38,11 @@ const withCommentText = (Component: React.ComponentType): React.ReactNode => {
   class WithCommentText extends React.PureComponent<WithCommentTextProps, WithCommentTextState> {
     constructor(props: WithCommentTextProps) {
       super(props);
-      this.checkIsDisabled = this.checkIsDisabled.bind(this);
+      this._checkIsDisabled = this._checkIsDisabled.bind(this);
       this.handleCommentTextChange = this.handleCommentTextChange.bind(this);
       this.handleRatingChange = this.handleRatingChange.bind(this);
       this.handleFormSubmit = this.handleFormSubmit.bind(this);
-      this.clearForm = this.clearForm.bind(this);
+      this._clearForm = this._clearForm.bind(this);
 
       this.state = {
         commentText: ``,
@@ -82,7 +82,7 @@ const withCommentText = (Component: React.ComponentType): React.ReactNode => {
     componentDidUpdate(prevProps: WithCommentTextProps) {
       if (this.props.sendingComment !== prevProps.sendingComment && this.props.sendingComment === false) {
         if (this.props.commentError === null) {
-          this.clearForm();
+          this._clearForm();
         } else {
           let errorMessage;
           switch (this.props.commentError.status) {
@@ -104,7 +104,7 @@ const withCommentText = (Component: React.ComponentType): React.ReactNode => {
       }
     }
 
-    checkIsDisabled() {
+    private _checkIsDisabled() {
       if (this.state.commentText.length >= 50 && this.state.commentText.length <= 300 && this.state.rating > 0) {
         this.setState({
           disabled: false
@@ -120,7 +120,7 @@ const withCommentText = (Component: React.ComponentType): React.ReactNode => {
       this.setState({
         commentText: e.target.value
       }, () => {
-        this.checkIsDisabled();
+        this._checkIsDisabled();
       });
     }
 
@@ -145,12 +145,12 @@ const withCommentText = (Component: React.ComponentType): React.ReactNode => {
           rating: parseInt(e.target.value, 10),
           radioButtons: newRadioButtons
         }, () => {
-          this.checkIsDisabled();
+          this._checkIsDisabled();
         });
       }
     }
 
-    clearForm() {
+    private _clearForm() {
       const newRadioButtons = this.state.radioButtons.map((rb) => ({
         value: rb.value,
         id: rb.id,

@@ -56,7 +56,7 @@ const withSortingOptions = (Component: React.ComponentType): React.ReactNode => 
   }
 
   const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-    onOptionClickHOC: (option: string) => {
+    onOptionClickHOC: (option: SortingOption) => {
       dispatch(ActionCreator.setSortingOption(option));
     }
   });

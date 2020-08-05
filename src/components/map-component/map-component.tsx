@@ -14,7 +14,7 @@ interface MapComponentProps {
 }
 
 class MapComponent extends React.PureComponent<MapComponentProps> {
-  map: Map
+  private _map: Map
   mapRef: {
     current: HTMLElement
   }
@@ -27,7 +27,7 @@ class MapComponent extends React.PureComponent<MapComponentProps> {
     super(props);
 
     this.mapRef = React.createRef();
-    this.renderMarkers = this.renderMarkers.bind(this);
+    this._renderMarkers = this._renderMarkers.bind(this);
   }
 
   componentDidMount(): void {
@@ -35,25 +35,25 @@ class MapComponent extends React.PureComponent<MapComponentProps> {
     const {city} = this.props;
     const cityCoords: [number, number] = [city.location.latitude, city.location.longitude];
     const zoom = city.location.zoom;
-    this.map = leaflet.map(this.mapRef.current, {
+    this._map = leaflet.map(this.mapRef.current, {
       center: cityCoords,
       zoom,
       zoomControl: false,
     });
-    this.map.setView(cityCoords, zoom);
+    this._map.setView(cityCoords, zoom);
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(this.map);
+      .addTo(this._map);
 
-    this.activeMarker = leaflet.layerGroup().addTo(this.map);
-    this.simpleMarkers = leaflet.layerGroup().addTo(this.map);
+    this.activeMarker = leaflet.layerGroup().addTo(this._map);
+    this.simpleMarkers = leaflet.layerGroup().addTo(this._map);
 
-    this.renderMarkers();
+    this._renderMarkers();
   }
 
-  renderMarkers(): void {
+  private _renderMarkers(): void {
     const {places, currentPlace} = this.props;
 
     const MarkerIcon: (new (...args: any[]) => any) = leaflet.Icon.extend({
@@ -93,10 +93,10 @@ class MapComponent extends React.PureComponent<MapComponentProps> {
     if (this.props.city.name !== prevProps.city.name) {
       const {city} = this.props;
       const cityCoords: [number, number] = [city.location.latitude, city.location.longitude];
-      this.map.setView(cityCoords, city.location.zoom);
+      this._map.setView(cityCoords, city.location.zoom);
     }
 
-    this.renderMarkers();
+    this._renderMarkers();
   }
 
   componentWillUnmount(): void {

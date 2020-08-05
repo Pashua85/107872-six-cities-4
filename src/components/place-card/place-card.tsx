@@ -16,7 +16,7 @@ type PlaceCardProps = RouteComponentProps<any> & {
 const PlaceCard: React.FC<PlaceCardProps> = (props) => {
   const {propertyName, propertyType, price, isPremium, titlePhoto, rating, id, isFavorite} = props.place;
   const {onCardHover, onCardUnhover, cardClass, imageClass, styleObject, onFavoriteClick, history} = props;
-  let propertyTypeString;
+  let propertyTypeString: string;
   switch (propertyType) {
     case `room`:
       propertyTypeString = `Private room`;
